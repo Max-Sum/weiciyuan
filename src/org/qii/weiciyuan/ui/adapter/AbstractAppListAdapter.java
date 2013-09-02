@@ -2,7 +2,6 @@ package org.qii.weiciyuan.ui.adapter;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
 import android.text.Layout;
@@ -28,6 +27,7 @@ import org.qii.weiciyuan.support.lib.*;
 import org.qii.weiciyuan.support.settinghelper.SettingUtility;
 import org.qii.weiciyuan.support.utils.AppLogger;
 import org.qii.weiciyuan.support.utils.GlobalContext;
+import org.qii.weiciyuan.support.utils.ThemeUtility;
 import org.qii.weiciyuan.support.utils.Utility;
 import org.qii.weiciyuan.ui.basefragment.AbstractTimeLineFragment;
 import org.qii.weiciyuan.ui.userinfo.UserInfoActivity;
@@ -97,10 +97,7 @@ public abstract class AbstractAppListAdapter<T extends ItemBean> extends BaseAda
 
 
         defaultBG = fragment.getResources().getColor(R.color.transparent);
-
-        int[] attrs = new int[]{R.attr.listview_checked_color};
-        TypedArray ta = fragment.getActivity().obtainStyledAttributes(attrs);
-        checkedBG = ta.getColor(0, 430);
+        checkedBG = ThemeUtility.getColor(R.attr.listview_checked_color);
 
         if (pre) {
             for (int i = 0; i < PREF_LISTVIEW_ITEM_VIEW_COUNT; i++) {
@@ -137,6 +134,9 @@ public abstract class AbstractAppListAdapter<T extends ItemBean> extends BaseAda
                         drawable = holder.repost_content_pic.getImageView().getDrawable();
                         clearRepostPictureBitmap(holder, drawable);
 
+                        clearMultiPics(holder.content_pic_multi);
+                        clearMultiPics(holder.repost_content_pic_multi);
+
                         if (!tag.equals(index)) {
                             holder.listview_root.removeAllViewsInLayout();
                             holder.listview_root = null;
@@ -146,26 +146,34 @@ public abstract class AbstractAppListAdapter<T extends ItemBean> extends BaseAda
                 }
             }
 
+            void clearMultiPics(GridLayout gridLayout) {
+                if (gridLayout == null)
+                    return;
+                for (int i = 0; i < gridLayout.getChildCount(); i++) {
+                    ImageView iv = (ImageView) gridLayout.getChildAt(i);
+                    if (iv != null) {
+                        iv.setImageDrawable(null);
+                    }
+                }
+            }
+
             void clearAvatarBitmap(ViewHolder holder, Drawable drawable) {
                 if (!(drawable instanceof PictureBitmapDrawable)) {
-                    drawable.setCallback(null);
-                    holder.avatar.setImageBitmap(null);
+                    holder.avatar.setImageDrawable(null);
                     holder.avatar.getImageView().clearAnimation();
                 }
             }
 
             void clearPictureBitmap(ViewHolder holder, Drawable drawable) {
                 if (!(drawable instanceof PictureBitmapDrawable)) {
-                    drawable.setCallback(null);
-                    holder.content_pic.setImageBitmap(null);
+                    holder.content_pic.setImageDrawable(null);
                     holder.content_pic.getImageView().clearAnimation();
                 }
             }
 
             void clearRepostPictureBitmap(ViewHolder holder, Drawable drawable) {
                 if (!(drawable instanceof PictureBitmapDrawable)) {
-                    drawable.setCallback(null);
-                    holder.repost_content_pic.setImageBitmap(null);
+                    holder.repost_content_pic.setImageDrawable(null);
                     holder.repost_content_pic.getImageView().clearAnimation();
                 }
             }
@@ -472,11 +480,7 @@ public abstract class AbstractAppListAdapter<T extends ItemBean> extends BaseAda
                 return true;
             }
         });
-        if (user.isVerified()) {
-            view.isVerified();
-        } else {
-            view.reset();
-        }
+        view.checkVerified(user);
         buildAvatar(view.getImageView(), position, user);
     }
 

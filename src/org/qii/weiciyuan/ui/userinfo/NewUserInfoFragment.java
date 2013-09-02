@@ -36,7 +36,6 @@ import org.qii.weiciyuan.support.utils.GlobalContext;
 import org.qii.weiciyuan.support.utils.ListViewTool;
 import org.qii.weiciyuan.support.utils.Utility;
 import org.qii.weiciyuan.ui.basefragment.AbstractMessageTimeLineFragment;
-import org.qii.weiciyuan.ui.basefragment.AbstractTimeLineFragment;
 import org.qii.weiciyuan.ui.browser.BrowserWeiboMsgActivity;
 import org.qii.weiciyuan.ui.loader.StatusesByIdLoader;
 import org.qii.weiciyuan.ui.main.LeftMenuFragment;
@@ -300,11 +299,7 @@ public class NewUserInfoFragment extends AbstractMessageTimeLineFragment<Message
         else
             nickname.setText(userBean.getScreen_name() + "(" + userBean.getRemark() + ")");
 
-        if (userBean.isVerified()) {
-            avatar.isVerified();
-        } else {
-            avatar.reset();
-        }
+        avatar.checkVerified(userBean);
 
         if (!userBean.isVerified()) {
             rightPoint.setVisibility(View.GONE);
@@ -312,7 +307,17 @@ public class NewUserInfoFragment extends AbstractMessageTimeLineFragment<Message
             rightPoint.setVisibility(View.VISIBLE);
         }
 
-        TimeLineBitmapDownloader.getInstance().downloadAvatar(avatar.getImageView(), userBean, (AbstractTimeLineFragment) this);
+        avatar.getImageView().post(new Runnable() {
+            @Override
+            public void run() {
+
+                TimeLineBitmapDownloader.getInstance().display(avatar.getImageView(), avatar.getImageView().getWidth()
+                        , avatar.getImageView().getHeight(), userBean.getAvatar_large(), FileLocationMethod.avatar_large);
+
+            }
+        });
+
+//        TimeLineBitmapDownloader.getInstance().downloadAvatar(avatar.getImageView(), userBean, (AbstractTimeLineFragment) this);
         avatar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

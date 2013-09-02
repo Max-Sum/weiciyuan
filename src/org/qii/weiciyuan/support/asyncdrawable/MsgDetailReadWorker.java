@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -16,8 +17,7 @@ import org.qii.weiciyuan.support.imagetool.ImageTool;
 import org.qii.weiciyuan.support.lib.MyAsyncTask;
 import org.qii.weiciyuan.support.lib.WeiboDetailImageView;
 import org.qii.weiciyuan.support.utils.GlobalContext;
-
-import java.io.File;
+import org.qii.weiciyuan.support.utils.Utility;
 
 /**
  * User: qii
@@ -25,13 +25,11 @@ import java.io.File;
  * insert progress update listener into  download worker if it exists
  * or create a new download worker
  */
-public class MsgDetailReadWorker extends MyAsyncTask<Void, Integer, Bitmap> {
+public class MsgDetailReadWorker extends MyAsyncTask<Void, Integer, String> {
 
     private WeiboDetailImageView view;
     private ProgressBar pb;
     private Button retry;
-
-    private boolean pbFlag = false;
 
     private MessageBean msg;
 
@@ -40,40 +38,48 @@ public class MsgDetailReadWorker extends MyAsyncTask<Void, Integer, Bitmap> {
         this.pb = this.view.getProgressBar();
         this.msg = msg;
         this.retry = view.getRetryButton();
-
-        if (pb != null && pb.getVisibility() != View.VISIBLE) {
-            pb.setVisibility(View.VISIBLE);
-        }
-
-        if (retry != null) {
-            retry.setVisibility(View.INVISIBLE);
-        }
+        retry.setVisibility(View.INVISIBLE);
     }
 
     @Override
-    protected Bitmap doInBackground(Void... arg) {
+    protected String doInBackground(Void... arg) {
         if (isCancelled()) {
             return null;
         }
 
-        TaskCache.waitForMsgDetailPictureDownload(msg, downloadListener);
 
-        FileLocationMethod method;
-        String middlePath = FileManager.getFilePathFromUrl(msg.getBmiddle_pic(), FileLocationMethod.picture_bmiddle);
-        String largePath = FileManager.getFilePathFromUrl(msg.getOriginal_pic(), FileLocationMethod.picture_large);
-        String data = "";
-        if (new File(largePath).exists()) {
-            data = msg.getOriginal_pic();
-            method = FileLocationMethod.picture_large;
-        } else if (new File(middlePath).exists()) {
-            data = msg.getBmiddle_pic();
-            method = FileLocationMethod.picture_bmiddle;
-        } else {
-            data = msg.getBmiddle_pic();
-            method = FileLocationMethod.picture_bmiddle;
+        String oriPath = FileManager.getFilePathFromUrl(msg.getOriginal_pic(), FileLocationMethod.picture_large);
+
+        if (ImageTool.isThisBitmapCanRead(oriPath)
+                && TaskCache.isThisUrlTaskFinished(msg.getOriginal_pic())) {
+
+            return oriPath;
         }
 
-        return ImageTool.getMiddlePictureInBrowserMSGActivity(data, method, downloadListener);
+
+        String middlePath = FileManager.getFilePathFromUrl(msg.getBmiddle_pic(), FileLocationMethod.picture_bmiddle);
+
+        if (ImageTool.isThisBitmapCanRead(middlePath)
+                && TaskCache.isThisUrlTaskFinished(msg.getBmiddle_pic())) {
+            return middlePath;
+        }
+
+        GlobalContext.getInstance().getHandler().post(new Runnable() {
+            @Override
+            public void run() {
+                pb.setVisibility(View.VISIBLE);
+                pb.setIndeterminate(false);
+
+            }
+        });
+
+        if (Utility.isWifi(GlobalContext.getInstance())) {
+            boolean result = TaskCache.waitForPictureDownload(msg.getOriginal_pic(), downloadListener, oriPath, FileLocationMethod.picture_large);
+            return result ? oriPath : null;
+        } else {
+            boolean result = TaskCache.waitForPictureDownload(msg.getBmiddle_pic(), downloadListener, middlePath, FileLocationMethod.picture_bmiddle);
+            return result ? middlePath : null;
+        }
 
     }
 
@@ -101,41 +107,37 @@ public class MsgDetailReadWorker extends MyAsyncTask<Void, Integer, Bitmap> {
     @Override
     protected void onProgressUpdate(Integer... values) {
         super.onProgressUpdate(values);
-        if (pb != null) {
-            if (pb.getVisibility() != View.VISIBLE) {
-                pb.setVisibility(View.VISIBLE);
-            }
-            if (!pbFlag) {
-                pb.setIndeterminate(false);
-                pbFlag = true;
-            }
+        if (this.getStatus() == Status.RUNNING) {
+            pb.setVisibility(View.VISIBLE);
+
+
             Integer progress = values[0];
             Integer max = values[1];
             pb.setMax(max);
             pb.setProgress(progress);
+
         }
     }
 
     @Override
-    protected void onCancelled(Bitmap bitmap) {
-
-        if (pb != null)
-            pb.setVisibility(View.INVISIBLE);
-
+    protected void onCancelled(String bitmap) {
+        pb.setVisibility(View.INVISIBLE);
         super.onCancelled(bitmap);
     }
 
     @Override
-    protected void onPostExecute(Bitmap bitmap) {
-        if (pb != null)
-            pb.setVisibility(View.INVISIBLE);
-        if (bitmap != null) {
-            view.setTag(true);
-            view.getImageView().setTag(true);
-            view.setVisibility(View.VISIBLE);
-            view.setImageBitmap(bitmap);
-            view.setAlpha(0.0f);
-            view.animate().alpha(1.0f).setDuration(200);
+    protected void onPostExecute(String bitmap) {
+        retry.setVisibility(View.INVISIBLE);
+        pb.setVisibility(View.INVISIBLE);
+
+        if (!TextUtils.isEmpty(bitmap)) {
+
+            if (!bitmap.endsWith(".gif")) {
+                readNormalPic(bitmap);
+            } else {
+                view.setGif(bitmap);
+            }
+
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -157,6 +159,18 @@ public class MsgDetailReadWorker extends MyAsyncTask<Void, Integer, Bitmap> {
         }
 
 
+    }
+
+    private void readNormalPic(String path) {
+
+        Bitmap bitmap = ImageTool.readNormalPic(path, 2000, 2000);
+
+        view.setTag(true);
+        view.getImageView().setTag(true);
+        view.setVisibility(View.VISIBLE);
+        view.setImageBitmap(bitmap);
+        view.setAlpha(0.0f);
+        view.animate().alpha(1.0f).setDuration(200);
     }
 
 }

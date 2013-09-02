@@ -55,7 +55,22 @@ public class DownloadWorker extends MyAsyncTask<String, Integer, Boolean> implem
 
         String filePath = FileManager.getFilePathFromUrl(url, method);
 
-        boolean result = ImageTool.getBitmapFromNetWork(url, filePath, new FileDownloaderHttpHelper.DownloadListener() {
+        String actualDownloadUrl = url;
+
+        switch (method) {
+            case picture_thumbnail:
+                actualDownloadUrl = url.replace("thumbnail", "webp180");
+                break;
+            case picture_bmiddle:
+                actualDownloadUrl = url.replace("bmiddle", "webp720");
+                break;
+            case picture_large:
+                actualDownloadUrl = url.replace("large", "woriginal");
+                break;
+
+        }
+
+        boolean result = ImageTool.getBitmapFromNetWork(actualDownloadUrl, filePath, new FileDownloaderHttpHelper.DownloadListener() {
             @Override
             public void pushProgress(int progress, int max) {
                 publishProgress(progress, max);

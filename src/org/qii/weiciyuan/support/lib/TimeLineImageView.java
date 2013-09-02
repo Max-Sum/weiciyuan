@@ -7,7 +7,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -17,11 +16,15 @@ import org.qii.weiciyuan.R;
 /**
  * User: qii
  * Date: 12-12-18
+ * todo
+ * this class and its child class need to be refactored
  */
 public class TimeLineImageView extends FrameLayout {
 
     protected ImageView mImageView;
+    private ImageView gifFlag;
     private ProgressBar pb;
+    private boolean parentPressState = true;
 
     public TimeLineImageView(Context context) {
         super(context);
@@ -31,20 +34,32 @@ public class TimeLineImageView extends FrameLayout {
         this(context, attrs, 0);
     }
 
+
+    //todo need refactor
     public TimeLineImageView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        LayoutInflater inflate = (LayoutInflater)
-                context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View v = inflate.inflate(R.layout.timelineimageview_layout, null);
-        mImageView = (ImageView) v.findViewById(R.id.imageview);
-        mImageView.setImageDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-        pb = (ProgressBar) v.findViewById(R.id.imageview_pb);
-        v.setBackgroundColor(Color.TRANSPARENT);
-        addView(v, new FrameLayout.LayoutParams(
-                LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+        initLayout(context);
     }
 
+    protected void initLayout(Context context) {
+        LayoutInflater inflate = (LayoutInflater)
+                context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View v = inflate.inflate(R.layout.timelineimageview_layout, this, true);
+        mImageView = (ImageView) v.findViewById(R.id.imageview);
+        mImageView.setImageDrawable(new ColorDrawable(Color.TRANSPARENT));
+        gifFlag = (ImageView) v.findViewById(R.id.gif_flag);
+
+        pb = (ProgressBar) v.findViewById(R.id.imageview_pb);
+        this.setForeground(getResources().getDrawable(R.drawable.timelineimageview_cover));
+        this.setAddStatesFromChildren(true);
+    }
+
+    public void setParentPressStates(boolean value) {
+        if (parentPressState == value)
+            return;
+        setForeground(value ? getResources().getDrawable(R.drawable.timelineimageview_cover) : null);
+        parentPressState = value;
+    }
 
     public void setImageDrawable(Drawable drawable) {
         mImageView.setImageDrawable(drawable);
@@ -54,32 +69,15 @@ public class TimeLineImageView extends FrameLayout {
         mImageView.setImageBitmap(bm);
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        mImageView.onTouchEvent(event);
-        return super.onTouchEvent(event);
-    }
 
     public ImageView getImageView() {
         return mImageView;
     }
 
-    @Override
-    public void setOnClickListener(OnClickListener onClicker) {
-        mImageView.setOnClickListener(onClicker);
-    }
-
-    @Override
-    public void setOnLongClickListener(OnLongClickListener onLongClickListener) {
-        mImageView.setOnLongClickListener(onLongClickListener);
-    }
 
     public void setProgress(int value, int max) {
-        if (pb.getVisibility() != View.VISIBLE) {
-            pb.setVisibility(View.VISIBLE);
-        }
-        if (pb.getMax() != max)
-            pb.setMax(max);
+        pb.setVisibility(View.VISIBLE);
+        pb.setMax(max);
         pb.setProgress(value);
     }
 
@@ -87,7 +85,9 @@ public class TimeLineImageView extends FrameLayout {
         return pb;
     }
 
-
+    public void setGifFlag(boolean value) {
+        gifFlag.setVisibility(value ? VISIBLE : INVISIBLE);
+    }
 }
 
 

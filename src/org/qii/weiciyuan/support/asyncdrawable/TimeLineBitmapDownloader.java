@@ -256,16 +256,18 @@ public class TimeLineBitmapDownloader {
         if (bitmap != null) {
             view.setImageBitmap(bitmap);
             view.getImageView().setTag(urlKey);
-            view.getProgressBar().setVisibility(View.GONE);
+            view.getProgressBar().setVisibility(View.INVISIBLE);
             if (view.getAlpha() != 1.0f) {
                 view.setAlpha(1.0f);
             }
+            view.setGifFlag(ImageTool.isThisPictureGif(urlKey));
             cancelPotentialDownload(urlKey, view.getImageView());
         } else {
 
             if (isFling) {
                 view.setImageDrawable(defaultBG);
-                view.getProgressBar().setVisibility(View.GONE);
+                view.getProgressBar().setVisibility(View.INVISIBLE);
+                view.setGifFlag(ImageTool.isThisPictureGif(urlKey));
                 return;
             }
 

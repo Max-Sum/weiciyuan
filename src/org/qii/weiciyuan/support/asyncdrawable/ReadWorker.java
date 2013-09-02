@@ -39,6 +39,7 @@ public class ReadWorker extends MyAsyncTask<String, Integer, Bitmap> implements 
     private int mShortAnimationDuration;
     private WeakReference<ProgressBar> pbWeakReference;
     private boolean isMultiPictures = false;
+    private TimeLineImageView timeLineImageView;
 
     public String getUrl() {
         return data;
@@ -63,12 +64,14 @@ public class ReadWorker extends MyAsyncTask<String, Integer, Bitmap> implements 
     public ReadWorker(TimeLineImageView view, String url, FileLocationMethod method) {
 
         this(view.getImageView(), url, method);
+        this.timeLineImageView = view;
         this.pbWeakReference = new WeakReference<ProgressBar>(view.getProgressBar());
+        view.setGifFlag(false);
         if (SettingUtility.getEnableBigPic()) {
             view.getProgressBar().setVisibility(View.VISIBLE);
             view.getProgressBar().setProgress(0);
         } else {
-            view.getProgressBar().setVisibility(View.GONE);
+            view.getProgressBar().setVisibility(View.INVISIBLE);
             view.getProgressBar().setProgress(0);
         }
     }
@@ -143,7 +146,18 @@ public class ReadWorker extends MyAsyncTask<String, Integer, Bitmap> implements 
         if (isCancelled())
             return null;
 
-        Bitmap bitmap = ImageTool.getRoundedCornerPic(path, width, height);
+        Bitmap bitmap;
+
+        switch (method) {
+            case avatar_small:
+            case avatar_large:
+                bitmap = ImageTool.getRoundedCornerPic(path, width, height, Utility.dip2px(2));
+                break;
+            default:
+                bitmap = ImageTool.getRoundedCornerPic(path, width, height, 0);
+                break;
+        }
+
         if (bitmap == null) {
             this.failedResult = FailedResult.readFailed;
         }
@@ -194,11 +208,13 @@ public class ReadWorker extends MyAsyncTask<String, Integer, Bitmap> implements 
                 if (pbWeakReference != null) {
                     ProgressBar pb = pbWeakReference.get();
                     if (pb != null) {
-                        pb.setVisibility(View.GONE);
+                        pb.setVisibility(View.INVISIBLE);
                     }
                 }
 
                 if (bitmap != null) {
+                    if (timeLineImageView != null)
+                        timeLineImageView.setGifFlag(ImageTool.isThisPictureGif(getUrl()));
                     playImageViewAnimation(imageView, bitmap);
                     lruCache.put(data, bitmap);
                 } else if (failedResult != null) {
@@ -231,7 +247,7 @@ public class ReadWorker extends MyAsyncTask<String, Integer, Bitmap> implements 
             return;
         ProgressBar pb = pbWeakReference.get();
         if (pb != null) {
-            pb.setVisibility(View.GONE);
+            pb.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -268,6 +284,7 @@ public class ReadWorker extends MyAsyncTask<String, Integer, Bitmap> implements 
         alphaAnimation.setDuration(500);
         view.startAnimation(alphaAnimation);
         view.setTag(getUrl());
+
 
 //        final Animation anim_out = AnimationUtils.loadAnimation(view.getContext(), R.anim.timeline_pic_fade_out);
 //        final Animation anim_in = AnimationUtils.loadAnimation(view.getContext(), R.anim.timeline_pic_fade_in);
