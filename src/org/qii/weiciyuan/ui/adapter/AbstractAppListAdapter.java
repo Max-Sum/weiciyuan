@@ -19,6 +19,7 @@ import org.qii.weiciyuan.R;
 import org.qii.weiciyuan.bean.ItemBean;
 import org.qii.weiciyuan.bean.MessageBean;
 import org.qii.weiciyuan.bean.UserBean;
+import org.qii.weiciyuan.support.asyncdrawable.IWeiciyuanDrawable;
 import org.qii.weiciyuan.support.asyncdrawable.PictureBitmapDrawable;
 import org.qii.weiciyuan.support.asyncdrawable.TimeLineBitmapDownloader;
 import org.qii.weiciyuan.support.file.FileLocationMethod;
@@ -347,14 +348,14 @@ public abstract class AbstractAppListAdapter<T extends ItemBean> extends BaseAda
         holder.time = (TimeTextView) convertView.findViewById(R.id.time);
         holder.avatar = (TimeLineAvatarImageView) convertView.findViewById(R.id.avatar);
 
-        holder.content_pic = (TimeLineImageView) convertView.findViewById(R.id.content_pic);
+        holder.content_pic = (IWeiciyuanDrawable) convertView.findViewById(R.id.content_pic);
         holder.content_pic_multi = (GridLayout) convertView.findViewById(R.id.content_pic_multi);
-        holder.repost_content_pic = (TimeLineImageView) convertView.findViewById(R.id.repost_content_pic);
+        holder.repost_content_pic = (IWeiciyuanDrawable) convertView.findViewById(R.id.repost_content_pic);
         holder.repost_content_pic_multi = (GridLayout) convertView.findViewById(R.id.repost_content__pic_multi);
 
         holder.listview_root = (RelativeLayout) convertView.findViewById(R.id.listview_root);
         holder.repost_layout = convertView.findViewById(R.id.repost_layout);
-        holder.repost_flag = (ImageView) convertView.findViewById(R.id.repost_flag);
+        holder.repost_flag = (View) convertView.findViewById(R.id.repost_flag);
         holder.count_layout = (LinearLayout) convertView.findViewById(R.id.count_layout);
         holder.repost_count = (TextView) convertView.findViewById(R.id.repost_count);
         holder.comment_count = (TextView) convertView.findViewById(R.id.comment_count);
@@ -461,7 +462,7 @@ public abstract class AbstractAppListAdapter<T extends ItemBean> extends BaseAda
             return NO_ITEM_ID;
     }
 
-    protected void buildAvatar(TimeLineAvatarImageView view, int position, final UserBean user) {
+    protected void buildAvatar(IWeiciyuanDrawable view, int position, final UserBean user) {
         view.setVisibility(View.VISIBLE);
         view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -500,7 +501,7 @@ public abstract class AbstractAppListAdapter<T extends ItemBean> extends BaseAda
 
             int count = msg.getPicCount();
             for (int i = 0; i < count; i++) {
-                ImageView pic = (ImageView) gridLayout.getChildAt(i);
+                IWeiciyuanDrawable pic = (IWeiciyuanDrawable) gridLayout.getChildAt(i);
                 pic.setVisibility(View.VISIBLE);
                 if (SettingUtility.getEnableBigPic()) {
                     TimeLineBitmapDownloader.getInstance().displayMultiPicture(pic, msg.getHighPicUrls().get(i), FileLocationMethod.picture_large, (AbstractTimeLineFragment) fragment);
@@ -522,10 +523,61 @@ public abstract class AbstractAppListAdapter<T extends ItemBean> extends BaseAda
             }
 
             if (count < 9) {
-                for (int i = count; i < 9; i++) {
-                    ImageView pic = (ImageView) gridLayout.getChildAt(i);
-                    pic.setVisibility(View.GONE);
+                ImageView pic;
+                switch (count) {
+                    case 8:
+                        pic = (ImageView) gridLayout.getChildAt(8);
+                        pic.setVisibility(View.INVISIBLE);
+                        break;
+                    case 7:
+                        for (int i = 8; i > 6; i--) {
+                            pic = (ImageView) gridLayout.getChildAt(i);
+                            pic.setVisibility(View.INVISIBLE);
+                        }
+                        break;
+                    case 6:
+                        for (int i = 8; i > 5; i--) {
+                            pic = (ImageView) gridLayout.getChildAt(i);
+                            pic.setVisibility(View.GONE);
+                        }
+
+                        break;
+                    case 5:
+                        for (int i = 8; i > 5; i--) {
+                            pic = (ImageView) gridLayout.getChildAt(i);
+                            pic.setVisibility(View.GONE);
+                        }
+                        pic = (ImageView) gridLayout.getChildAt(5);
+                        pic.setVisibility(View.INVISIBLE);
+                        break;
+                    case 4:
+                        for (int i = 8; i > 5; i--) {
+                            pic = (ImageView) gridLayout.getChildAt(i);
+                            pic.setVisibility(View.GONE);
+                        }
+                        pic = (ImageView) gridLayout.getChildAt(5);
+                        pic.setVisibility(View.INVISIBLE);
+                        pic = (ImageView) gridLayout.getChildAt(4);
+                        pic.setVisibility(View.INVISIBLE);
+                        break;
+                    case 3:
+                        for (int i = 8; i > 2; i--) {
+                            pic = (ImageView) gridLayout.getChildAt(i);
+                            pic.setVisibility(View.GONE);
+                        }
+                        break;
+                    case 2:
+                        for (int i = 8; i > 2; i--) {
+                            pic = (ImageView) gridLayout.getChildAt(i);
+                            pic.setVisibility(View.GONE);
+                        }
+                        pic = (ImageView) gridLayout.getChildAt(2);
+                        pic.setVisibility(View.INVISIBLE);
+                        break;
+
+
                 }
+
             }
 
 
@@ -535,7 +587,7 @@ public abstract class AbstractAppListAdapter<T extends ItemBean> extends BaseAda
 
     }
 
-    protected void buildPic(final MessageBean msg, TimeLineImageView view, int position) {
+    protected void buildPic(final MessageBean msg, IWeiciyuanDrawable view, int position) {
         if (SettingUtility.isEnablePic()) {
             view.setVisibility(View.VISIBLE);
             view.setOnClickListener(new View.OnClickListener() {
@@ -560,7 +612,7 @@ public abstract class AbstractAppListAdapter<T extends ItemBean> extends BaseAda
         TimeLineBitmapDownloader.getInstance().downContentPic(view, msg, (AbstractTimeLineFragment) fragment);
     }
 
-    private void buildPic(final MessageBean msg, TimeLineImageView view) {
+    private void buildPic(final MessageBean msg, IWeiciyuanDrawable view) {
         view.setVisibility(View.VISIBLE);
         TimeLineBitmapDownloader.getInstance().downContentPic(view, msg, (AbstractTimeLineFragment) fragment);
     }
@@ -584,16 +636,16 @@ public abstract class AbstractAppListAdapter<T extends ItemBean> extends BaseAda
         TextView content;
         TextView repost_content;
         TimeTextView time;
-        TimeLineAvatarImageView avatar;
+        IWeiciyuanDrawable avatar;
 
-        TimeLineImageView content_pic;
+        IWeiciyuanDrawable content_pic;
         GridLayout content_pic_multi;
-        TimeLineImageView repost_content_pic;
+        IWeiciyuanDrawable repost_content_pic;
         GridLayout repost_content_pic_multi;
 
         RelativeLayout listview_root;
         View repost_layout;
-        ImageView repost_flag;
+        View repost_flag;
         LinearLayout count_layout;
         TextView repost_count;
         TextView comment_count;

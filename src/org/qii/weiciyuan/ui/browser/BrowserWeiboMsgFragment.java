@@ -23,6 +23,7 @@ import org.qii.weiciyuan.bean.GeoBean;
 import org.qii.weiciyuan.bean.MessageBean;
 import org.qii.weiciyuan.bean.RepostListBean;
 import org.qii.weiciyuan.bean.android.AsyncTaskLoaderResult;
+import org.qii.weiciyuan.support.asyncdrawable.IWeiciyuanDrawable;
 import org.qii.weiciyuan.support.asyncdrawable.MsgDetailReadWorker;
 import org.qii.weiciyuan.support.asyncdrawable.TimeLineBitmapDownloader;
 import org.qii.weiciyuan.support.error.WeiboException;
@@ -521,22 +522,19 @@ public class BrowserWeiboMsgFragment extends AbstractAppFragment {
     private void displayPictures(final MessageBean msg, GridLayout layout, WeiboDetailImageView view, boolean refreshPic) {
 
         if (!msg.isMultiPics()) {
-
-            if (Utility.isTaskStopped(picTask)) {
-                view.setVisibility(View.VISIBLE);
-
-                if (refreshPic) {
-                    picTask = new MsgDetailReadWorker(view, msg);
-                    picTask.executeOnExecutor(MyAsyncTask.THREAD_POOL_EXECUTOR);
-                }
-
+            view.setVisibility(View.VISIBLE);
+            if (Utility.isTaskStopped(picTask) && refreshPic) {
+                picTask = new MsgDetailReadWorker(view, msg);
+                picTask.executeOnExecutor(MyAsyncTask.THREAD_POOL_EXECUTOR);
+            } else {
+                picTask.setView(view);
             }
         } else {
             layout.setVisibility(View.VISIBLE);
 
             int count = msg.getPicCount();
             for (int i = 0; i < count; i++) {
-                ImageView pic = (ImageView) layout.getChildAt(i);
+                IWeiciyuanDrawable pic = (IWeiciyuanDrawable) layout.getChildAt(i);
                 pic.setVisibility(View.VISIBLE);
 
                 TimeLineBitmapDownloader.getInstance().displayMultiPicture(pic, msg.getMiddlePicUrls().get(i), FileLocationMethod.picture_bmiddle);
