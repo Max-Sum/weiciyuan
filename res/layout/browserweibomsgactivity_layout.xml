@@ -10,7 +10,7 @@
     <GridLayout
         android:id="@+id/first"
         android:background="?android:selectableItemBackground"
-        android:padding="3dp"
+        android:padding="5dp"
         android:clickable="true"
         android:columnCount="4"
         android:rowCount="2"
@@ -27,7 +27,7 @@
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="-5dp"
             android:layout_marginTop="-5dp"
-            android:layout_marginBottom="-5dp"
+            android:layout_marginBottom="0dp"
             android:layout_marginRight="0dp"/>
 
 
@@ -86,7 +86,7 @@
         android:id="@+id/second">
 
         <TextView
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:id="@+id/content"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -123,31 +123,31 @@
             android:useDefaultMargins="false"
             android:clickable="false">
 
-            <ImageView
+            <org.qii.weiciyuan.support.asyncdrawable.MultiPicturesChildImageView
                 style="@style/listViewMultiImageView"/>
 
-            <ImageView
+            <org.qii.weiciyuan.support.asyncdrawable.MultiPicturesChildImageView
                 style="@style/listViewMultiImageView"/>
 
-            <ImageView
+            <org.qii.weiciyuan.support.asyncdrawable.MultiPicturesChildImageView
                 style="@style/listViewMultiImageView"/>
 
-            <ImageView
+            <org.qii.weiciyuan.support.asyncdrawable.MultiPicturesChildImageView
                 style="@style/listViewMultiImageView"/>
 
-            <ImageView
+            <org.qii.weiciyuan.support.asyncdrawable.MultiPicturesChildImageView
                 style="@style/listViewMultiImageView"/>
 
-            <ImageView
+            <org.qii.weiciyuan.support.asyncdrawable.MultiPicturesChildImageView
                 style="@style/listViewMultiImageView"/>
 
-            <ImageView
+            <org.qii.weiciyuan.support.asyncdrawable.MultiPicturesChildImageView
                 style="@style/listViewMultiImageView"/>
 
-            <ImageView
+            <org.qii.weiciyuan.support.asyncdrawable.MultiPicturesChildImageView
                 style="@style/listViewMultiImageView"/>
 
-            <ImageView
+            <org.qii.weiciyuan.support.asyncdrawable.MultiPicturesChildImageView
                 style="@style/listViewMultiImageView"/>
 
         </GridLayout>
@@ -159,22 +159,15 @@
     <LinearLayout
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
         android:orientation="vertical"
         android:id="@+id/repost_layout"
         android:clickable="true"
+        android:background="?browser_weibo_detail_background_color"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:visibility="visible">
-
-        <ImageView
-            android:id="@+id/space"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:background="@drawable/divider"
-            android:layout_height="1dp"
-            android:layout_width="match_parent"/>
 
         <TextView
             android:background="?android:selectableItemBackground"
@@ -215,31 +208,31 @@
             android:useDefaultMargins="false"
             android:clickable="false">
 
-            <ImageView
+            <org.qii.weiciyuan.support.asyncdrawable.MultiPicturesChildImageView
                 style="@style/listViewMultiImageView"/>
 
-            <ImageView
+            <org.qii.weiciyuan.support.asyncdrawable.MultiPicturesChildImageView
                 style="@style/listViewMultiImageView"/>
 
-            <ImageView
+            <org.qii.weiciyuan.support.asyncdrawable.MultiPicturesChildImageView
                 style="@style/listViewMultiImageView"/>
 
-            <ImageView
+            <org.qii.weiciyuan.support.asyncdrawable.MultiPicturesChildImageView
                 style="@style/listViewMultiImageView"/>
 
-            <ImageView
+            <org.qii.weiciyuan.support.asyncdrawable.MultiPicturesChildImageView
                 style="@style/listViewMultiImageView"/>
 
-            <ImageView
+            <org.qii.weiciyuan.support.asyncdrawable.MultiPicturesChildImageView
                 style="@style/listViewMultiImageView"/>
 
-            <ImageView
+            <org.qii.weiciyuan.support.asyncdrawable.MultiPicturesChildImageView
                 style="@style/listViewMultiImageView"/>
 
-            <ImageView
+            <org.qii.weiciyuan.support.asyncdrawable.MultiPicturesChildImageView
                 style="@style/listViewMultiImageView"/>
 
-            <ImageView
+            <org.qii.weiciyuan.support.asyncdrawable.MultiPicturesChildImageView
                 style="@style/listViewMultiImageView"/>
 
         </GridLayout>
