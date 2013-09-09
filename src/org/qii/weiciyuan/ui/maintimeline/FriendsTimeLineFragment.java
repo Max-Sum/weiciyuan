@@ -100,13 +100,18 @@ public class FriendsTimeLineFragment extends AbstractMessageTimeLineFragment<Mes
         if (msg != null) {
             for (int i = 0; i < getList().getSize(); i++) {
                 if (msg.equals(getList().getItem(i))) {
-                    getList().getItem(i).setReposts_count(msg.getReposts_count());
-                    getList().getItem(i).setComments_count(msg.getComments_count());
-                    FriendsTimeLineDBTask.asyncUpdateCount(msg.getId(), msg.getComments_count(), msg.getReposts_count());
+                    MessageBean ori = getList().getItem(i);
+                    if (ori.getComments_count() != msg.getComments_count()
+                            || ori.getReposts_count() != msg.getReposts_count()) {
+                        ori.setReposts_count(msg.getReposts_count());
+                        ori.setComments_count(msg.getComments_count());
+                        FriendsTimeLineDBTask.asyncUpdateCount(msg.getId(), msg.getComments_count(), msg.getReposts_count());
+                        getAdapter().notifyDataSetChanged();
+                    }
                     break;
                 }
             }
-            getAdapter().notifyDataSetChanged();
+
         }
     }
 
@@ -642,7 +647,7 @@ public class FriendsTimeLineFragment extends AbstractMessageTimeLineFragment<Mes
         Intent intent = new Intent(getActivity(), BrowserWeiboMsgActivity.class);
         intent.putExtra("msg", getList().getItem(position));
         intent.putExtra("token", GlobalContext.getInstance().getSpecialToken());
-        startActivityForResult(intent, 0);
+        startActivityForResult(intent, MainTimeLineActivity.REQUEST_CODE_UPDATE_FRIENDS_TIMELINE_COMMENT_REPOST_COUNT);
     }
 
     @Override
