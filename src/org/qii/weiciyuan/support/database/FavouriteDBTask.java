@@ -2,6 +2,7 @@ package org.qii.weiciyuan.support.database;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.text.TextUtils;
@@ -12,7 +13,6 @@ import org.qii.weiciyuan.bean.FavListBean;
 import org.qii.weiciyuan.bean.android.FavouriteTimeLineData;
 import org.qii.weiciyuan.bean.android.TimeLinePosition;
 import org.qii.weiciyuan.support.database.table.FavouriteTable;
-import org.qii.weiciyuan.support.utils.AppConfig;
 import org.qii.weiciyuan.support.utils.AppLogger;
 
 import java.util.ArrayList;
@@ -41,46 +41,52 @@ public class FavouriteDBTask {
     public static void add(FavListBean list, int page, String accountId) {
         Gson gson = new Gson();
         List<FavBean> msgList = list.getFavorites();
+
+        DatabaseUtils.InsertHelper ih = new DatabaseUtils.InsertHelper(getWsd(), FavouriteTable.FavouriteDataTable.TABLE_NAME);
+        final int mblogidColumn = ih.getColumnIndex(FavouriteTable.FavouriteDataTable.MBLOGID);
+        final int accountidColumn = ih.getColumnIndex(FavouriteTable.FavouriteDataTable.ACCOUNTID);
+        final int jsondataColumn = ih.getColumnIndex(FavouriteTable.FavouriteDataTable.JSONDATA);
+
         try {
             getWsd().beginTransaction();
             for (FavBean msg : msgList) {
-                ContentValues cv = new ContentValues();
-                cv.put(FavouriteTable.FavouriteDataTable.MBLOGID, msg.getStatus().getId());
-                cv.put(FavouriteTable.FavouriteDataTable.ACCOUNTID, accountId);
+                ih.prepareForInsert();
+                ih.bind(mblogidColumn, msg.getStatus().getId());
+                ih.bind(accountidColumn, accountId);
                 String json = gson.toJson(msg);
-                cv.put(FavouriteTable.FavouriteDataTable.JSONDATA, json);
-                getWsd().insert(FavouriteTable.FavouriteDataTable.TABLE_NAME,
-                        FavouriteTable.FavouriteDataTable.ID, cv);
+                ih.bind(jsondataColumn, json);
+                ih.execute();
             }
-
-            String sql = "select * from " + FavouriteTable.TABLE_NAME + " where " + FavouriteTable.ACCOUNTID + "  = "
-                    + accountId;
-            Cursor c = getRsd().rawQuery(sql, null);
-            if (c.moveToNext()) {
-                try {
-                    String[] args = {accountId};
-                    ContentValues cv = new ContentValues();
-                    cv.put(FavouriteTable.PAGE, page);
-                    getWsd().update(FavouriteTable.TABLE_NAME, cv, FavouriteTable.ACCOUNTID + "=?", args);
-                } catch (JsonSyntaxException e) {
-
-                }
-            } else {
-
-                ContentValues cv = new ContentValues();
-                cv.put(FavouriteTable.ACCOUNTID, accountId);
-                cv.put(FavouriteTable.PAGE, page);
-                getWsd().insert(FavouriteTable.TABLE_NAME,
-                        FavouriteTable.ID, cv);
-            }
-
 
             getWsd().setTransactionSuccessful();
         } catch (SQLException e) {
+
         } finally {
             getWsd().endTransaction();
+            ih.close();
         }
-        reduceFavouriteTable(accountId);
+
+        String sql = "select * from " + FavouriteTable.TABLE_NAME + " where " + FavouriteTable.ACCOUNTID + "  = "
+                + accountId;
+        Cursor c = getRsd().rawQuery(sql, null);
+        if (c.moveToNext()) {
+            try {
+                String[] args = {accountId};
+                ContentValues cv = new ContentValues();
+                cv.put(FavouriteTable.PAGE, page);
+                getWsd().update(FavouriteTable.TABLE_NAME, cv, FavouriteTable.ACCOUNTID + "=?", args);
+            } catch (JsonSyntaxException e) {
+
+            }
+        } else {
+
+            ContentValues cv = new ContentValues();
+            cv.put(FavouriteTable.ACCOUNTID, accountId);
+            cv.put(FavouriteTable.PAGE, page);
+            getWsd().insert(FavouriteTable.TABLE_NAME,
+                    FavouriteTable.ID, cv);
+        }
+
     }
 
     public static FavouriteTimeLineData getFavouriteMsgList(String accountId) {
@@ -117,33 +123,6 @@ public class FavouriteDBTask {
         c.close();
         return new FavouriteTimeLineData(result, page, getPosition(accountId));
 
-    }
-
-
-    private static void reduceFavouriteTable(String accountId) {
-        String searchCount = "select count(" + FavouriteTable.FavouriteDataTable.ID + ") as total" + " from " + FavouriteTable.FavouriteDataTable.TABLE_NAME + " where " + FavouriteTable.FavouriteDataTable.ACCOUNTID
-                + " = " + accountId;
-        int total = 0;
-        Cursor c = getRsd().rawQuery(searchCount, null);
-        if (c.moveToNext()) {
-            total = c.getInt(c.getColumnIndex("total"));
-        }
-
-        c.close();
-
-        AppLogger.e("total=" + total);
-
-        int needDeletedNumber = total - AppConfig.DEFAULT_FAVOURITE_DB_CACHE_COUNT;
-
-        if (needDeletedNumber > 0) {
-            AppLogger.e("" + needDeletedNumber);
-            String sql = " delete from " + FavouriteTable.FavouriteDataTable.TABLE_NAME + " where " + FavouriteTable.FavouriteDataTable.ID + " in "
-                    + "( select " + FavouriteTable.FavouriteDataTable.ID + " from " + FavouriteTable.FavouriteDataTable.TABLE_NAME + " where "
-                    + FavouriteTable.FavouriteDataTable.ACCOUNTID
-                    + " in " + "(" + accountId + ") order by " + FavouriteTable.FavouriteDataTable.ID + " asc limit " + needDeletedNumber + " ) ";
-
-            getWsd().execSQL(sql);
-        }
     }
 
 
