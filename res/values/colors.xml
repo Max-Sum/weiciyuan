@@ -317,7 +317,7 @@
     <color name="top_tip_bar_error">#FF4444</color>
     <color name="top_tip_bar_tip">#1E90FF</color>
 
-    <color name="list_divider_color">#ffe6e6e6</color>
+    <color name="list_divider_color">#ffcdcdcd</color>
 
     <color name="listview_pic_background_light">#fff0f0f0</color>
     <color name="listview_pic_background_dark">#ff454545</color>

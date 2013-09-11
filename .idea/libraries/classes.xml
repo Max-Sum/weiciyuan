@@ -1,8 +1,6 @@
 <component name="libraryTable">
   <library name="classes">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/out/production/slidingmenulibrary/classes.jar!/" />
-    </CLASSES>
+    <CLASSES />
     <JAVADOC />
     <SOURCES />
   </library>
