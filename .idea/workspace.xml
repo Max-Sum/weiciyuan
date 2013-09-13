@@ -28,6 +28,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -64,7 +65,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -77,7 +77,7 @@
       <file leaf-file-name="ImageTool.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/support/imagetool/ImageTool.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="66" column="0" selection-start="2009" selection-end="2009" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="15143">
+            <state line="66" column="0" selection-start="2009" selection-end="2009" vertical-scroll-proportion="0.0" vertical-offset="1235" max-vertical-offset="15485">
               <folding />
             </state>
           </provider>
@@ -86,7 +86,7 @@
       <file leaf-file-name="GalleryActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/support/gallery/GalleryActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="52" selection-start="1805" selection-end="1805" vertical-scroll-proportion="0.0" vertical-offset="1482" max-vertical-offset="7980">
+            <state line="55" column="52" selection-start="1805" selection-end="1805" vertical-scroll-proportion="0.0" vertical-offset="1026" max-vertical-offset="9006">
               <folding />
             </state>
           </provider>
@@ -95,7 +95,7 @@
       <file leaf-file-name="MainTimeLineActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/main/MainTimeLineActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="26" selection-start="576" selection-end="576" vertical-scroll-proportion="0.0" vertical-offset="148" max-vertical-offset="10260">
+            <state line="17" column="26" selection-start="576" selection-end="576" vertical-scroll-proportion="0.0" vertical-offset="304" max-vertical-offset="10583">
               <folding />
             </state>
           </provider>
@@ -104,7 +104,7 @@
       <file leaf-file-name="MyAsyncTask.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/support/lib/MyAsyncTask.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="9405">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="9633">
               <folding />
             </state>
           </provider>
@@ -113,7 +113,7 @@
       <file leaf-file-name="colors.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/res/values/colors.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="319" column="30" selection-start="9646" selection-end="9646" vertical-scroll-proportion="0.47026023" vertical-offset="5808" max-vertical-offset="6346">
+            <state line="319" column="30" selection-start="9646" selection-end="9646" vertical-scroll-proportion="0.9907063" vertical-offset="5528" max-vertical-offset="6346">
               <folding />
             </state>
           </provider>
@@ -185,6 +185,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -238,7 +239,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -256,11 +256,11 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="AndroidRunProguardForReleaseBuild" value="false" />
-    <property name="MemberChooser.showClasses" value="true" />
     <property name="FullScreen" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RunManager" selected="Android Application.weiciyuan">
     <configuration default="true" type="Remote" factoryName="Remote">
@@ -394,7 +394,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="1000" extended-state="0" />
+    <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -406,7 +406,7 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32977462" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -491,13 +491,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/listview_layout.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="46" selection-start="715" selection-end="715" vertical-scroll-proportion="-0.41883767" vertical-offset="570" max-vertical-offset="1121" />
+      </provider>
       <provider editor-type-id="android-designer">
         <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="46" selection-start="715" selection-end="715" vertical-scroll-proportion="-0.41883767" vertical-offset="570" max-vertical-offset="1121">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/drawable/listview_item_card_dark_background.xml">
@@ -513,55 +511,41 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/timeline_listview_item_layout.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="19" selection-start="402" selection-end="402" vertical-scroll-proportion="-0.57114226" vertical-offset="456" max-vertical-offset="5548" />
+      </provider>
       <provider editor-type-id="android-designer">
         <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="19" selection-start="402" selection-end="402" vertical-scroll-proportion="-0.57114226" vertical-offset="456" max-vertical-offset="5548">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libs/slidingmenulibrary/src/com/slidingmenu/lib/SlidingMenu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="63" selection-start="1171" selection-end="1171" vertical-scroll-proportion="0.68761903" vertical-offset="0" max-vertical-offset="18867">
-          <folding />
-        </state>
+        <state line="37" column="63" selection-start="1171" selection-end="1171" vertical-scroll-proportion="0.68761903" vertical-offset="0" max-vertical-offset="18867" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/interfaces/FixedOnActivityResultBugFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="39" selection-start="1901" selection-end="2614" vertical-scroll-proportion="0.5669145" vertical-offset="759" max-vertical-offset="1577">
-          <folding />
-        </state>
+        <state line="60" column="39" selection-start="1901" selection-end="2614" vertical-scroll-proportion="0.5669145" vertical-offset="759" max-vertical-offset="1577" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/support/asyncdrawable/MultiPicturesChildImageView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="1" selection-start="484" selection-end="484" vertical-scroll-proportion="0.07063197" vertical-offset="57" max-vertical-offset="1995">
-          <folding />
-        </state>
+        <state line="16" column="1" selection-start="484" selection-end="484" vertical-scroll-proportion="0.07063197" vertical-offset="57" max-vertical-offset="1995" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libs/slidingmenulibrary/src/com/slidingmenu/lib/app/SlidingActivityHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="32" selection-start="356" selection-end="356" vertical-scroll-proportion="0.036190476" vertical-offset="57" max-vertical-offset="4066">
-          <folding />
-        </state>
+        <state line="13" column="32" selection-start="356" selection-end="356" vertical-scroll-proportion="0.036190476" vertical-offset="57" max-vertical-offset="4066" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/uk/co/senab/photoview/PhotoView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="48" selection-start="1726" selection-end="1726" vertical-scroll-proportion="-3.908922" vertical-offset="2521" max-vertical-offset="3059">
-          <folding />
-        </state>
+        <state line="44" column="48" selection-start="1726" selection-end="1726" vertical-scroll-proportion="-3.908922" vertical-offset="2521" max-vertical-offset="3059" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/support/imagetool/ImageEdit.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="5" selection-start="504" selection-end="504" vertical-scroll-proportion="0.38847584" vertical-offset="0" max-vertical-offset="1330">
-          <folding />
-        </state>
+        <state line="19" column="5" selection-start="504" selection-end="504" vertical-scroll-proportion="0.38847584" vertical-offset="0" max-vertical-offset="1330" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/support/imagetool/ImageTool.java">
@@ -594,7 +578,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/res/values/colors.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="319" column="30" selection-start="9646" selection-end="9646" vertical-scroll-proportion="0.47026023" vertical-offset="5808" max-vertical-offset="6346">
+        <state line="319" column="30" selection-start="9646" selection-end="9646" vertical-scroll-proportion="0.9907063" vertical-offset="5528" max-vertical-offset="6346">
           <folding />
         </state>
       </provider>
