@@ -72,12 +72,15 @@ public class CommentByMeTimeLineDBTask {
     }
 
     public static CommentTimeLineData getCommentLineMsgList(String accountId) {
+        TimeLinePosition position = getPosition(accountId);
 
         CommentListBean result = new CommentListBean();
 
+        int limit = position.position + AppConfig.DB_CACHE_COUNT_OFFSET > AppConfig.DEFAULT_MSG_COUNT_50 ? position.position + AppConfig.DB_CACHE_COUNT_OFFSET : AppConfig.DEFAULT_MSG_COUNT_50;
+
         List<CommentBean> msgList = new ArrayList<CommentBean>();
         String sql = "select * from " + CommentByMeTable.CommentByMeDataTable.TABLE_NAME + " where " + CommentByMeTable.CommentByMeDataTable.ACCOUNTID + "  = "
-                + accountId + " order by " + CommentByMeTable.CommentByMeDataTable.MBLOGID + " desc";
+                + accountId + " order by " + CommentByMeTable.CommentByMeDataTable.MBLOGID + " desc limit " + limit;
         Cursor c = getRsd().rawQuery(sql, null);
         Gson gson = new Gson();
         while (c.moveToNext()) {
@@ -97,7 +100,7 @@ public class CommentByMeTimeLineDBTask {
 
         result.setComments(msgList);
         c.close();
-        return new CommentTimeLineData(result, getPosition(accountId));
+        return new CommentTimeLineData(result, position);
 
     }
 
@@ -113,19 +116,19 @@ public class CommentByMeTimeLineDBTask {
 
         c.close();
 
-        AppLogger.e("total=" + total);
-
-        int needDeletedNumber = total - AppConfig.DEFAULT_COMMENTS_BY_ME_DB_CACHE_COUNT;
-
-        if (needDeletedNumber > 0) {
-            AppLogger.e("" + needDeletedNumber);
-            String sql = " delete from " + CommentByMeTable.CommentByMeDataTable.TABLE_NAME + " where " + CommentByMeTable.CommentByMeDataTable.ID + " in "
-                    + "( select " + CommentByMeTable.CommentByMeDataTable.ID + " from " + CommentByMeTable.CommentByMeDataTable.TABLE_NAME + " where "
-                    + CommentByMeTable.CommentByMeDataTable.ACCOUNTID
-                    + " in " + "(" + accountId + ") order by " + CommentByMeTable.CommentByMeDataTable.ID + " asc limit " + needDeletedNumber + " ) ";
-
-            getWsd().execSQL(sql);
-        }
+//        AppLogger.e("total=" + total);
+//
+//        int needDeletedNumber = total - AppConfig.DEFAULT_COMMENTS_BY_ME_DB_CACHE_COUNT;
+//
+//        if (needDeletedNumber > 0) {
+//            AppLogger.e("" + needDeletedNumber);
+//            String sql = " delete from " + CommentByMeTable.CommentByMeDataTable.TABLE_NAME + " where " + CommentByMeTable.CommentByMeDataTable.ID + " in "
+//                    + "( select " + CommentByMeTable.CommentByMeDataTable.ID + " from " + CommentByMeTable.CommentByMeDataTable.TABLE_NAME + " where "
+//                    + CommentByMeTable.CommentByMeDataTable.ACCOUNTID
+//                    + " in " + "(" + accountId + ") order by " + CommentByMeTable.CommentByMeDataTable.ID + " asc limit " + needDeletedNumber + " ) ";
+//
+//            getWsd().execSQL(sql);
+//        }
     }
 
     private void replaceCommentLineMsg(CommentListBean list, String accountId) {

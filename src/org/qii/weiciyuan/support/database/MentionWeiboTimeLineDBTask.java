@@ -42,13 +42,16 @@ public class MentionWeiboTimeLineDBTask {
 
 
     public static MentionTimeLineData getRepostLineMsgList(String accountId) {
+        TimeLinePosition position = getPosition(accountId);
 
         Gson gson = new Gson();
         MessageListBean result = new MessageListBean();
 
+        int limit = position.position + AppConfig.DB_CACHE_COUNT_OFFSET > AppConfig.DEFAULT_MSG_COUNT_50 ? position.position + AppConfig.DB_CACHE_COUNT_OFFSET : AppConfig.DEFAULT_MSG_COUNT_50;
+
         List<MessageBean> msgList = new ArrayList<MessageBean>();
         String sql = "select * from " + RepostsTable.RepostDataTable.TABLE_NAME + " where " + RepostsTable.RepostDataTable.ACCOUNTID + "  = "
-                + accountId + " order by " + RepostsTable.RepostDataTable.MBLOGID + " desc";
+                + accountId + " order by " + RepostsTable.RepostDataTable.MBLOGID + " desc limit " + limit;
         Cursor c = getRsd().rawQuery(sql, null);
         while (c.moveToNext()) {
             String json = c.getString(c.getColumnIndex(RepostsTable.RepostDataTable.JSONDATA));
@@ -68,7 +71,7 @@ public class MentionWeiboTimeLineDBTask {
 
         result.setStatuses(msgList);
         c.close();
-        MentionTimeLineData mentionTimeLineData = new MentionTimeLineData(result, getPosition(accountId));
+        MentionTimeLineData mentionTimeLineData = new MentionTimeLineData(result, position);
 
         return mentionTimeLineData;
 
@@ -125,19 +128,19 @@ public class MentionWeiboTimeLineDBTask {
 
         c.close();
 
-        AppLogger.e("total=" + total);
-
-        int needDeletedNumber = total - AppConfig.DEFAULT_MENTIONS_WEIBO_DB_CACHE_COUNT;
-
-        if (needDeletedNumber > 0) {
-            AppLogger.e("" + needDeletedNumber);
-            String sql = " delete from " + RepostsTable.RepostDataTable.TABLE_NAME + " where " + RepostsTable.RepostDataTable.ID + " in "
-                    + "( select " + RepostsTable.RepostDataTable.ID + " from " + RepostsTable.RepostDataTable.TABLE_NAME + " where "
-                    + RepostsTable.RepostDataTable.ACCOUNTID
-                    + " in " + "(" + accountId + ") order by " + RepostsTable.RepostDataTable.ID + " asc limit " + needDeletedNumber + " ) ";
-
-            getWsd().execSQL(sql);
-        }
+//        AppLogger.e("total=" + total);
+//
+//        int needDeletedNumber = total - AppConfig.DEFAULT_MENTIONS_WEIBO_DB_CACHE_COUNT;
+//
+//        if (needDeletedNumber > 0) {
+//            AppLogger.e("" + needDeletedNumber);
+//            String sql = " delete from " + RepostsTable.RepostDataTable.TABLE_NAME + " where " + RepostsTable.RepostDataTable.ID + " in "
+//                    + "( select " + RepostsTable.RepostDataTable.ID + " from " + RepostsTable.RepostDataTable.TABLE_NAME + " where "
+//                    + RepostsTable.RepostDataTable.ACCOUNTID
+//                    + " in " + "(" + accountId + ") order by " + RepostsTable.RepostDataTable.ID + " asc limit " + needDeletedNumber + " ) ";
+//
+//            getWsd().execSQL(sql);
+//        }
     }
 
     private static void replaceRepostLineMsg(MessageListBean list, String accountId) {
