@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-/* //device/apps/common/res/anim/slide_in_right.xml
+/* //device/apps/common/res/anim/slide_out_left.xml
 **
 ** Copyright 2007, The Android Open Source Project
 **
@@ -22,12 +22,12 @@
 
     <translate
             android:duration="@android:integer/config_shortAnimTime"
-            android:fromXDelta="50%p"
-            android:toXDelta="0"/>
+            android:fromXDelta="0"
+            android:toXDelta="50%p"/>
 
     <alpha
             android:duration="@android:integer/config_shortAnimTime"
-            android:fromAlpha="0.0"
-            android:toAlpha="1.0"/>
+            android:fromAlpha="1.0"
+            android:toAlpha="0.0"/>
 
 </set>

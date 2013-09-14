@@ -11,6 +11,7 @@ import org.qii.weiciyuan.bean.android.AsyncTaskLoaderResult;
 import org.qii.weiciyuan.support.utils.GlobalContext;
 import org.qii.weiciyuan.ui.basefragment.AbstractMessageTimeLineFragment;
 import org.qii.weiciyuan.ui.interfaces.AbstractAppActivity;
+//import org.qii.weiciyuan.ui.interfaces.AbstractAppActivityNoSwipe;
 import org.qii.weiciyuan.ui.loader.BrowserShareMsgLoader;
 import org.qii.weiciyuan.ui.main.MainTimeLineActivity;
 

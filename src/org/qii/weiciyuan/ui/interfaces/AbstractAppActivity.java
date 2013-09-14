@@ -6,9 +6,9 @@ import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
 import android.nfc.NfcEvent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.ViewConfiguration;
 import android.widget.Toast;
+import android.util.Log;
 import org.qii.weiciyuan.support.asyncdrawable.TimeLineBitmapDownloader;
 import org.qii.weiciyuan.support.error.WeiboException;
 import org.qii.weiciyuan.support.settinghelper.SettingUtility;
@@ -17,16 +17,20 @@ import org.qii.weiciyuan.support.utils.GlobalContext;
 import java.lang.reflect.Field;
 import java.nio.charset.Charset;
 
+import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
+import me.imid.swipebacklayout.lib.SwipeBackLayout;
+
 /**
  * User: Jiang Qi
  * Date: 12-7-31
  */
-public class AbstractAppActivity extends FragmentActivity {
+public class AbstractAppActivity extends SwipeBackActivity {
 
     protected int theme = 0;
 
     protected TimeLineBitmapDownloader commander = null;
 
+    protected SwipeBackLayout mSwipeBackLayout;
 
     @Override
     protected void onResume() {
@@ -69,8 +73,9 @@ public class AbstractAppActivity extends FragmentActivity {
         initNFC();
         GlobalContext.getInstance().setActivity(this);
         commander = TimeLineBitmapDownloader.getInstance();
+        mSwipeBackLayout = getSwipeBackLayout();
+        mSwipeBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_LEFT);
     }
-
 
     private void forceShowActionBarOverflowMenu() {
         try {

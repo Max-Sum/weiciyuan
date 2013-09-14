@@ -25,7 +25,6 @@ public class MainTimeLineParentActivity extends SlidingFragmentActivity {
 
     private int theme = 0;
 
-
     @Override
     protected void onResume() {
         super.onResume();
