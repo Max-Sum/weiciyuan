@@ -113,7 +113,7 @@
       <file leaf-file-name="colors.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/res/values/colors.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="319" column="30" selection-start="9646" selection-end="9646" vertical-scroll-proportion="0.9907063" vertical-offset="5528" max-vertical-offset="6346">
+            <state line="303" column="26" selection-start="9105" selection-end="9105" vertical-scroll-proportion="0.4684015" vertical-offset="5505" max-vertical-offset="6346">
               <folding />
             </state>
           </provider>
@@ -185,7 +185,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -238,7 +238,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -256,11 +256,11 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="AndroidRunProguardForReleaseBuild" value="false" />
-    <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
+    <property name="FullScreen" value="false" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RunManager" selected="Android Application.weiciyuan">
     <configuration default="true" type="Remote" factoryName="Remote">
@@ -394,7 +394,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
+    <frame x="-8" y="-8" width="1296" height="1000" extended-state="1" />
     <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -402,11 +402,11 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32977462" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32977462" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32977462" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -491,11 +491,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/listview_layout.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="46" selection-start="715" selection-end="715" vertical-scroll-proportion="-0.41883767" vertical-offset="570" max-vertical-offset="1121" />
-      </provider>
       <provider editor-type-id="android-designer">
         <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="46" selection-start="715" selection-end="715" vertical-scroll-proportion="-0.41883767" vertical-offset="570" max-vertical-offset="1121" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/drawable/listview_item_card_dark_background.xml">
@@ -511,11 +511,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/timeline_listview_item_layout.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="19" selection-start="402" selection-end="402" vertical-scroll-proportion="-0.57114226" vertical-offset="456" max-vertical-offset="5548" />
-      </provider>
       <provider editor-type-id="android-designer">
         <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="19" selection-start="402" selection-end="402" vertical-scroll-proportion="-0.57114226" vertical-offset="456" max-vertical-offset="5548" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libs/slidingmenulibrary/src/com/slidingmenu/lib/SlidingMenu.java">
@@ -578,7 +578,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/res/values/colors.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="319" column="30" selection-start="9646" selection-end="9646" vertical-scroll-proportion="0.9907063" vertical-offset="5528" max-vertical-offset="6346">
+        <state line="303" column="26" selection-start="9105" selection-end="9105" vertical-scroll-proportion="0.4684015" vertical-offset="5505" max-vertical-offset="6346">
           <folding />
         </state>
       </provider>
