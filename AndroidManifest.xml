@@ -59,6 +59,7 @@
         <!--main activity -->
         <activity
             android:name=".ui.main.MainTimeLineActivity"
+
             android:launchMode="singleTop"/>
 
         <!--send activity -->

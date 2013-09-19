@@ -31,6 +31,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -67,7 +68,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -77,32 +77,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AbstractAppActivity.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/interfaces/AbstractAppActivity.java">
+      <file leaf-file-name="JBBigTextNotification.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/othercomponent/unreadnotification/JBBigTextNotification.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="13" selection-start="1654" selection-end="1654" vertical-scroll-proportion="0.38223937" vertical-offset="881" max-vertical-offset="2926">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="69" column="54" selection-start="2761" selection-end="2761" vertical-scroll-proportion="0.0" vertical-offset="950" max-vertical-offset="2793">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AbstractAppActivityNoSwipe.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/interfaces/AbstractAppActivityNoSwipe.java">
+      <file leaf-file-name="JBCommentsToMeNotificationServiceHelper.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/othercomponent/unreadnotification/JBCommentsToMeNotificationServiceHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="45" selection-start="1168" selection-end="1168" vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="2831">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="69" column="0" selection-start="2658" selection-end="2658" vertical-scroll-proportion="0.0" vertical-offset="585" max-vertical-offset="2888">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="theme_light.xml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="theme_light.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/res/values/theme_light.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="80" column="43" selection-start="5085" selection-end="5085" vertical-scroll-proportion="0.0" vertical-offset="1634" max-vertical-offset="2508">
+            <state line="81" column="35" selection-start="5138" selection-end="5138" vertical-scroll-proportion="0.6514286" vertical-offset="1197" max-vertical-offset="2527">
               <folding />
             </state>
           </provider>
@@ -111,7 +107,16 @@
       <file leaf-file-name="style.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/values/style.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="117" column="59" selection-start="5384" selection-end="5384" vertical-scroll-proportion="0.0" vertical-offset="1730" max-vertical-offset="2546">
+            <state line="124" column="12" selection-start="5743" selection-end="5743" vertical-scroll-proportion="0.0" vertical-offset="1915" max-vertical-offset="2527">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="slide_in_right.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/anim/slide_in_right.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="2" selection-start="718" selection-end="718" vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="722">
               <folding />
             </state>
           </provider>
@@ -140,22 +145,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
+        <option value="$PROJECT_DIR$/res/anim/alphaout.xml" />
+        <option value="$PROJECT_DIR$/src/org/qii/weiciyuan/ui/interfaces/SwipeBackAbstractActivity.java" />
+        <option value="$PROJECT_DIR$/src/org/qii/weiciyuan/ui/interfaces/AbstractAppActivity.java" />
+        <option value="$PROJECT_DIR$/src/org/qii/weiciyuan/ui/browser/BrowserShareTimeLineActivity.java" />
+        <option value="$PROJECT_DIR$/src/org/qii/weiciyuan/ui/browser/BrowserWeiboMsgActivity.java" />
+        <option value="$PROJECT_DIR$/src/org/qii/weiciyuan/ui/login/AccountActivity.java" />
+        <option value="$PROJECT_DIR$/src/org/qii/weiciyuan/ui/userinfo/UserInfoActivity.java" />
         <option value="$PROJECT_DIR$/src/org/qii/weiciyuan/ui/login/DummyActivity.java" />
         <option value="$PROJECT_DIR$/src/org/qii/weiciyuan/ui/browser/BrowserWebActivity.java" />
+        <option value="$PROJECT_DIR$/res/values/theme_dummy.xml" />
         <option value="$PROJECT_DIR$/src/me/imid/swipebacklayout/lib/ViewDragHelper.java" />
         <option value="$PROJECT_DIR$/res/anim/slide_in_right.xml" />
+        <option value="$PROJECT_DIR$/res/values/style.xml" />
         <option value="$PROJECT_DIR$/res/anim/slide_out_right.xml" />
-        <option value="$PROJECT_DIR$/res/values/theme_dummy.xml" />
         <option value="$PROJECT_DIR$/res/values/theme_light.xml" />
         <option value="$PROJECT_DIR$/res/values/theme_dark.xml" />
-        <option value="$PROJECT_DIR$/src/org/qii/weiciyuan/support/utils/ThemeUtility.java" />
-        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/res/values/style.xml" />
-        <option value="$PROJECT_DIR$/src/org/qii/weiciyuan/support/settinghelper/SettingUtility.java" />
-        <option value="$PROJECT_DIR$/res/values/theme_swipeback.xml" />
-        <option value="$PROJECT_DIR$/src/org/qii/weiciyuan/ui/preference/filter/AbstractFilterFragment.java" />
-        <option value="$PROJECT_DIR$/src/org/qii/weiciyuan/ui/interfaces/AbstractAppActivityNoSwipe.java" />
-        <option value="$PROJECT_DIR$/src/org/qii/weiciyuan/ui/interfaces/AbstractAppActivity.java" />
       </list>
     </option>
   </component>
@@ -191,7 +196,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -320,88 +324,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="preference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="weiciyuan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="weiciyuan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="weiciyuan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="preference" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="filter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="weiciyuan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="weiciyuan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="weiciyuan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="login" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="weiciyuan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="weiciyuan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="weiciyuan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="interfaces" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -475,54 +397,6 @@
               <option name="myItemId" value="weiciyuan" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="support" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="weiciyuan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="weiciyuan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="weiciyuan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="support" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="settinghelper" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="weiciyuan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="weiciyuan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="weiciyuan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -561,24 +435,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="weiciyuan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="weiciyuan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="xml" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -666,6 +522,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -685,11 +542,11 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="AndroidRunProguardForReleaseBuild" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="MemberChooser.showClasses" value="true" />
     <property name="FullScreen" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -848,7 +705,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="1000" extended-state="0" />
+    <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -856,11 +713,11 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13285884" sideWeight="0.44813615" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.37763372" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32977462" sideWeight="0.37763372" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.6223663" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32977462" sideWeight="0.6223663" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22064057" sideWeight="0.44084278" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -872,8 +729,8 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.6702254" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.6702254" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -939,121 +796,122 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/userinfo/UserInfoFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="9823">
+        <state line="406" column="0" selection-start="14424" selection-end="14424" vertical-scroll-proportion="1.0133333" vertical-offset="6384" max-vertical-offset="7182">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/attrs.xml">
+    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/userinfo/UserTimeLineActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="816">
+        <state line="36" column="9" selection-start="1389" selection-end="1389" vertical-scroll-proportion="1.0857143" vertical-offset="0" max-vertical-offset="1007">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/arrays.xml">
+    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/userinfo/UserInfoActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="5" selection-start="1176" selection-end="1176" vertical-scroll-proportion="0.97794116" vertical-offset="0" max-vertical-offset="2356">
+        <state line="379" column="45" selection-start="13985" selection-end="13987" vertical-scroll-proportion="0.0" vertical-offset="6978" max-vertical-offset="12407">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/theme_dummy.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="37" selection-start="123" selection-end="123" vertical-scroll-proportion="0.14126395" vertical-offset="0" max-vertical-offset="538">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/xml/read_pref.xml">
+    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/browser/BrowserWeiboMsgFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="816">
+        <state line="64" column="0" selection-start="2703" selection-end="2703" vertical-scroll-proportion="0.7961905" vertical-offset="798" max-vertical-offset="17556">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/me/imid/swipebacklayout/lib/app/SwipeBackActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="37" selection-start="819" selection-end="819" vertical-scroll-proportion="0.7769517" vertical-offset="0" max-vertical-offset="1444">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/anim/alphaout.xml">
+    <entry file="file://$PROJECT_DIR$/res/anim/slide_out_right.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="38" selection-start="262" selection-end="262" vertical-scroll-proportion="0.13970588" vertical-offset="0" max-vertical-offset="816">
+        <state line="26" column="0" selection-start="947" selection-end="947" vertical-scroll-proportion="0.91821563" vertical-offset="0" max-vertical-offset="722">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/anim/swipe_right_to_close.xml">
+    <entry file="file://$PROJECT_DIR$/res/layout/timeline_listview_item_layout.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="32" selection-start="187" selection-end="187" vertical-scroll-proportion="0.09313726" vertical-offset="0" max-vertical-offset="816">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5548">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/theme_dark.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="83" column="83" selection-start="4996" selection-end="4996" vertical-scroll-proportion="0.50666666" vertical-offset="1311" max-vertical-offset="2185">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/support/settinghelper/SettingUtility.java">
+    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/interfaces/AbstractAppActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="46" selection-start="1903" selection-end="1903" vertical-scroll-proportion="0.49688667" vertical-offset="684" max-vertical-offset="5415">
+        <state line="41" column="0" selection-start="1176" selection-end="1176" vertical-scroll-proportion="0.83238095" vertical-offset="0" max-vertical-offset="2565">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/me/imid/swipebacklayout/lib/ViewDragHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="103" column="52" selection-start="3240" selection-end="3240" vertical-scroll-proportion="2.7137547" vertical-offset="79" max-vertical-offset="29070">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/othercomponent/unreadnotification/JBBigTextNotification.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="69" column="54" selection-start="2761" selection-end="2761" vertical-scroll-proportion="0.0" vertical-offset="950" max-vertical-offset="2793">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/othercomponent/unreadnotification/JBCommentsToMeNotificationServiceHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="69" column="0" selection-start="2658" selection-end="2658" vertical-scroll-proportion="0.0" vertical-offset="585" max-vertical-offset="2888">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/values/style.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="117" column="59" selection-start="5384" selection-end="5384" vertical-scroll-proportion="0.0" vertical-offset="1730" max-vertical-offset="2546">
+        <state line="124" column="12" selection-start="5743" selection-end="5743" vertical-scroll-proportion="0.0" vertical-offset="1915" max-vertical-offset="2527">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+    <entry file="file://$PROJECT_DIR$/res/anim/slide_in_right.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="44" selection-start="2357" selection-end="2357" vertical-scroll-proportion="0.38235295" vertical-offset="752" max-vertical-offset="5016">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/theme_gallery.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="816">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/theme_attrs.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1919">
+        <state line="17" column="2" selection-start="718" selection-end="718" vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="722">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/values/theme_light.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="43" selection-start="5085" selection-end="5085" vertical-scroll-proportion="0.0" vertical-offset="1634" max-vertical-offset="2508">
+        <state line="81" column="35" selection-start="5138" selection-end="5138" vertical-scroll-proportion="0.6514286" vertical-offset="1197" max-vertical-offset="2527">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/preference/filter/AbstractFilterFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="323" column="71" selection-start="10573" selection-end="10573" vertical-scroll-proportion="0.66874224" vertical-offset="5486" max-vertical-offset="6365">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/anim/stay.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="62" selection-start="182" selection-end="182" vertical-scroll-proportion="0.06985294" vertical-offset="0" max-vertical-offset="816">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/interfaces/AbstractAppActivityNoSwipe.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="45" selection-start="1168" selection-end="1168" vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="2831">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/interfaces/AbstractAppActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="13" selection-start="1654" selection-end="1654" vertical-scroll-proportion="0.38223937" vertical-offset="881" max-vertical-offset="2926">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

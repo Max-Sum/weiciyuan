@@ -8,11 +8,11 @@ import android.nfc.NfcEvent;
 import android.os.Bundle;
 import android.view.ViewConfiguration;
 import android.widget.Toast;
+import android.util.Log;
 import org.qii.weiciyuan.support.asyncdrawable.TimeLineBitmapDownloader;
 import org.qii.weiciyuan.support.error.WeiboException;
 import org.qii.weiciyuan.support.settinghelper.SettingUtility;
 import org.qii.weiciyuan.support.utils.GlobalContext;
-import org.qii.weiciyuan.R;
 
 import java.lang.reflect.Field;
 import java.nio.charset.Charset;
@@ -75,7 +75,6 @@ public class AbstractAppActivity extends SwipeBackActivity {
         commander = TimeLineBitmapDownloader.getInstance();
         mSwipeBackLayout = getSwipeBackLayout();
         mSwipeBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_LEFT);
-        overridePendingTransition(R.anim.slide_in_right,android.R.anim.fade_out);
     }
 
     private void forceShowActionBarOverflowMenu() {
@@ -136,7 +135,7 @@ public class AbstractAppActivity extends SwipeBackActivity {
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         finish();
 
-        overridePendingTransition(0,0);
+        overridePendingTransition(0, 0);
         startActivity(intent);
         TimeLineBitmapDownloader.refreshThemePictureBackground();
     }

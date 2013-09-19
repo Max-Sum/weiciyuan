@@ -13,7 +13,6 @@ import org.qii.weiciyuan.support.asyncdrawable.TimeLineBitmapDownloader;
 import org.qii.weiciyuan.support.error.WeiboException;
 import org.qii.weiciyuan.support.settinghelper.SettingUtility;
 import org.qii.weiciyuan.support.utils.GlobalContext;
-import org.qii.weiciyuan.R;
 
 import java.lang.reflect.Field;
 import java.nio.charset.Charset;
@@ -39,7 +38,6 @@ public class AbstractAppActivityNoSwipe extends FragmentActivity {
         } else {
             reload();
         }
-        overridePendingTransition(R.anim.stay,android.R.anim.fade_out);
     }
 
     @Override
