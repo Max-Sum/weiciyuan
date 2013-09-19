@@ -13,15 +13,14 @@ import org.qii.weiciyuan.support.error.WeiboException;
 import org.qii.weiciyuan.support.lib.CheatSheet;
 import org.qii.weiciyuan.support.lib.MyAsyncTask;
 import org.qii.weiciyuan.support.utils.GlobalContext;
-//import org.qii.weiciyuan.ui.interfaces.AbstractAppActivity;
-import org.qii.weiciyuan.ui.interfaces.AbstractAppActivityNoSwipe;
+import org.qii.weiciyuan.ui.interfaces.AbstractAppActivity;
 import org.qii.weiciyuan.ui.main.MainTimeLineActivity;
 
 /**
  * User: qii
  * Date: 13-2-19
  */
-public class BrowserWebActivity extends AbstractAppActivityNoSwipe {
+public class BrowserWebActivity extends AbstractAppActivity {
 
     private Button shareCountBtn;
     private int shareCountInt;

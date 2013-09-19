@@ -112,16 +112,4 @@
 
     </style>
 
-    <style name="SwipeBackLayout">
-        <item name="EdgeSize">15dip</item>
-        <item name="ShadowLeft">@drawable/swipeback_shadow_left</item>
-        <item name="ShadowRight">@drawable/swipeback_shadow_right</item>
-        <item name="ShadowBottom">@drawable/swipeback_shadow_bottom</item>
-    </style>
-
-    <style name="Animation.SwipeBack" parent="android:Animation.Activity">
-        <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>
-        <item name="android:activityCloseExitAnimation">@anim/slide_out_right</item>
-    </style>
-
 </resources>

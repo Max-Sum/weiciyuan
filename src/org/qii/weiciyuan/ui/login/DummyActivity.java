@@ -3,10 +3,7 @@ package org.qii.weiciyuan.ui.login;
 import android.content.Intent;
 import android.os.Bundle;
 import org.qii.weiciyuan.support.utils.GlobalContext;
-//import org.qii.weiciyuan.ui.interfaces.AbstractAppActivity;
-import org.qii.weiciyuan.ui.interfaces.AbstractAppActivityNoSwipe;
-
-import me.imid.swipebacklayout.lib.SwipeBackLayout;
+import org.qii.weiciyuan.ui.interfaces.AbstractAppActivity;
 
 /**
  * User: qii
@@ -23,7 +20,7 @@ import me.imid.swipebacklayout.lib.SwipeBackLayout;
  * <p/>
  * test on android version 4.0 4.2
  */
-public class DummyActivity extends AbstractAppActivityNoSwipe {
+public class DummyActivity extends AbstractAppActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +29,7 @@ public class DummyActivity extends AbstractAppActivityNoSwipe {
             Intent intent = new Intent(this, AccountActivity.class);
             startActivity(intent);
         }
+
         finish();
     }
 }

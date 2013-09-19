@@ -33,7 +33,7 @@ import org.qii.weiciyuan.support.database.FilterDBTask;
 import org.qii.weiciyuan.support.error.ErrorCode;
 import org.qii.weiciyuan.support.error.WeiboException;
 import org.qii.weiciyuan.support.lib.MyAsyncTask;
-//import org.qii.weiciyuan.support.lib.MyViewPager;
+import org.qii.weiciyuan.support.lib.MyViewPager;
 import org.qii.weiciyuan.support.utils.AppLogger;
 import org.qii.weiciyuan.support.utils.GlobalContext;
 import org.qii.weiciyuan.support.utils.Utility;
@@ -54,7 +54,7 @@ public class UserInfoActivity extends AbstractAppActivity implements IUserInfo {
 
     private UserBean bean;
 
-//    private MyViewPager mViewPager = null;
+    private MyViewPager mViewPager = null;
 
     private MyAsyncTask<Void, UserBean, UserBean> followOrUnfollowTask;
 

@@ -15,7 +15,7 @@ import android.widget.BaseAdapter;
 import org.qii.weiciyuan.R;
 import org.qii.weiciyuan.support.lib.MyAsyncTask;
 import org.qii.weiciyuan.support.utils.Utility;
-//import org.qii.weiciyuan.ui.animation.CollapseAnimation;
+import org.qii.weiciyuan.ui.animation.CollapseAnimation;
 import org.qii.weiciyuan.ui.preference.AddFilterDialog;
 import org.qii.weiciyuan.ui.preference.ModifyFilterDialog;
 
@@ -234,7 +234,7 @@ public abstract class AbstractFilterFragment extends ListFragment {
             }
         };
 
-   /*     for (View view : views) {
+        for (View view : views) {
             CollapseAnimation animation = new CollapseAnimation(view, 300);
             animation.setAnimationListener(listener);
             animations.add(animation);
@@ -244,7 +244,7 @@ public abstract class AbstractFilterFragment extends ListFragment {
         for (int i = 0; i < views.size(); i++) {
             views.get(i).startAnimation(animations.get(i));
         }
-*/
+
 
     }
 
