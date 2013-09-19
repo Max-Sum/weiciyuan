@@ -16,6 +16,7 @@ import android.os.Parcelable;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
+import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.view.GestureDetector;
 import android.view.Menu;
@@ -33,7 +34,6 @@ import org.qii.weiciyuan.support.database.FilterDBTask;
 import org.qii.weiciyuan.support.error.ErrorCode;
 import org.qii.weiciyuan.support.error.WeiboException;
 import org.qii.weiciyuan.support.lib.MyAsyncTask;
-import org.qii.weiciyuan.support.lib.MyViewPager;
 import org.qii.weiciyuan.support.utils.AppLogger;
 import org.qii.weiciyuan.support.utils.GlobalContext;
 import org.qii.weiciyuan.support.utils.Utility;
@@ -54,7 +54,7 @@ public class UserInfoActivity extends AbstractAppActivity implements IUserInfo {
 
     private UserBean bean;
 
-    private MyViewPager mViewPager = null;
+    private ViewPager mViewPager = null;
 
     private MyAsyncTask<Void, UserBean, UserBean> followOrUnfollowTask;
 

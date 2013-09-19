@@ -17,7 +17,7 @@ import org.qii.weiciyuan.support.settinghelper.SettingUtility;
 import org.qii.weiciyuan.support.utils.GlobalContext;
 import org.qii.weiciyuan.support.utils.Utility;
 import org.qii.weiciyuan.ui.blackmagic.BlackMagicActivity;
-import org.qii.weiciyuan.ui.interfaces.AbstractAppActivity;
+import org.qii.weiciyuan.ui.interfaces.AbstractAppActivityNoSwipe;
 import org.qii.weiciyuan.ui.main.MainTimeLineActivity;
 
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-public class AccountActivity extends AbstractAppActivity implements LoaderManager.LoaderCallbacks<List<AccountBean>> {
+public class AccountActivity extends AbstractAppActivityNoSwipe implements LoaderManager.LoaderCallbacks<List<AccountBean>> {
 
     private ListView listView = null;
     private AccountAdapter listAdapter = null;

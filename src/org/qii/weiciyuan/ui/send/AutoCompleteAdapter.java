@@ -2,6 +2,7 @@ package org.qii.weiciyuan.ui.send;
 
 import android.R;
 import android.app.Activity;
+import android.os.SystemClock;
 import android.text.Layout;
 import android.text.TextUtils;
 import android.view.View;
@@ -89,7 +90,14 @@ public class AutoCompleteAdapter extends ArrayAdapter<AtUserBean> implements Fil
     private Filter filter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
-            pb.setVisibility(View.GONE);
+
+            activity.runOnUiThread(new Runnable() {
+
+                @Override
+                public void run() {
+                    pb.setVisibility(View.GONE);
+                }
+            });
 
             FilterResults filterResults = new FilterResults();
             //AutoCompleteTextView is empty, return empty;
@@ -134,6 +142,21 @@ public class AutoCompleteAdapter extends ArrayAdapter<AtUserBean> implements Fil
                 return filterResults;
             }
 
+
+            SystemClock.sleep(500);
+
+            if (!contentStr.equals(content.getText().toString())) {
+                activity.runOnUiThread(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        pb.setVisibility(View.GONE);
+                    }
+                });
+
+                return filterResults;
+            }
+
             AtUserDao dao = new AtUserDao(GlobalContext.getInstance().getSpecialToken(), q);
 //            SearchDao dao = new SearchDao(GlobalContext.getInstance().getSpecialToken(), q);
             activity.runOnUiThread(new Runnable() {
@@ -152,6 +175,18 @@ public class AutoCompleteAdapter extends ArrayAdapter<AtUserBean> implements Fil
             // Now assign the values and count to the FilterResults object
             filterResults.values = data;
             filterResults.count = data.size();
+
+
+            if (!contentStr.equals(content.getText().toString())) {
+                activity.runOnUiThread(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        pb.setVisibility(View.GONE);
+                    }
+                });
+                return filterResults;
+            }
 
             activity.runOnUiThread(new Runnable() {
                 @Override
@@ -182,7 +217,9 @@ public class AutoCompleteAdapter extends ArrayAdapter<AtUserBean> implements Fil
             String ori = content.getText().toString();
             String result = ((AtUserBean) resultValue).getNickname();
             String left = ori.substring(0, atSignPosition + 1);
-            String right = ori.substring(selectPosition);
+            String right = "";
+            if (selectPosition <= ori.length() - 1)
+                right = ori.substring(selectPosition);
             ori = left + result + " " + right;
             return ori;
         }

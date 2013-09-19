@@ -4,14 +4,14 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.*;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,6 +25,7 @@ import org.qii.weiciyuan.support.file.FileManager;
 import org.qii.weiciyuan.support.imagetool.ImageTool;
 import org.qii.weiciyuan.support.lib.CircleProgressView;
 import org.qii.weiciyuan.support.lib.MyAsyncTask;
+import org.qii.weiciyuan.support.settinghelper.SettingUtility;
 import org.qii.weiciyuan.support.utils.Utility;
 import uk.co.senab.photoview.PhotoView;
 import uk.co.senab.photoview.PhotoViewAttacher;
@@ -81,7 +82,7 @@ public class GalleryActivity extends Activity {
             }
         });
         pager.setCurrentItem(getIntent().getIntExtra("position", 0));
-        pager.setOffscreenPageLimit(3);
+        pager.setOffscreenPageLimit(1);
         pager.setPageTransformer(true, new ZoomOutPageTransformer());
     }
 
@@ -150,12 +151,14 @@ public class GalleryActivity extends Activity {
             if (contentView == null)
                 return;
 
-            contentView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    finish();
-                }
-            });
+            if (SettingUtility.allowClickToCloseGallery()) {
+                contentView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        finish();
+                    }
+                });
+            }
 
             ImageView imageView = (ImageView) contentView.findViewById(R.id.image);
 
@@ -178,12 +181,14 @@ public class GalleryActivity extends Activity {
         PhotoView imageView = (PhotoView) contentView.findViewById(R.id.image);
         imageView.setVisibility(View.INVISIBLE);
 
-        imageView.setOnPhotoTapListener(new PhotoViewAttacher.OnPhotoTapListener() {
-            @Override
-            public void onPhotoTap(View view, float x, float y) {
-                GalleryActivity.this.finish();
-            }
-        });
+        if (SettingUtility.allowClickToCloseGallery()) {
+            imageView.setOnPhotoTapListener(new PhotoViewAttacher.OnPhotoTapListener() {
+                @Override
+                public void onPhotoTap(View view, float x, float y) {
+                    GalleryActivity.this.finish();
+                }
+            });
+        }
 
         WebView gif = (WebView) contentView.findViewById(R.id.gif);
         gif.setBackgroundColor(getResources().getColor(R.color.transparent));
@@ -192,6 +197,9 @@ public class GalleryActivity extends Activity {
         WebView large = (WebView) contentView.findViewById(R.id.large);
         large.setBackgroundColor(getResources().getColor(R.color.transparent));
         large.setVisibility(View.INVISIBLE);
+        large.setOverScrollMode(View.OVER_SCROLL_NEVER);
+
+        TextView wait = (TextView) contentView.findViewById(R.id.wait);
 
         TextView readError = (TextView) contentView.findViewById(R.id.error);
 
@@ -203,7 +211,7 @@ public class GalleryActivity extends Activity {
         if (ImageTool.isThisBitmapCanRead(path)
                 && taskMap.get(urls.get(position)) == null
                 && TaskCache.isThisUrlTaskFinished(urls.get(position))) {
-
+            wait.setVisibility(View.INVISIBLE);
             readPicture(imageView, gif, large, readError, urls.get(position), path);
 
         } else if (shouldDownLoadPicture) {
@@ -212,12 +220,13 @@ public class GalleryActivity extends Activity {
             spinner.setVisibility(View.VISIBLE);
 
             if (taskMap.get(urls.get(position)) == null) {
-                PicSimpleBitmapWorkerTask task = new PicSimpleBitmapWorkerTask(imageView, gif, large, spinner, readError, urls.get(position), taskMap);
+                wait.setVisibility(View.VISIBLE);
+                PicSimpleBitmapWorkerTask task = new PicSimpleBitmapWorkerTask(imageView, gif, large, spinner, wait, readError, urls.get(position), taskMap);
                 taskMap.put(urls.get(position), task);
                 task.executeOnExecutor(MyAsyncTask.THREAD_POOL_EXECUTOR);
             } else {
                 PicSimpleBitmapWorkerTask task = taskMap.get(urls.get(position));
-                task.setWidget(imageView, gif, spinner, readError);
+                task.setWidget(imageView, gif, spinner, wait, readError);
             }
         }
     }
@@ -234,9 +243,10 @@ public class GalleryActivity extends Activity {
 
         };
 
-        public void setWidget(ImageView iv, WebView gif, CircleProgressView spinner, TextView readError) {
+        public void setWidget(ImageView iv, WebView gif, CircleProgressView spinner, TextView wait, TextView readError) {
             this.iv = iv;
             this.spinner = spinner;
+            this.wait = wait;
             this.readError = readError;
             this.gif = gif;
         }
@@ -244,12 +254,13 @@ public class GalleryActivity extends Activity {
         private ImageView iv;
         private WebView gif;
         private WebView large;
+        private TextView wait;
         private String url;
         private CircleProgressView spinner;
         private TextView readError;
         private HashMap<String, PicSimpleBitmapWorkerTask> taskMap;
 
-        public PicSimpleBitmapWorkerTask(ImageView iv, WebView gif, WebView large, CircleProgressView spinner,
+        public PicSimpleBitmapWorkerTask(ImageView iv, WebView gif, WebView large, CircleProgressView spinner, TextView wait,
                                          TextView readError, String url, HashMap<String, PicSimpleBitmapWorkerTask> taskMap) {
             this.iv = iv;
             this.url = url;
@@ -258,6 +269,7 @@ public class GalleryActivity extends Activity {
             this.taskMap = taskMap;
             this.gif = gif;
             this.large = large;
+            this.wait = wait;
             this.readError.setVisibility(View.INVISIBLE);
             this.spinner.setVisibility(View.VISIBLE);
 
@@ -282,6 +294,7 @@ public class GalleryActivity extends Activity {
         @Override
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
+            this.wait.setVisibility(View.INVISIBLE);
             int progress = values[0];
             int max = values[1];
             spinner.setMax(max);
@@ -293,12 +306,14 @@ public class GalleryActivity extends Activity {
             super.onCancelled(s);
             taskMap.remove(url);
             this.spinner.setVisibility(View.INVISIBLE);
+            this.wait.setVisibility(View.INVISIBLE);
         }
 
         @Override
         protected void onPostExecute(final String bitmapPath) {
 
             this.spinner.setVisibility(View.INVISIBLE);
+            this.wait.setVisibility(View.INVISIBLE);
 
             if (isCancelled()) {
                 return;
@@ -326,10 +341,10 @@ public class GalleryActivity extends Activity {
     }
 
 
-    private void readPicture(ImageView imageView, WebView gif, WebView large, TextView readError, String url, String bitmapPath) {
+    private void readPicture(final ImageView imageView, WebView gif, WebView large, final TextView readError, final String url, final String bitmapPath) {
 
         if (bitmapPath.endsWith(".gif")) {
-            readGif(gif, readError, url, bitmapPath);
+            readGif(gif, large, readError, url, bitmapPath);
             return;
         }
 
@@ -345,36 +360,50 @@ public class GalleryActivity extends Activity {
         }
 
         if (isThisBitmapTooLarge) {
-
-            readLarge(large, bitmapPath);
-
+            readLarge(large, url, bitmapPath);
             return;
-//            imageView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-//            PhotoView photoView = (PhotoView) imageView;
-//            photoView.setMaxScale(15);
         }
+        new MyAsyncTask<Void, Bitmap, Bitmap>() {
 
-        Bitmap bitmap = null;
-        try {
-            bitmap = ImageTool.decodeBitmapFromSDCard(bitmapPath, IMAGEVIEW_SOFT_LAYER_MAX_WIDTH, IMAGEVIEW_SOFT_LAYER_MAX_HEIGHT);
-        } catch (OutOfMemoryError ignored) {
+            @Override
+            protected Bitmap doInBackground(Void... params) {
+                Bitmap bitmap = null;
+                try {
+                    bitmap = ImageTool.decodeBitmapFromSDCard(bitmapPath, IMAGEVIEW_SOFT_LAYER_MAX_WIDTH, IMAGEVIEW_SOFT_LAYER_MAX_HEIGHT);
+                } catch (OutOfMemoryError ignored) {
 
-        }
+                }
 
-        if (bitmap != null) {
-            imageView.setVisibility(View.VISIBLE);
-            imageView.setImageBitmap(bitmap);
-            bindImageViewLongClickListener(imageView, url, bitmapPath);
-            readError.setVisibility(View.INVISIBLE);
-        } else {
-            readError.setText(getString(R.string.picture_read_failed));
-            imageView.setVisibility(View.INVISIBLE);
-            readError.setVisibility(View.VISIBLE);
-        }
+                return bitmap;
+            }
 
+            @Override
+            protected void onPostExecute(Bitmap bitmap) {
+                super.onPostExecute(bitmap);
+                if (bitmap != null) {
+                    imageView.setVisibility(View.VISIBLE);
+                    imageView.setImageBitmap(bitmap);
+                    bindImageViewLongClickListener(imageView, url, bitmapPath);
+                    readError.setVisibility(View.INVISIBLE);
+                } else {
+                    readError.setText(getString(R.string.picture_read_failed));
+                    imageView.setVisibility(View.INVISIBLE);
+                    readError.setVisibility(View.VISIBLE);
+                }
+            }
+        }.executeOnExecutor(MyAsyncTask.THREAD_POOL_EXECUTOR);
     }
 
-    private void readGif(WebView webView, TextView readError, String url, String bitmapPath) {
+    private void readGif(WebView webView, WebView large, TextView readError, String url, String bitmapPath) {
+
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(bitmapPath, options);
+        if (options.outWidth >= Utility.getScreenWidth() || options.outHeight >= Utility.getScreenHeight()) {
+            readLarge(large, url, bitmapPath);
+            return;
+        }
+
         webView.setVisibility(View.VISIBLE);
         bindImageViewLongClickListener(((View) webView.getParent()), url, bitmapPath);
 
@@ -400,8 +429,12 @@ public class GalleryActivity extends Activity {
         webView.setTag(new Object());
     }
 
-    private void readLarge(WebView large, String bitmapPath) {
+    private void readLarge(WebView large, String url, String bitmapPath) {
         large.setVisibility(View.VISIBLE);
+        bindImageViewLongClickListener(large, url, bitmapPath);
+        if (SettingUtility.allowClickToCloseGallery()) {
+            large.setOnTouchListener(largeOnTouchListener);
+        }
 
         if (large.getTag() != null)
             return;
@@ -426,6 +459,68 @@ public class GalleryActivity extends Activity {
 
         large.setTag(new Object());
     }
+
+    private View.OnTouchListener largeOnTouchListener = new View.OnTouchListener() {
+        boolean mPressed;
+        boolean mClose;
+        CheckForSinglePress mPendingCheckForSinglePress;
+        long lastTime = 0;
+        float[] location = new float[2];
+
+        class CheckForSinglePress implements Runnable {
+
+            View view;
+
+            public CheckForSinglePress(View view) {
+                this.view = view;
+            }
+
+            public void run() {
+                if (!mPressed && mClose) {
+                    Utility.playClickSound(view);
+                    finish();
+                }
+            }
+
+        }
+
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            switch (event.getActionMasked()) {
+                case MotionEvent.ACTION_DOWN:
+                    mPendingCheckForSinglePress = new CheckForSinglePress(v);
+                    mPressed = true;
+                    if (System.currentTimeMillis() - lastTime > ViewConfiguration.getDoubleTapTimeout() + 100) {
+                        mClose = true;
+                        new Handler().postDelayed(mPendingCheckForSinglePress,
+                                ViewConfiguration.getDoubleTapTimeout() + 100);
+                    } else {
+                        mClose = false;
+                    }
+                    lastTime = System.currentTimeMillis();
+
+                    location[0] = event.getRawX();
+                    location[1] = event.getRawY();
+
+                    break;
+                case MotionEvent.ACTION_UP:
+                    mPressed = false;
+                    break;
+                case MotionEvent.ACTION_CANCEL:
+                    mPressed = false;
+                    break;
+                case MotionEvent.ACTION_MOVE:
+                    float x = event.getRawX();
+                    float y = event.getRawY();
+                    if (Math.abs(location[0] - x) > 5.0f && Math.abs(location[1] - y) > 5.0f) {
+                        mClose = false;
+                    }
+                    break;
+            }
+
+            return false;
+        }
+    };
 
 
     private void bindImageViewLongClickListener(View view, final String url, final String filePath) {
