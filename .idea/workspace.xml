@@ -73,6 +73,7 @@
     <favorites_list name="weiciyuan" />
   </component>
   <component name="FileEditorManager">
+<<<<<<< HEAD
     <leaf>
 <<<<<<< HEAD
       <file leaf-file-name="JBBigTextNotification.java" pinned="false" current="false" current-in-tab="false">
@@ -155,6 +156,9 @@
         </entry>
       </file>
     </leaf>
+=======
+    <leaf />
+>>>>>>> parent of faa9c58... re-output
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -221,9 +225,13 @@
     </navigator>
     <panes>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       <pane id="Scope" />
 >>>>>>> parent of b406428... Refactor Using SwipeBackLayout
+=======
+      <pane id="PackagesPane" />
+>>>>>>> parent of faa9c58... re-output
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -303,24 +311,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="anim" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="weiciyuan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="weiciyuan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="libs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -328,11 +318,14 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+<<<<<<< HEAD
 =======
         </subPane>
       </pane>
 >>>>>>> parent of b406428... Refactor Using SwipeBackLayout
       <pane id="PackagesPane" />
+=======
+>>>>>>> parent of faa9c58... re-output
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -340,7 +333,7 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="options.lastSelected" value="project.propCompiler" />
+    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
     <property name="ExportedApkPath" value="E:\Projects\weiciyuan\bin\weiciyuan_maxsum.apk" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
@@ -352,14 +345,18 @@
     <property name="AndroidRunProguardForReleaseBuild" value="false" />
 <<<<<<< HEAD
     <property name="restartRequiresConfirmation" value="true" />
+<<<<<<< HEAD
 =======
     <property name="MemberChooser.showClasses" value="true" />
 >>>>>>> parent of b406428... Refactor Using SwipeBackLayout
     <property name="FullScreen" value="false" />
+=======
+>>>>>>> parent of faa9c58... re-output
     <property name="MemberChooser.showClasses" value="true" />
+    <property name="FullScreen" value="false" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RunManager" selected="Android Application.weiciyuan">
     <configuration default="true" type="Remote" factoryName="Remote">
@@ -494,19 +491,25 @@
   </component>
   <component name="ToolWindowManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
     <editor active="true" />
+=======
+    <frame x="-8" y="-8" width="1296" height="1000" extended-state="0" />
+    <editor active="false" />
+>>>>>>> parent of faa9c58... re-output
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.6702254" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13285884" sideWeight="0.44813615" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32977462" sideWeight="0.37763372" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32977462" sideWeight="0.6223663" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.6223663" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22064057" sideWeight="0.44084278" order="10" side_tool="false" content_ui="tabs" />
 =======
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="1" />
@@ -530,7 +533,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
 <<<<<<< HEAD
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31604537" sideWeight="0.6702254" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31604537" sideWeight="0.6702254" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
 =======
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -542,7 +545,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.6702254" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.6702254" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -609,6 +611,26 @@
   </component>
   <component name="editorHistoryManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/res/layout/browserweibomsgactivity_layout.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="34" selection-start="1183" selection-end="1183" vertical-scroll-proportion="-9.242485" vertical-offset="5163" max-vertical-offset="5662">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/main/MainTimeLineActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="3" selection-start="1623" selection-end="1623" vertical-scroll-proportion="-0.83238095" vertical-offset="513" max-vertical-offset="9576">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> parent of faa9c58... re-output
     <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/userinfo/UserInfoFragment.java">
 =======
     <entry file="file://$PROJECT_DIR$/res/drawable/listview_item_background_normal_light.xml">
@@ -656,6 +678,16 @@
       </provider>
     </entry>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/res/anim/slide_in_right.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="2" selection-start="718" selection-end="718" vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="722">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> parent of faa9c58... re-output
     <entry file="file://$PROJECT_DIR$/src/me/imid/swipebacklayout/lib/app/SwipeBackActivity.java">
 =======
     <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/support/asyncdrawable/MultiPicturesChildImageView.java">
@@ -676,14 +708,10 @@
     </entry>
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/res/layout/timeline_listview_item_layout.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5548">
-          <folding />
-        </state>
-      </provider>
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+<<<<<<< HEAD
     </entry>
     <entry file="file://$PROJECT_DIR$/res/values/theme_dark.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -718,10 +746,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="55" column="52" selection-start="1805" selection-end="1805" vertical-scroll-proportion="0.0" vertical-offset="1482" max-vertical-offset="7980">
 >>>>>>> parent of b406428... Refactor Using SwipeBackLayout
+=======
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5548">
+>>>>>>> parent of faa9c58... re-output
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/othercomponent/unreadnotification/JBBigTextNotification.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -731,10 +764,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="26" selection-start="576" selection-end="576" vertical-scroll-proportion="0.0" vertical-offset="148" max-vertical-offset="10260">
 >>>>>>> parent of b406428... Refactor Using SwipeBackLayout
+=======
+    <entry file="file://$PROJECT_DIR$/res/values/style.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="124" column="12" selection-start="5743" selection-end="5743" vertical-scroll-proportion="-16.961538" vertical-offset="1915" max-vertical-offset="2527">
+>>>>>>> parent of faa9c58... re-output
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/othercomponent/unreadnotification/JBCommentsToMeNotificationServiceHelper.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -744,33 +783,46 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="9405">
 >>>>>>> parent of b406428... Refactor Using SwipeBackLayout
+=======
+    <entry file="file://$PROJECT_DIR$/res/values/theme_dark.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="83" column="83" selection-start="4996" selection-end="4996" vertical-scroll-proportion="0.50666666" vertical-offset="1311" max-vertical-offset="2185">
+>>>>>>> parent of faa9c58... re-output
           <folding />
         </state>
       </provider>
     </entry>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/res/values/style.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="124" column="12" selection-start="5743" selection-end="5743" vertical-scroll-proportion="0.0" vertical-offset="1915" max-vertical-offset="2527">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/anim/slide_in_right.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="2" selection-start="718" selection-end="718" vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="722">
-          <folding />
-        </state>
-      </provider>
-    </entry>
+=======
     <entry file="file://$PROJECT_DIR$/res/values/theme_light.xml">
+>>>>>>> parent of faa9c58... re-output
       <provider selected="true" editor-type-id="text-editor">
+        <state line="72" column="0" selection-start="4437" selection-end="4437" vertical-scroll-proportion="0.3257143" vertical-offset="1197" max-vertical-offset="2527">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/interfaces/AbstractAppActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="0" selection-start="1176" selection-end="1176" vertical-scroll-proportion="0.83238095" vertical-offset="0" max-vertical-offset="2565">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/me/imid/swipebacklayout/lib/ViewDragHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state line="81" column="35" selection-start="5138" selection-end="5138" vertical-scroll-proportion="0.6514286" vertical-offset="1197" max-vertical-offset="2527">
 =======
     <entry file="file://$PROJECT_DIR$/res/values/colors.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="303" column="26" selection-start="9105" selection-end="9105" vertical-scroll-proportion="0.4684015" vertical-offset="5505" max-vertical-offset="6346">
 >>>>>>> parent of b406428... Refactor Using SwipeBackLayout
+=======
+        <state line="103" column="52" selection-start="3240" selection-end="3240" vertical-scroll-proportion="2.7137547" vertical-offset="79" max-vertical-offset="29070">
+>>>>>>> parent of faa9c58... re-output
           <folding />
         </state>
       </provider>
