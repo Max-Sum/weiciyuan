@@ -6,9 +6,10 @@ import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
 import android.nfc.NfcEvent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
 import android.view.ViewConfiguration;
 import android.widget.Toast;
+import org.qii.weiciyuan.R;
 import org.qii.weiciyuan.support.asyncdrawable.TimeLineBitmapDownloader;
 import org.qii.weiciyuan.support.error.WeiboException;
 import org.qii.weiciyuan.support.settinghelper.SettingUtility;
@@ -21,7 +22,7 @@ import java.nio.charset.Charset;
  * User: Jiang Qi
  * Date: 12-7-31
  */
-public class AbstractAppActivity extends FragmentActivity {
+public class AbstractAppActivity extends SwipeBackActivity {
 
     protected int theme = 0;
 
@@ -142,4 +143,5 @@ public class AbstractAppActivity extends FragmentActivity {
     protected void dealWithException(WeiboException e) {
         Toast.makeText(this, e.getError(), Toast.LENGTH_SHORT).show();
     }
+
 }

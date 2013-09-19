@@ -3,7 +3,6 @@
 
     <style name="AppTheme_Dummy">
         <item name="android:windowIsTranslucent">true</item>
-        <item name="android:backgroundDimEnabled">true</item>
     </style>
 
 </resources>
