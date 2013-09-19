@@ -6,10 +6,8 @@ import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
 import android.nfc.NfcEvent;
 import android.os.Bundle;
-import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
 import android.view.ViewConfiguration;
 import android.widget.Toast;
-import org.qii.weiciyuan.R;
 import org.qii.weiciyuan.support.asyncdrawable.TimeLineBitmapDownloader;
 import org.qii.weiciyuan.support.error.WeiboException;
 import org.qii.weiciyuan.support.settinghelper.SettingUtility;
@@ -17,6 +15,8 @@ import org.qii.weiciyuan.support.utils.GlobalContext;
 
 import java.lang.reflect.Field;
 import java.nio.charset.Charset;
+
+import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
 
 /**
  * User: Jiang Qi
@@ -143,5 +143,4 @@ public class AbstractAppActivity extends SwipeBackActivity {
     protected void dealWithException(WeiboException e) {
         Toast.makeText(this, e.getError(), Toast.LENGTH_SHORT).show();
     }
-
 }
