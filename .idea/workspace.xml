@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AndroidLayoutPreviewToolWindow">
-    <option name="state">
-      <GlobalState />
-    </option>
-  </component>
   <component name="AndroidLayouts">
     <shared>
       <config />
     </shared>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be9b4c0f-bbf5-450c-a446-a8493e96cd62" name="Default" comment="" />
+    <list default="true" id="5841bf03-6086-450b-8319-fca01f661893" name="Default" comment="" />
     <ignored path="weiciyuan.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -73,92 +68,26 @@
     <favorites_list name="weiciyuan" />
   </component>
   <component name="FileEditorManager">
-<<<<<<< HEAD
     <leaf>
-<<<<<<< HEAD
-      <file leaf-file-name="JBBigTextNotification.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/othercomponent/unreadnotification/JBBigTextNotification.java">
+      <file leaf-file-name="theme_dark.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/res/values/theme_dark.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="54" selection-start="2761" selection-end="2761" vertical-scroll-proportion="0.0" vertical-offset="950" max-vertical-offset="2793">
-=======
-      <file leaf-file-name="ImageTool.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/support/imagetool/ImageTool.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="66" column="0" selection-start="2009" selection-end="2009" vertical-scroll-proportion="0.0" vertical-offset="1235" max-vertical-offset="15485">
->>>>>>> parent of b406428... Refactor Using SwipeBackLayout
+            <state line="102" column="0" selection-start="5775" selection-end="5775" vertical-scroll-proportion="0.7683824" vertical-offset="1311" max-vertical-offset="2185">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-<<<<<<< HEAD
-      <file leaf-file-name="JBCommentsToMeNotificationServiceHelper.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/othercomponent/unreadnotification/JBCommentsToMeNotificationServiceHelper.java">
+      <file leaf-file-name="theme_dummy.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/values/theme_dummy.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="0" selection-start="2658" selection-end="2658" vertical-scroll-proportion="0.0" vertical-offset="585" max-vertical-offset="2888">
-=======
-      <file leaf-file-name="GalleryActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/support/gallery/GalleryActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="52" selection-start="1805" selection-end="1805" vertical-scroll-proportion="0.0" vertical-offset="1026" max-vertical-offset="9006">
->>>>>>> parent of b406428... Refactor Using SwipeBackLayout
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-<<<<<<< HEAD
-      <file leaf-file-name="theme_light.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/res/values/theme_light.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="81" column="35" selection-start="5138" selection-end="5138" vertical-scroll-proportion="0.6514286" vertical-offset="1197" max-vertical-offset="2527">
-=======
-      <file leaf-file-name="MainTimeLineActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/main/MainTimeLineActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="26" selection-start="576" selection-end="576" vertical-scroll-proportion="0.0" vertical-offset="304" max-vertical-offset="10583">
->>>>>>> parent of b406428... Refactor Using SwipeBackLayout
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-<<<<<<< HEAD
-      <file leaf-file-name="style.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/values/style.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="124" column="12" selection-start="5743" selection-end="5743" vertical-scroll-proportion="0.0" vertical-offset="1915" max-vertical-offset="2527">
-=======
-      <file leaf-file-name="MyAsyncTask.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/support/lib/MyAsyncTask.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="9633">
->>>>>>> parent of b406428... Refactor Using SwipeBackLayout
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-<<<<<<< HEAD
-      <file leaf-file-name="slide_in_right.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/anim/slide_in_right.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="2" selection-start="718" selection-end="718" vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="722">
-=======
-      <file leaf-file-name="colors.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/res/values/colors.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="303" column="26" selection-start="9105" selection-end="9105" vertical-scroll-proportion="0.4684015" vertical-offset="5505" max-vertical-offset="6346">
->>>>>>> parent of b406428... Refactor Using SwipeBackLayout
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="247">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
-=======
-    <leaf />
->>>>>>> parent of faa9c58... re-output
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -176,20 +105,6 @@
   <component name="GitLogSettings">
     <option name="myDateState">
       <MyDateState />
-    </option>
-  </component>
-  <component name="IdeDocumentHistory">
-    <option name="changedFiles">
-      <list>
-        <option value="$PROJECT_DIR$/res/drawable/listview_item_background_normal_light.xml" />
-        <option value="$PROJECT_DIR$/res/drawable/listview_item_background_normal_dark.xml" />
-        <option value="$PROJECT_DIR$/res/drawable/listview_item_background_pressed_light.xml" />
-        <option value="$PROJECT_DIR$/res/drawable/listview_item_background_pressed_dark.xml" />
-        <option value="$PROJECT_DIR$/res/values/theme_light.xml" />
-        <option value="$PROJECT_DIR$/res/layout/timeline_listview_item_layout.xml" />
-        <option value="$PROJECT_DIR$/src/org/qii/weiciyuan/support/gallery/GalleryActivity.java" />
-        <option value="$PROJECT_DIR$/res/values/colors.xml" />
-      </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
@@ -224,14 +139,8 @@
       <sortByType />
     </navigator>
     <panes>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
       <pane id="Scope" />
->>>>>>> parent of b406428... Refactor Using SwipeBackLayout
-=======
       <pane id="PackagesPane" />
->>>>>>> parent of faa9c58... re-output
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -247,6 +156,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="weiciyuan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="weiciyuan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="weiciyuan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -282,83 +205,27 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-<<<<<<< HEAD
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="weiciyuan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="weiciyuan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="weiciyuan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="weiciyuan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-<<<<<<< HEAD
-=======
-        </subPane>
-      </pane>
->>>>>>> parent of b406428... Refactor Using SwipeBackLayout
-      <pane id="PackagesPane" />
-=======
->>>>>>> parent of faa9c58... re-output
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
+    <property name="project.structure.proportion" value="0.0" />
     <property name="ExportedApkPath" value="E:\Projects\weiciyuan\bin\weiciyuan_maxsum.apk" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="ExportedModule" value="weiciyuan" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/android-support-v4.jar!/" />
-    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/google-play-services_lib/libs/google-play-services.jar!/" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="AndroidRunProguardForReleaseBuild" value="false" />
-<<<<<<< HEAD
-    <property name="restartRequiresConfirmation" value="true" />
-<<<<<<< HEAD
-=======
-    <property name="MemberChooser.showClasses" value="true" />
->>>>>>> parent of b406428... Refactor Using SwipeBackLayout
-    <property name="FullScreen" value="false" />
-=======
->>>>>>> parent of faa9c58... re-output
     <property name="MemberChooser.showClasses" value="true" />
     <property name="FullScreen" value="false" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
-  <component name="RunManager" selected="Android Application.weiciyuan">
+  <component name="RunManager">
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -414,41 +281,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
-      <module name="" />
-      <option name="ACTIVITY_CLASS" value="" />
-      <option name="MODE" value="default_activity" />
-      <option name="DEPLOY" value="true" />
-      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="USE_COMMAND_LINE" value="true" />
-      <option name="COMMAND_LINE" value="" />
-      <option name="WIPE_USER_DATA" value="false" />
-      <option name="DISABLE_BOOT_ANIMATION" value="false" />
-      <option name="NETWORK_SPEED" value="full" />
-      <option name="NETWORK_LATENCY" value="none" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="weiciyuan" type="AndroidRunConfigurationType" factoryName="Android Application">
-      <module name="weiciyuan" />
-      <option name="ACTIVITY_CLASS" value="" />
-      <option name="MODE" value="default_activity" />
-      <option name="DEPLOY" value="true" />
-      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="USE_COMMAND_LINE" value="true" />
-      <option name="COMMAND_LINE" value="" />
-      <option name="WIPE_USER_DATA" value="false" />
-      <option name="DISABLE_BOOT_ANIMATION" value="false" />
-      <option name="NETWORK_SPEED" value="full" />
-      <option name="NETWORK_LATENCY" value="none" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <method />
-    </configuration>
-    <list size="1">
-      <item index="0" class="java.lang.String" itemvalue="Android Application.weiciyuan" />
-    </list>
+    <list size="0" />
     <configuration name="&lt;template&gt;" type="TestNG" default="true" selected="false">
       <option name="MAIN_CLASS_NAME" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -464,88 +297,41 @@
     </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
-  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
-    <option name="USER" value="" />
-    <option name="PASSWORD" value="" />
-    <option name="mySSHConnectionTimeout" value="30000" />
-    <option name="mySSHReadTimeout" value="30000" />
-    <option name="LAST_MERGED_REVISION" />
-    <option name="MERGE_DRY_RUN" value="false" />
-    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
-    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
-    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
-    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
-    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
-    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
-    <option name="FORCE_UPDATE" value="false" />
-    <option name="IGNORE_EXTERNALS" value="false" />
-    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="be9b4c0f-bbf5-450c-a446-a8493e96cd62" name="Default" comment="" />
-      <created>1378132135198</created>
-      <updated>1378132135198</updated>
+      <changelist id="5841bf03-6086-450b-8319-fca01f661893" name="Default" comment="" />
+      <created>1379590391320</created>
+      <updated>1379590391320</updated>
     </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
-    <editor active="true" />
-=======
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="0" />
-    <editor active="false" />
->>>>>>> parent of faa9c58... re-output
-    <layout>
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.6702254" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13285884" sideWeight="0.44813615" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32977462" sideWeight="0.37763372" order="11" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.6223663" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22064057" sideWeight="0.44084278" order="10" side_tool="false" content_ui="tabs" />
-=======
-    <frame x="-8" y="-8" width="1296" height="1000" extended-state="1" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32977462" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
->>>>>>> parent of b406428... Refactor Using SwipeBackLayout
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-<<<<<<< HEAD
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31604537" sideWeight="0.6702254" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-=======
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31523502" sideWeight="0.6702254" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24959481" sideWeight="0.6702254" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
->>>>>>> parent of b406428... Refactor Using SwipeBackLayout
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.6702254" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -610,219 +396,44 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    <entry file="file://$PROJECT_DIR$/res/layout/browserweibomsgactivity_layout.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/bean/MessageBean.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="34" selection-start="1183" selection-end="1183" vertical-scroll-proportion="-9.242485" vertical-offset="5163" max-vertical-offset="5662">
+        <state line="195" column="34" selection-start="6133" selection-end="6133" vertical-scroll-proportion="0.54534316" vertical-offset="3051" max-vertical-offset="8930">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/main/MainTimeLineActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/browser/BrowserWeiboMsgFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="3" selection-start="1623" selection-end="1623" vertical-scroll-proportion="-0.83238095" vertical-offset="513" max-vertical-offset="9576">
-          <folding />
-        </state>
-      </provider>
-    </entry>
->>>>>>> parent of faa9c58... re-output
-    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/userinfo/UserInfoFragment.java">
-=======
-    <entry file="file://$PROJECT_DIR$/res/drawable/listview_item_background_normal_light.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="25" selection-start="309" selection-end="309" vertical-scroll-proportion="0.2825279" vertical-offset="0" max-vertical-offset="538" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/listview_layout.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="46" selection-start="715" selection-end="715" vertical-scroll-proportion="-0.41883767" vertical-offset="570" max-vertical-offset="1121" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/drawable/listview_item_card_dark_background.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="538" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/theme_light.xml">
->>>>>>> parent of b406428... Refactor Using SwipeBackLayout
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="75" selection-start="3627" selection-end="3627" vertical-scroll-proportion="0.21714285" vertical-offset="931" max-vertical-offset="2508">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/timeline_listview_item_layout.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="19" selection-start="402" selection-end="402" vertical-scroll-proportion="-0.57114226" vertical-offset="456" max-vertical-offset="5548" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libs/slidingmenulibrary/src/com/slidingmenu/lib/SlidingMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="63" selection-start="1171" selection-end="1171" vertical-scroll-proportion="0.68761903" vertical-offset="0" max-vertical-offset="18867" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/interfaces/FixedOnActivityResultBugFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="39" selection-start="1901" selection-end="2614" vertical-scroll-proportion="0.5669145" vertical-offset="759" max-vertical-offset="1577" />
-      </provider>
-    </entry>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    <entry file="file://$PROJECT_DIR$/res/anim/slide_in_right.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="2" selection-start="718" selection-end="718" vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="722">
-          <folding />
-        </state>
-      </provider>
-    </entry>
->>>>>>> parent of faa9c58... re-output
-    <entry file="file://$PROJECT_DIR$/src/me/imid/swipebacklayout/lib/app/SwipeBackActivity.java">
-=======
-    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/support/asyncdrawable/MultiPicturesChildImageView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="1" selection-start="484" selection-end="484" vertical-scroll-proportion="0.07063197" vertical-offset="57" max-vertical-offset="1995" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libs/slidingmenulibrary/src/com/slidingmenu/lib/app/SlidingActivityHelper.java">
->>>>>>> parent of b406428... Refactor Using SwipeBackLayout
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="32" selection-start="356" selection-end="356" vertical-scroll-proportion="0.036190476" vertical-offset="57" max-vertical-offset="4066" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/co/senab/photoview/PhotoView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="48" selection-start="1726" selection-end="1726" vertical-scroll-proportion="-3.908922" vertical-offset="2521" max-vertical-offset="3059" />
-      </provider>
-    </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/res/layout/timeline_listview_item_layout.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-<<<<<<< HEAD
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/theme_dark.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="83" selection-start="4996" selection-end="4996" vertical-scroll-proportion="0.50666666" vertical-offset="1311" max-vertical-offset="2185">
+        <state line="23" column="38" selection-start="878" selection-end="878" vertical-scroll-proportion="0.14196762" vertical-offset="323" max-vertical-offset="17556">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/interfaces/AbstractAppActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="0" selection-start="1176" selection-end="1176" vertical-scroll-proportion="0.83238095" vertical-offset="0" max-vertical-offset="2565">
-=======
-    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/support/imagetool/ImageEdit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="5" selection-start="504" selection-end="504" vertical-scroll-proportion="0.38847584" vertical-offset="0" max-vertical-offset="1330" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/support/imagetool/ImageTool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="0" selection-start="2009" selection-end="2009" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="15143">
->>>>>>> parent of b406428... Refactor Using SwipeBackLayout
+        <state line="135" column="64" selection-start="4098" selection-end="4098" vertical-scroll-proportion="2.6762142" vertical-offset="55" max-vertical-offset="2546">
           <folding />
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/src/me/imid/swipebacklayout/lib/ViewDragHelper.java">
+    <entry file="file://$PROJECT_DIR$/res/values/theme_dummy.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="103" column="52" selection-start="3240" selection-end="3240" vertical-scroll-proportion="2.7137547" vertical-offset="79" max-vertical-offset="29070">
-=======
-    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/support/gallery/GalleryActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="52" selection-start="1805" selection-end="1805" vertical-scroll-proportion="0.0" vertical-offset="1482" max-vertical-offset="7980">
->>>>>>> parent of b406428... Refactor Using SwipeBackLayout
-=======
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5548">
->>>>>>> parent of faa9c58... re-output
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="816">
           <folding />
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/othercomponent/unreadnotification/JBBigTextNotification.java">
+    <entry file="file://$PROJECT_DIR$/res/values/theme_light.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="54" selection-start="2761" selection-end="2761" vertical-scroll-proportion="0.0" vertical-offset="950" max-vertical-offset="2793">
-=======
-    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/main/MainTimeLineActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="26" selection-start="576" selection-end="576" vertical-scroll-proportion="0.0" vertical-offset="148" max-vertical-offset="10260">
->>>>>>> parent of b406428... Refactor Using SwipeBackLayout
-=======
-    <entry file="file://$PROJECT_DIR$/res/values/style.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="124" column="12" selection-start="5743" selection-end="5743" vertical-scroll-proportion="-16.961538" vertical-offset="1915" max-vertical-offset="2527">
->>>>>>> parent of faa9c58... re-output
+        <state line="127" column="12" selection-start="7316" selection-end="7316" vertical-scroll-proportion="0.8602941" vertical-offset="1711" max-vertical-offset="2527">
           <folding />
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/othercomponent/unreadnotification/JBCommentsToMeNotificationServiceHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="0" selection-start="2658" selection-end="2658" vertical-scroll-proportion="0.0" vertical-offset="585" max-vertical-offset="2888">
-=======
-    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/support/lib/MyAsyncTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="9405">
->>>>>>> parent of b406428... Refactor Using SwipeBackLayout
-=======
     <entry file="file://$PROJECT_DIR$/res/values/theme_dark.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="83" selection-start="4996" selection-end="4996" vertical-scroll-proportion="0.50666666" vertical-offset="1311" max-vertical-offset="2185">
->>>>>>> parent of faa9c58... re-output
-          <folding />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/res/values/style.xml">
-=======
-    <entry file="file://$PROJECT_DIR$/res/values/theme_light.xml">
->>>>>>> parent of faa9c58... re-output
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="0" selection-start="4437" selection-end="4437" vertical-scroll-proportion="0.3257143" vertical-offset="1197" max-vertical-offset="2527">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/interfaces/AbstractAppActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="0" selection-start="1176" selection-end="1176" vertical-scroll-proportion="0.83238095" vertical-offset="0" max-vertical-offset="2565">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/imid/swipebacklayout/lib/ViewDragHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state line="81" column="35" selection-start="5138" selection-end="5138" vertical-scroll-proportion="0.6514286" vertical-offset="1197" max-vertical-offset="2527">
-=======
-    <entry file="file://$PROJECT_DIR$/res/values/colors.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="303" column="26" selection-start="9105" selection-end="9105" vertical-scroll-proportion="0.4684015" vertical-offset="5505" max-vertical-offset="6346">
->>>>>>> parent of b406428... Refactor Using SwipeBackLayout
-=======
-        <state line="103" column="52" selection-start="3240" selection-end="3240" vertical-scroll-proportion="2.7137547" vertical-offset="79" max-vertical-offset="29070">
->>>>>>> parent of faa9c58... re-output
+        <state line="102" column="0" selection-start="5775" selection-end="5775" vertical-scroll-proportion="0.7683824" vertical-offset="1311" max-vertical-offset="2185">
           <folding />
         </state>
       </provider>
@@ -879,19 +490,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>weiciyuan</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>Android 4.2.2 Platform</last-edited>
+          <last-edited>google-play-services_lib</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -903,7 +502,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>android-support-v4</last-edited>
+          <last-edited>google-play-services</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
