@@ -65,6 +65,7 @@
         <!--send activity -->
         <activity
                 android:name=".ui.send.WriteWeiboActivity"
+                android:theme="@style/AppTheme_SwipeBack"
                 android:windowSoftInputMode="stateVisible|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.SEND"/>
@@ -80,18 +81,21 @@
 
         <activity
                 android:name=".ui.send.WriteRepostActivity"
+                android:theme="@style/AppTheme_SwipeBack"
                 android:windowSoftInputMode="stateVisible|adjustResize"/>
         <activity
                 android:name=".ui.send.WriteCommentActivity"
+                android:theme="@style/AppTheme_SwipeBack"
                 android:windowSoftInputMode="stateVisible|adjustResize"/>
         <activity
                 android:name=".ui.send.WriteReplyToCommentActivity"
+                android:theme="@style/AppTheme_SwipeBack"
                 android:windowSoftInputMode="stateVisible|adjustResize"/>
 
         <!--browser activity-->
         <activity
                 android:name=".ui.browser.BrowserWeiboMsgActivity"
-                android:theme="@style/AppTheme_Dummy"
+                android:theme="@style/AppTheme_SwipeBack"
                 android:uiOptions="splitActionBarWhenNarrow"
                 android:label="@string/detail"/>
         <activity
@@ -114,9 +118,11 @@
                 android:uiOptions="splitActionBarWhenNarrow"
                 android:launchMode="singleTop"/>
         <activity
-                android:name=".ui.browser.BrowserShareTimeLineActivity"/>
+                android:name=".ui.browser.BrowserShareTimeLineActivity"
+                android:theme="@style/AppTheme_SwipeBack"/>
         <activity
                 android:name=".ui.browser.AppMapActivity"
+                android:theme="@style/AppTheme_SwipeBack"
                 android:launchMode="singleTop"/>
 
 
@@ -131,12 +137,14 @@
                 <data android:scheme="org.qii.weiciyuan.topic"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ui.topic.UserTopicListActivity"/>
+        <activity
+                android:name=".ui.topic.UserTopicListActivity"
+                android:theme="@style/AppTheme_SwipeBack"/>
 
         <!--user activity -->
         <activity
                 android:name=".ui.userinfo.UserInfoActivity"
-                android:theme="@style/AppTheme_Dummy">
+                android:theme="@style/AppTheme_SwipeBack">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <action android:name="android.intent.action.VIEW"/>
@@ -148,22 +156,28 @@
                 <data android:mimeType="application/org.qii.weiciyuan.beam"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ui.userinfo.UserTimeLineActivity"/>
+        <activity
+                android:name=".ui.userinfo.UserTimeLineActivity"
+                android:theme="@style/AppTheme_SwipeBack"/>
         <activity
                 android:name=".ui.userinfo.MyInfoActivity"
-                android:theme="@style/AppTheme_Dummy"
+                android:theme="@style/AppTheme_SwipeBack"
                 android:launchMode="singleTop"/>
         <activity
                 android:name=".ui.userinfo.EditMyProfileActivity"
+                android:theme="@style/AppTheme_SwipeBack"
                 android:launchMode="singleTop"/>
         <activity
                 android:name=".ui.userinfo.FriendListActivity"
+                android:theme="@style/AppTheme_SwipeBack"
                 android:launchMode="singleTop"/>
         <activity
                 android:name=".ui.userinfo.FanListActivity"
+                android:theme="@style/AppTheme_SwipeBack"
                 android:launchMode="singleTop"/>
         <activity
                 android:name=".ui.userinfo.MyFavActivity"
+                android:theme="@style/AppTheme_SwipeBack"
                 android:launchMode="singleTop"/>
 
 
@@ -181,37 +195,56 @@
         <activity android:name=".ui.search.AtUserActivity"/>
 
         <!--friend group-->
-        <activity android:name=".ui.friendgroup.ManageGroupActivity"/>
+        <activity
+                android:name=".ui.friendgroup.ManageGroupActivity"
+                android:theme="@style/AppTheme_SwipeBack"/>
 
         <!-- nearby-->
         <activity android:name=".ui.nearby.NearbyTimeLineActivity"/>
 
         <!--preference activity -->
-        <activity android:name=".ui.preference.SettingActivity"/>
+        <activity
+                android:name=".ui.preference.SettingActivity"
+                android:theme="@style/AppTheme_SwipeBack"/>
         <!--intent-filter is used for Android-Setting-Data usage- click this app- View app Settings-->
-        <activity android:name=".ui.preference.ControlActivity">
+        <activity
+                android:name=".ui.preference.ControlActivity"
+                android:theme="@style/AppTheme_SwipeBack">
             <intent-filter>
                 <action android:name="android.intent.action.MANAGE_NETWORK_USAGE"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ui.preference.NotificationActivity"/>
+        <activity
+                android:name=".ui.preference.NotificationActivity"
+                android:theme="@style/AppTheme_SwipeBack"/>
         <activity
                 android:name=".ui.preference.DraftActivity"
+                android:theme="@style/AppTheme_SwipeBack"
                 android:uiOptions="splitActionBarWhenNarrow"/>
         <activity
                 android:name=".ui.preference.FilterActivity"
+                android:theme="@style/AppTheme_SwipeBack"
                 android:uiOptions="splitActionBarWhenNarrow"/>
         <activity
                 android:name=".ui.preference.AppearanceActivity"
+                android:theme="@style/AppTheme_SwipeBack"
                 android:uiOptions="splitActionBarWhenNarrow"/>
-        <activity android:name=".ui.preference.ReadActivity"/>
-        <activity android:name=".ui.preference.PerformanceActivity"/>
-        <activity android:name=".ui.preference.OtherActivity"/>
-        <activity android:name=".ui.preference.AboutActivity"/>
+        <activity
+                android:name=".ui.preference.ReadActivity"
+                android:theme="@style/AppTheme_SwipeBack"/>
+        <activity
+                android:name=".ui.preference.PerformanceActivity"
+                android:theme="@style/AppTheme_SwipeBack"/>
+        <activity
+                android:name=".ui.preference.OtherActivity"
+                android:theme="@style/AppTheme_SwipeBack"/>
+        <activity
+                android:name=".ui.preference.AboutActivity"
+                android:theme="@style/AppTheme_SwipeBack"/>
         <activity
                 android:name=".ui.preference.LicenseActivity"
-                android:theme="@android:style/Theme.Holo.DialogWhenLarge"/>
+                android:theme="@style/DialogWhenLarge_SwipeBack"/>
 
 
         <!-- service -->
@@ -248,12 +281,20 @@
                 android:authorities="org.qii.weiciyuan.ui.search.SearchSuggestionProvider"/>
 
         <!--black magic-->
-        <activity android:name=".ui.blackmagic.BlackMagicActivity"/>
+        <activity
+                android:name=".ui.blackmagic.BlackMagicActivity"
+                android:theme="@style/AppTheme_SwipeBack"/>
 
         <!-- dm -->
-        <activity android:name=".ui.dm.DMActivity"/>
-        <activity android:name=".ui.dm.DMUserListActivity"/>
-        <activity android:name=".ui.dm.DMSelectUserActivity"/>
+        <activity
+                android:name=".ui.dm.DMActivity"
+                android:theme="@style/AppTheme_SwipeBack"/>
+        <activity
+                android:name=".ui.dm.DMUserListActivity"
+                android:theme="@style/AppTheme_SwipeBack"/>
+        <activity
+                android:name=".ui.dm.DMSelectUserActivity"
+                android:theme="@style/AppTheme_SwipeBack"/>
 
     </application>
 

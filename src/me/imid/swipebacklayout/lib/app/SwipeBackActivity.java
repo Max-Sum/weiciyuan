@@ -5,6 +5,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import android.util.Log;
 
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
 
@@ -48,7 +49,7 @@ public class SwipeBackActivity extends FragmentActivity {
 
     /**
      * Override Exit Animation
-     *
+     * 
      * @param override
      */
     public void setOverrideExitAniamtion(boolean override) {
@@ -62,10 +63,6 @@ public class SwipeBackActivity extends FragmentActivity {
         mSwipeBackLayout.scrollToFinishActivity();
     }
 
-    public void doFinish() {
-        super.finish();
-    }
-
     @Override
     public void finish() {
         if (mOverrideExitAniamtion && !mIsFinishing) {
@@ -74,6 +71,6 @@ public class SwipeBackActivity extends FragmentActivity {
             return;
         }
         mIsFinishing = false;
-        doFinish();
+        super.finish();
     }
 }

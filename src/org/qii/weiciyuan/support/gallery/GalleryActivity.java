@@ -41,8 +41,8 @@ import java.util.HashSet;
  */
 public class GalleryActivity extends Activity {
 
-    private static final int IMAGEVIEW_SOFT_LAYER_MAX_WIDTH = 3000;
-    private static final int IMAGEVIEW_SOFT_LAYER_MAX_HEIGHT = 10000;
+    private static final int IMAGEVIEW_SOFT_LAYER_MAX_WIDTH = 2000;
+    private static final int IMAGEVIEW_SOFT_LAYER_MAX_HEIGHT = 3000;
 
     private ArrayList<String> urls = new ArrayList<String>();
 

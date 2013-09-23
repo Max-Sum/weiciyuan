@@ -95,6 +95,7 @@ public class BrowserWeiboMsgActivity extends AbstractAppActivity implements Remo
         mViewPager.setAdapter(adapter);
         mViewPager.setOnPageChangeListener(onPageChangeListener);
         getWindow().setBackgroundDrawable(getResources().getDrawable(R.color.transparent));
+
     }
 
 

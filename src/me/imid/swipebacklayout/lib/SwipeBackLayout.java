@@ -16,8 +16,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
-
 public class SwipeBackLayout extends FrameLayout {
     /**
      * Minimum velocity that will be detected as a fling
@@ -461,7 +459,7 @@ public class SwipeBackLayout extends FrameLayout {
             }
 
             if (mScrollPercent >= 1) {
-                ((SwipeBackActivity) mActivity).doFinish();
+                mActivity.finish();
             }
         }
 

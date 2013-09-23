@@ -3,7 +3,16 @@
 
     <style name="AppTheme_Dummy">
         <item name="android:windowIsTranslucent">true</item>
-        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <style name="AppTheme_SwipeBack">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@style/SwipeBackAnimation</item>
+    </style>
+
+    <style name="DialogWhenLarge_SwipeBack" parent="android:Theme.Holo.DialogWhenLarge">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@style/SwipeBackAnimation</item>
     </style>
 
 </resources>
