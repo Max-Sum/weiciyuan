@@ -78,15 +78,49 @@
         <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/browser/BrowserWeiboMsgActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="353" column="21" selection-start="12541" selection-end="12541" vertical-scroll-proportion="0.0" vertical-offset="6058" max-vertical-offset="7201">
+              <folding>
+                <element signature="e#3560#3586#0" expanded="true" />
+                <element signature="e#4418#4792#0" expanded="true" />
+                <element signature="e#4785#4786#0" expanded="true" />
+                <element signature="e#9261#9298#0" expanded="true" />
+                <element signature="e#10753#10763#0" expanded="true" />
+                <element signature="e#11700#11708#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FriendsTimeLineFragment.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/maintimeline/FriendsTimeLineFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="614" column="0" selection-start="23168" selection-end="23168" vertical-scroll-proportion="-10.038462" vertical-offset="10550" max-vertical-offset="17898">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainTimeLineParentActivity.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/main/MainTimeLineParentActivity.java">
+      <file leaf-file-name="LoadingLayout.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/support/lib/pulltorefresh/internal/LoadingLayout.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="38" selection-start="451" selection-end="451" vertical-scroll-proportion="0.33333334" vertical-offset="53" max-vertical-offset="2641">
+            <state line="39" column="38" selection-start="1717" selection-end="1717" vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="7315">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MyFriendSingleChoiceModeListener.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/actionmenu/MyFriendSingleChoiceModeListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="24" selection-start="380" selection-end="380" vertical-scroll-proportion="0.0" vertical-offset="53" max-vertical-offset="3173">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LeftMenuFragment.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/main/LeftMenuFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="24" selection-start="567" selection-end="567" vertical-scroll-proportion="0.33333334" vertical-offset="129" max-vertical-offset="16397">
               <folding />
             </state>
           </provider>
@@ -115,9 +149,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/org/qii/weiciyuan/ui/userinfo/UserInfoActivity.java" />
-        <option value="$PROJECT_DIR$/res/layout/viewpager_with_bg_layout.xml" />
-        <option value="$PROJECT_DIR$/res/drawable/listview_item_background_pressed_light.xml" />
         <option value="$PROJECT_DIR$/res/drawable/listview_item_background_pressed_dark.xml" />
         <option value="$PROJECT_DIR$/res/drawable/listview_item_background_normal_light.xml" />
         <option value="$PROJECT_DIR$/res/drawable/listview_item_background_normal_dark.xml" />
@@ -131,6 +162,9 @@
         <option value="$PROJECT_DIR$/res/values/theme_dark.xml" />
         <option value="$PROJECT_DIR$/res/values/theme_light.xml" />
         <option value="$PROJECT_DIR$/src/org/qii/weiciyuan/ui/browser/BrowserWeiboMsgActivity.java" />
+        <option value="$PROJECT_DIR$/libs/slidingmenulibrary/src/com/slidingmenu/lib/app/SlidingFragmentActivity.java" />
+        <option value="$PROJECT_DIR$/src/org/qii/weiciyuan/support/lib/pulltorefresh/internal/LoadingLayout.java" />
+        <option value="$PROJECT_DIR$/src/org/qii/weiciyuan/ui/maintimeline/FriendsTimeLineFragment.java" />
       </list>
     </option>
   </component>
@@ -242,33 +276,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="browser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="weiciyuan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="weiciyuan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="weiciyuan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="support" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="utils" />
+              <option name="myItemId" value="maintimeline" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -322,43 +330,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="weiciyuan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="weiciyuan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="weiciyuan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="weiciyuan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
+              <option name="myItemId" value="libs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -522,7 +494,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -533,7 +505,7 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32977462" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32977462" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -612,48 +584,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/interfaces/AbstractAppFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="13" selection-start="121" selection-end="121" vertical-scroll-proportion="0.07721046" vertical-offset="90" max-vertical-offset="893">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/interfaces/AbstractAppActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="59" selection-start="2032" selection-end="2032" vertical-scroll-proportion="0.4022416" vertical-offset="1064" max-vertical-offset="2869">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/attrs.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="58" selection-start="441" selection-end="441" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/imid/swipebacklayout/lib/SwipeBackLayout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="384" column="43" selection-start="11925" selection-end="11925" vertical-scroll-proportion="0.4644608" vertical-offset="6670" max-vertical-offset="9652">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/anim/slide_in_right.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="3" selection-start="722" selection-end="722" vertical-scroll-proportion="0.41911766" vertical-offset="0" max-vertical-offset="816" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/style.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="113" column="0" selection-start="5175" selection-end="5175" vertical-scroll-proportion="0.0" vertical-offset="1970" max-vertical-offset="2508">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/values/theme_dummy.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="35" selection-start="196" selection-end="196" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="437">
@@ -708,9 +638,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/browser/BrowserWeiboMsgActivity.java">
+    <entry file="file://$PROJECT_DIR$/libs/slidingmenulibrary/src/com/slidingmenu/lib/app/SlidingFragmentActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="353" column="21" selection-start="12541" selection-end="12541" vertical-scroll-proportion="0.0" vertical-offset="6058" max-vertical-offset="7201">
+        <state line="28" column="10" selection-start="833" selection-end="833" vertical-scroll-proportion="0.7961905" vertical-offset="0" max-vertical-offset="2888">
           <folding />
         </state>
       </provider>
@@ -718,6 +648,55 @@
     <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/main/MainTimeLineParentActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="38" selection-start="451" selection-end="451" vertical-scroll-proportion="0.33333334" vertical-offset="53" max-vertical-offset="2641">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/support/lib/pulltorefresh/LoadingLayoutProxy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="247" selection-end="247" vertical-scroll-proportion="0.14126395" vertical-offset="0" max-vertical-offset="1406">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/browser/BrowserWeiboMsgActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="353" column="21" selection-start="12541" selection-end="12541" vertical-scroll-proportion="0.0" vertical-offset="6058" max-vertical-offset="7201">
+          <folding>
+            <element signature="e#3560#3586#0" expanded="true" />
+            <element signature="e#4418#4792#0" expanded="true" />
+            <element signature="e#4785#4786#0" expanded="true" />
+            <element signature="e#9261#9298#0" expanded="true" />
+            <element signature="e#10753#10763#0" expanded="true" />
+            <element signature="e#11700#11708#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/maintimeline/FriendsTimeLineFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="614" column="0" selection-start="23168" selection-end="23168" vertical-scroll-proportion="-10.038462" vertical-offset="10550" max-vertical-offset="17898">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/support/lib/pulltorefresh/internal/LoadingLayout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="38" selection-start="1717" selection-end="1717" vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="7315">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/actionmenu/MyFriendSingleChoiceModeListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="24" selection-start="380" selection-end="380" vertical-scroll-proportion="0.0" vertical-offset="53" max-vertical-offset="3173">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/main/LeftMenuFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="24" selection-start="567" selection-end="567" vertical-scroll-proportion="0.33333334" vertical-offset="129" max-vertical-offset="16397">
           <folding />
         </state>
       </provider>
