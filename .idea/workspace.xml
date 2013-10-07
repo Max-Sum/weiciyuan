@@ -28,7 +28,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -65,6 +64,7 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -74,54 +74,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="BrowserWeiboMsgActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/browser/BrowserWeiboMsgActivity.java">
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="353" column="21" selection-start="12541" selection-end="12541" vertical-scroll-proportion="0.0" vertical-offset="6058" max-vertical-offset="7201">
+            <state line="148" column="58" selection-start="6455" selection-end="6455" vertical-scroll-proportion="4.4851303" vertical-offset="399" max-vertical-offset="5833">
               <folding>
-                <element signature="e#3560#3586#0" expanded="true" />
-                <element signature="e#4418#4792#0" expanded="true" />
-                <element signature="e#4785#4786#0" expanded="true" />
-                <element signature="e#9261#9298#0" expanded="true" />
-                <element signature="e#10753#10763#0" expanded="true" />
-                <element signature="e#11700#11708#0" expanded="true" />
+                <element signature="e#1204#1222#0" expanded="true" />
+                <element signature="e#4265#4281#0" expanded="true" />
+                <element signature="e#4398#4422#0" expanded="true" />
+                <element signature="e#5689#5711#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FriendsTimeLineFragment.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/maintimeline/FriendsTimeLineFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="614" column="0" selection-start="23168" selection-end="23168" vertical-scroll-proportion="-10.038462" vertical-offset="10550" max-vertical-offset="17898">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoadingLayout.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/support/lib/pulltorefresh/internal/LoadingLayout.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="38" selection-start="1717" selection-end="1717" vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="7315">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MyFriendSingleChoiceModeListener.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/actionmenu/MyFriendSingleChoiceModeListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="24" selection-start="380" selection-end="380" vertical-scroll-proportion="0.0" vertical-offset="53" max-vertical-offset="3173">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LeftMenuFragment.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/main/LeftMenuFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="24" selection-start="567" selection-end="567" vertical-scroll-proportion="0.33333334" vertical-offset="129" max-vertical-offset="16397">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -149,15 +111,12 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/res/drawable/listview_item_background_pressed_dark.xml" />
-        <option value="$PROJECT_DIR$/res/drawable/listview_item_background_normal_light.xml" />
         <option value="$PROJECT_DIR$/res/drawable/listview_item_background_normal_dark.xml" />
         <option value="$PROJECT_DIR$/res/layout/timeline_listview_item_layout.xml" />
         <option value="$PROJECT_DIR$/src/org/qii/weiciyuan/ui/interfaces/AbstractAppActivity.java" />
         <option value="$PROJECT_DIR$/res/values/style.xml" />
         <option value="$PROJECT_DIR$/res/anim/slide_in_right.xml" />
         <option value="$PROJECT_DIR$/res/values/theme_dummy.xml" />
-        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/res/values/theme_dark.xml" />
         <option value="$PROJECT_DIR$/res/values/theme_light.xml" />
@@ -165,6 +124,9 @@
         <option value="$PROJECT_DIR$/libs/slidingmenulibrary/src/com/slidingmenu/lib/app/SlidingFragmentActivity.java" />
         <option value="$PROJECT_DIR$/src/org/qii/weiciyuan/support/lib/pulltorefresh/internal/LoadingLayout.java" />
         <option value="$PROJECT_DIR$/src/org/qii/weiciyuan/ui/maintimeline/FriendsTimeLineFragment.java" />
+        <option value="$PROJECT_DIR$/src/org/qii/weiciyuan/support/gallery/GalleryActivity.java" />
+        <option value="$PROJECT_DIR$/src/org/qii/weiciyuan/support/lib/WeiboPatterns.java" />
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
       </list>
     </option>
   </component>
@@ -272,11 +234,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="maintimeline" />
+              <option name="myItemId" value="support" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -299,6 +257,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="support" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -342,7 +304,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="ExportedApkPath" value="E:\Projects\weiciyuan\bin\weiciyuan_maxsum.apk" />
@@ -493,7 +455,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="1000" extended-state="0" />
+    <frame x="-8" y="-8" width="1296" height="1000" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -505,7 +467,7 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32977462" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32977462" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -514,12 +476,12 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32901135" sideWeight="0.6702254" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.6702254" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -584,13 +546,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/res/values/theme_dummy.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="35" selection-start="196" selection-end="196" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="437">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/drawable-xhdpi/ic_notification.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -599,13 +554,6 @@
     <entry file="file://$PROJECT_DIR$/res/values/colors.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="318" column="0" selection-start="9615" selection-end="9615" vertical-scroll-proportion="0.0" vertical-offset="5530" max-vertical-offset="6346">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="296" column="56" selection-start="13168" selection-end="13168" vertical-scroll-proportion="0.0" vertical-offset="5024" max-vertical-offset="5814">
           <folding />
         </state>
       </provider>
@@ -624,80 +572,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/support/gallery/GalleryActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="47" selection-start="1367" selection-end="1367" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="13015">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/support/utils/Utility.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="22" selection-start="2550" selection-end="2550" vertical-scroll-proportion="0.47047618" vertical-offset="0" max-vertical-offset="12559">
-          <folding />
-        </state>
+        <state line="74" column="22" selection-start="2550" selection-end="2550" vertical-scroll-proportion="0.47047618" vertical-offset="0" max-vertical-offset="12559" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libs/slidingmenulibrary/src/com/slidingmenu/lib/app/SlidingFragmentActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="10" selection-start="833" selection-end="833" vertical-scroll-proportion="0.7961905" vertical-offset="0" max-vertical-offset="2888">
-          <folding />
-        </state>
+        <state line="28" column="10" selection-start="833" selection-end="833" vertical-scroll-proportion="0.7961905" vertical-offset="0" max-vertical-offset="2888" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/main/MainTimeLineParentActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="38" selection-start="451" selection-end="451" vertical-scroll-proportion="0.33333334" vertical-offset="53" max-vertical-offset="2641">
-          <folding />
-        </state>
+        <state line="12" column="38" selection-start="451" selection-end="451" vertical-scroll-proportion="0.33333334" vertical-offset="53" max-vertical-offset="2641" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/support/lib/pulltorefresh/LoadingLayoutProxy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="13" selection-start="247" selection-end="247" vertical-scroll-proportion="0.14126395" vertical-offset="0" max-vertical-offset="1406">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/browser/BrowserWeiboMsgActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="353" column="21" selection-start="12541" selection-end="12541" vertical-scroll-proportion="0.0" vertical-offset="6058" max-vertical-offset="7201">
-          <folding>
-            <element signature="e#3560#3586#0" expanded="true" />
-            <element signature="e#4418#4792#0" expanded="true" />
-            <element signature="e#4785#4786#0" expanded="true" />
-            <element signature="e#9261#9298#0" expanded="true" />
-            <element signature="e#10753#10763#0" expanded="true" />
-            <element signature="e#11700#11708#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/maintimeline/FriendsTimeLineFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="614" column="0" selection-start="23168" selection-end="23168" vertical-scroll-proportion="-10.038462" vertical-offset="10550" max-vertical-offset="17898">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/support/lib/pulltorefresh/internal/LoadingLayout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="38" selection-start="1717" selection-end="1717" vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="7315">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/actionmenu/MyFriendSingleChoiceModeListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="24" selection-start="380" selection-end="380" vertical-scroll-proportion="0.0" vertical-offset="53" max-vertical-offset="3173">
-          <folding />
-        </state>
+        <state line="8" column="13" selection-start="247" selection-end="247" vertical-scroll-proportion="0.14126395" vertical-offset="0" max-vertical-offset="1406" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/main/LeftMenuFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="24" selection-start="567" selection-end="567" vertical-scroll-proportion="0.33333334" vertical-offset="129" max-vertical-offset="16397">
+        <state line="16" column="24" selection-start="567" selection-end="567" vertical-scroll-proportion="0.02366127" vertical-offset="285" max-vertical-offset="16397" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/actionmenu/MyFriendSingleChoiceModeListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="24" selection-start="380" selection-end="380" vertical-scroll-proportion="0.21793275" vertical-offset="53" max-vertical-offset="3173" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/support/lib/pulltorefresh/internal/LoadingLayout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="38" selection-start="1717" selection-end="1717" vertical-scroll-proportion="0.02366127" vertical-offset="456" max-vertical-offset="7315" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/maintimeline/FriendsTimeLineFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="614" column="0" selection-start="23168" selection-end="23168" vertical-scroll-proportion="0.02366127" vertical-offset="10792" max-vertical-offset="17898" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/ui/browser/BrowserWeiboMsgActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="353" column="21" selection-start="12541" selection-end="12541" vertical-scroll-proportion="0.02366127" vertical-offset="6061" max-vertical-offset="7144" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/support/gallery/GalleryActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="63" selection-start="1709" selection-end="1709" vertical-scroll-proportion="0.04732254" vertical-offset="893" max-vertical-offset="13015" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/qii/weiciyuan/support/lib/WeiboPatterns.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="68" selection-start="832" selection-end="832" vertical-scroll-proportion="0.5678705" vertical-offset="0" max-vertical-offset="803">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="148" column="58" selection-start="6455" selection-end="6455" vertical-scroll-proportion="4.4851303" vertical-offset="399" max-vertical-offset="5833">
+          <folding>
+            <element signature="e#1204#1222#0" expanded="true" />
+            <element signature="e#4265#4281#0" expanded="true" />
+            <element signature="e#4398#4422#0" expanded="true" />
+            <element signature="e#5689#5711#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

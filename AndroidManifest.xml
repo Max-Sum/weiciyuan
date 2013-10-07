@@ -278,7 +278,8 @@
         <!--provider-->
         <provider
                 android:name=".ui.search.SearchSuggestionProvider"
-                android:authorities="org.qii.weiciyuan.ui.search.SearchSuggestionProvider"/>
+                android:authorities="org.qii.weiciyuan.ui.search.SearchSuggestionProvider"
+                android:theme="@style/AppTheme_SwipeBack"/>
 
         <!--black magic-->
         <activity
