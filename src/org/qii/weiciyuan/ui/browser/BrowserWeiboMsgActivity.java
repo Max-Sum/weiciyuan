@@ -42,7 +42,6 @@ public class BrowserWeiboMsgActivity extends AbstractAppActivity implements Remo
     private FavAsyncTask favTask = null;
     private UnFavAsyncTask unFavTask = null;
     private ShareActionProvider shareActionProvider;
-    private GestureDetector gestureDetector;
     private RemoveTask removeTask;
 
     @Override
@@ -82,7 +81,6 @@ public class BrowserWeiboMsgActivity extends AbstractAppActivity implements Remo
         viewPager.setOffscreenPageLimit(1);
         viewPager.setAdapter(adapter);
         viewPager.setOnPageChangeListener(onPageChangeListener);
-        viewPager.setGestureDetector(this, gestureDetector);
         getWindow().setBackgroundDrawable(getResources().getDrawable(R.color.transparent));
 
     }
