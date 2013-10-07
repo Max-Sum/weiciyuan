@@ -4,7 +4,7 @@ import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
 import org.qii.weiciyuan.bean.MessageListBean;
-import org.qii.weiciyuan.support.utils.AppLogger;
+import org.qii.weiciyuan.support.debug.AppLogger;
 
 import java.io.Serializable;
 
@@ -12,6 +12,7 @@ import java.io.Serializable;
  * User: qii
  * Date: 12-12-16
  */
+@Deprecated
 public class SaveToDBService extends IntentService {
 
     public static final int TYPE_STATUS = 0;

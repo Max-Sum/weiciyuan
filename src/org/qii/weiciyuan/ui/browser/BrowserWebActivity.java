@@ -37,7 +37,7 @@ public class BrowserWebActivity extends AbstractAppActivityNoSwipe {
         super.onCreate(savedInstanceState);
         url = getIntent().getStringExtra("url");
 
-        getActionBar().setDisplayShowHomeEnabled(true);
+        getActionBar().setDisplayShowHomeEnabled(false);
         getActionBar().setDisplayShowTitleEnabled(true);
         getActionBar().setDisplayHomeAsUpEnabled(false);
 

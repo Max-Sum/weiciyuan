@@ -1,7 +1,6 @@
 package org.qii.weiciyuan.ui.browser;
 
 import android.app.ActionBar;
-import android.app.FragmentTransaction;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -21,7 +20,6 @@ import org.qii.weiciyuan.support.lib.AppFragmentPagerAdapter;
 import org.qii.weiciyuan.support.lib.MyAsyncTask;
 import org.qii.weiciyuan.support.utils.GlobalContext;
 import org.qii.weiciyuan.support.utils.Utility;
-import org.qii.weiciyuan.ui.basefragment.AbstractTimeLineFragment;
 import org.qii.weiciyuan.ui.interfaces.AbstractAppActivity;
 import org.qii.weiciyuan.ui.main.MainTimeLineActivity;
 import org.qii.weiciyuan.ui.send.WriteCommentActivity;
@@ -41,20 +39,10 @@ public class BrowserWeiboMsgActivity extends AbstractAppActivity implements Remo
     private MessageBean msg;
     private String token;
 
-
-    private String comment_sum = "";
-    private String retweet_sum = "";
-
-    private ViewPager mViewPager = null;
-
     private FavAsyncTask favTask = null;
-
     private UnFavAsyncTask unFavTask = null;
-
-    private ShareActionProvider mShareActionProvider;
-
+    private ShareActionProvider shareActionProvider;
     private GestureDetector gestureDetector;
-
     private RemoveTask removeTask;
 
     @Override
@@ -68,12 +56,12 @@ public class BrowserWeiboMsgActivity extends AbstractAppActivity implements Remo
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (savedInstanceState != null) {
-            msg = (MessageBean) savedInstanceState.getParcelable("msg");
+            msg = savedInstanceState.getParcelable("msg");
             token = savedInstanceState.getString("token");
         } else {
             Intent intent = getIntent();
             token = intent.getStringExtra("token");
-            msg = (MessageBean) intent.getParcelableExtra("msg");
+            msg = intent.getParcelableExtra("msg");
         }
         setContentView(R.layout.viewpager_with_bg_layout);
 
@@ -88,12 +76,13 @@ public class BrowserWeiboMsgActivity extends AbstractAppActivity implements Remo
     }
 
     private void buildViewPager() {
-        mViewPager = (ViewPager) findViewById(R.id.viewpager);
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         TimeLinePagerAdapter adapter = new TimeLinePagerAdapter(getSupportFragmentManager());
-        mViewPager.setOverScrollMode(View.OVER_SCROLL_NEVER);
-        mViewPager.setOffscreenPageLimit(3);
-        mViewPager.setAdapter(adapter);
-        mViewPager.setOnPageChangeListener(onPageChangeListener);
+        viewPager.setOverScrollMode(View.OVER_SCROLL_NEVER);
+        viewPager.setOffscreenPageLimit(1);
+        viewPager.setAdapter(adapter);
+        viewPager.setOnPageChangeListener(onPageChangeListener);
+        viewPager.setGestureDetector(this, gestureDetector);
         getWindow().setBackgroundDrawable(getResources().getDrawable(R.color.transparent));
 
     }
@@ -105,111 +94,21 @@ public class BrowserWeiboMsgActivity extends AbstractAppActivity implements Remo
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setTitle(getString(R.string.detail));
 
-//        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-//
-//        actionBar.addTab(actionBar.newTab()
-//                .setText(getString(R.string.weibo))
-//                .setTabListener(tabListener));
-//
-//        actionBar.addTab(actionBar.newTab()
-//                .setText(getString(R.string.comments))
-//                .setTabListener(tabListener));
-//        actionBar.addTab(actionBar.newTab()
-//                .setText(getString(R.string.repost))
-//                .setTabListener(tabListener));
-//        Utility.buildTabCount(getActionBar().getTabAt(1), getString(R.string.comments), msg.getComments_count());
-//        Utility.buildTabCount(getActionBar().getTabAt(2), getString(R.string.repost), msg.getReposts_count());
     }
 
     ViewPager.SimpleOnPageChangeListener onPageChangeListener = new ViewPager.SimpleOnPageChangeListener() {
         @Override
         public void onPageSelected(int position) {
-//            getActionBar().setSelectedNavigationItem(position);
-            switch (position) {
 
-                case 2:
-                    ((RepostsByIdTimeLineFragment) getRepostFragment()).load();
-                    break;
-            }
 
         }
     };
 
-
-    private AbstractTimeLineFragment getRepostFragment() {
-        return ((AbstractTimeLineFragment) getSupportFragmentManager().findFragmentByTag(
-                RepostsByIdTimeLineFragment.class.getName()));
-    }
-
-    private AbstractTimeLineFragment getCommentFragment() {
-        return ((AbstractTimeLineFragment) getSupportFragmentManager().findFragmentByTag(
-                CommentsByIdTimeLineFragment.class.getName()));
-    }
 
     private Fragment getBrowserWeiboMsgFragment() {
         return getSupportFragmentManager().findFragmentByTag(BrowserWeiboMsgFragment.class.getName());
     }
 
-    ActionBar.TabListener tabListener = new ActionBar.TabListener() {
-        boolean comment = false;
-        boolean repost = false;
-
-        public void onTabSelected(ActionBar.Tab tab,
-                                  FragmentTransaction ft) {
-
-            if (mViewPager.getCurrentItem() != tab.getPosition())
-                mViewPager.setCurrentItem(tab.getPosition());
-            if (getCommentFragment() != null)
-                getCommentFragment().clearActionMode();
-            if (getRepostFragment() != null)
-                getRepostFragment().clearActionMode();
-
-            switch (tab.getPosition()) {
-
-                case 1:
-                    comment = true;
-                    break;
-                case 2:
-                    repost = true;
-                    break;
-                case 3:
-                    break;
-            }
-        }
-
-        public void onTabUnselected(ActionBar.Tab tab,
-                                    FragmentTransaction ft) {
-            switch (tab.getPosition()) {
-
-                case 1:
-                    comment = false;
-                    break;
-                case 2:
-                    repost = false;
-                    break;
-
-            }
-        }
-
-        public void onTabReselected(ActionBar.Tab tab,
-                                    FragmentTransaction ft) {
-            switch (tab.getPosition()) {
-
-                case 1:
-                    if (comment) {
-                        Utility.stopListViewScrollingAndScrollToTop(getCommentFragment().getListView());
-                    }
-                    break;
-                case 2:
-                    if (repost) {
-                        Utility.stopListViewScrollingAndScrollToTop(getRepostFragment().getListView());
-                    }
-                    break;
-                case 3:
-                    break;
-            }
-        }
-    };
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -220,7 +119,7 @@ public class BrowserWeiboMsgActivity extends AbstractAppActivity implements Remo
         }
 
         MenuItem item = menu.findItem(R.id.menu_share);
-        mShareActionProvider = (ShareActionProvider) item.getActionProvider();
+        shareActionProvider = (ShareActionProvider) item.getActionProvider();
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -279,7 +178,7 @@ public class BrowserWeiboMsgActivity extends AbstractAppActivity implements Remo
     }
 
     private void buildShareActionMenu() {
-        Utility.setShareIntent(BrowserWeiboMsgActivity.this, mShareActionProvider, msg);
+        Utility.setShareIntent(BrowserWeiboMsgActivity.this, shareActionProvider, msg);
     }
 
     @Override
@@ -303,16 +202,7 @@ public class BrowserWeiboMsgActivity extends AbstractAppActivity implements Remo
             } else {
                 list.add(getBrowserWeiboMsgFragment());
             }
-            if (getCommentFragment() == null) {
-                list.add(new CommentsByIdTimeLineFragment(token, msg));
-            } else {
-                list.add(getCommentFragment());
-            }
-            if (getRepostFragment() == null) {
-                list.add(new RepostsByIdTimeLineFragment(token, msg.getId(), msg));
-            } else {
-                list.add(getRepostFragment());
-            }
+
         }
 
         @Override
@@ -324,14 +214,12 @@ public class BrowserWeiboMsgActivity extends AbstractAppActivity implements Remo
         protected String getTag(int position) {
             List<String> tagList = new ArrayList<String>();
             tagList.add(BrowserWeiboMsgFragment.class.getName());
-            tagList.add(CommentsByIdTimeLineFragment.class.getName());
-            tagList.add(RepostsByIdTimeLineFragment.class.getName());
+
             return tagList.get(position);
         }
 
         @Override
         public int getCount() {
-//            return list.size();
             return 1;
         }
     }
