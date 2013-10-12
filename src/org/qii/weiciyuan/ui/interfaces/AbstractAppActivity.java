@@ -8,8 +8,6 @@ import android.nfc.NfcEvent;
 import android.os.Bundle;
 import android.view.ViewConfiguration;
 import android.widget.Toast;
-
-import org.qii.weiciyuan.R;
 import org.qii.weiciyuan.support.asyncdrawable.TimeLineBitmapDownloader;
 import org.qii.weiciyuan.support.error.WeiboException;
 import org.qii.weiciyuan.support.settinghelper.SettingUtility;
@@ -28,18 +26,12 @@ public class AbstractAppActivity extends SwipeBackActivity {
 
     protected int theme = 0;
 
-    protected TimeLineBitmapDownloader commander = null;
-
-
     @Override
     protected void onResume() {
         super.onResume();
         GlobalContext.getInstance().setCurrentRunningActivity(this);
 
-
-        if (theme == SettingUtility.getAppTheme()) {
-
-        } else {
+        if (theme != SettingUtility.getAppTheme()) {
             reload();
         }
     }
@@ -71,7 +63,6 @@ public class AbstractAppActivity extends SwipeBackActivity {
         forceShowActionBarOverflowMenu();
         initNFC();
         GlobalContext.getInstance().setActivity(this);
-        commander = TimeLineBitmapDownloader.getInstance();
     }
 
 
@@ -85,15 +76,6 @@ public class AbstractAppActivity extends SwipeBackActivity {
             }
         } catch (Exception ignored) {
 
-        }
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (commander != null) {
-            commander.totalStopLoadPicture();
-            commander = null;
         }
     }
 
@@ -139,7 +121,7 @@ public class AbstractAppActivity extends SwipeBackActivity {
     }
 
     public TimeLineBitmapDownloader getBitmapDownloader() {
-        return commander;
+        return TimeLineBitmapDownloader.getInstance();
     }
 
     protected void dealWithException(WeiboException e) {

@@ -52,34 +52,24 @@ public class ClickableTextViewMentionOnTouchListener implements View.OnTouchList
                         break;
                     }
                 }
-                boolean result = false;
+
                 if (find) {
-                    result = true;
-                }
-
-                if (find && !result) {
-                    BackgroundColorSpan[] backgroundColorSpans = value.getSpans(0, value.length(), BackgroundColorSpan.class);
-                    for (BackgroundColorSpan urlSpan : backgroundColorSpans) {
-                        value.removeSpan(urlSpan);
-                        ((TextView) v).setText(value);
-                    }
-                }
-
-                if (result) {
                     BackgroundColorSpan backgroundColorSpan = new BackgroundColorSpan(ThemeUtility.getColor(R.attr.link_pressed_background_color));
                     value.setSpan(backgroundColorSpan, findStart, findEnd, Spanned.SPAN_INCLUSIVE_INCLUSIVE);
-                    ((TextView) v).setText(value);
+                    //Android has a bug, sometime TextView wont change its value when you modify SpannableString,
+                    // so you must setText again, test on Android 4.3 Nexus4
+                    tv.setText(value);
                 }
 
-                return result;
+                return find;
             case MotionEvent.ACTION_CANCEL:
             case MotionEvent.ACTION_UP:
                 LongClickableLinkMovementMethod.getInstance().removeLongClickCallback();
                 BackgroundColorSpan[] backgroundColorSpans = value.getSpans(0, value.length(), BackgroundColorSpan.class);
-                for (BackgroundColorSpan urlSpan : backgroundColorSpans) {
-                    value.removeSpan(urlSpan);
-                    ((TextView) v).setText(value);
+                for (BackgroundColorSpan backgroundColorSpan : backgroundColorSpans) {
+                    value.removeSpan(backgroundColorSpan);
                 }
+                tv.setText(value);
                 break;
         }
 
