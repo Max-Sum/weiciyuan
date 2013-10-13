@@ -2,11 +2,18 @@
 
 All the credit goes to <a href="https://github.com/qii" target="_blank">qii</a>
 
+
+
 凡人的一生几多得到得不到
+
 尽在天公手里操
+
 但若天可知世间种种的苦恼
+
 为什么不稍作点引导
+
 为什么苍生想得的偏得不到
+
 许多基本的美好
 
 --------------原项目README----------------
