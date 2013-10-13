@@ -1,5 +1,19 @@
+自己编译的四次元版本，修改了微博列表的样式，用SwipeBackLayout替换了原有的右划返回。
+
+All the credit goes to <a href="https://github.com/qii" target="_blank">qii</a>
+
+凡人的一生几多得到得不到
+尽在天公手里操
+但若天可知世间种种的苦恼
+为什么不稍作点引导
+为什么苍生想得的偏得不到
+许多基本的美好
+
+--------------原项目README----------------
+
 四次元（原微次元） weiciyuan
 =========
+
 Sina Weibo Android App, require Android 4.1+, GPL v3 License
 
 <a href="https://play.google.com/store/apps/details?id=org.qii.weiciyuan">
