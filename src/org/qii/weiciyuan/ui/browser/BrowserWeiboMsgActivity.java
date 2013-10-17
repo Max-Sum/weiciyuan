@@ -7,16 +7,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager;
-import android.view.*;
+import android.view.GestureDetector;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ShareActionProvider;
 import android.widget.Toast;
 import org.qii.weiciyuan.R;
 import org.qii.weiciyuan.bean.MessageBean;
 import org.qii.weiciyuan.dao.destroy.DestroyStatusDao;
 import org.qii.weiciyuan.support.error.WeiboException;
-import org.qii.weiciyuan.support.lib.AppFragmentPagerAdapter;
 import org.qii.weiciyuan.support.lib.MyAsyncTask;
 import org.qii.weiciyuan.support.utils.GlobalContext;
 import org.qii.weiciyuan.support.utils.Utility;
@@ -26,9 +25,6 @@ import org.qii.weiciyuan.ui.send.WriteCommentActivity;
 import org.qii.weiciyuan.ui.send.WriteRepostActivity;
 import org.qii.weiciyuan.ui.task.FavAsyncTask;
 import org.qii.weiciyuan.ui.task.UnFavAsyncTask;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * User: Jiang Qi
@@ -62,10 +58,7 @@ public class BrowserWeiboMsgActivity extends AbstractAppActivity implements Remo
             token = intent.getStringExtra("token");
             msg = intent.getParcelableExtra("msg");
         }
-        setContentView(R.layout.viewpager_with_bg_layout);
-
-        buildViewPager();
-        buildActionBarAndViewPagerTitles();
+        initLayout();
     }
 
     @Override
@@ -74,33 +67,22 @@ public class BrowserWeiboMsgActivity extends AbstractAppActivity implements Remo
         Utility.cancelTasks(removeTask);
     }
 
-    private void buildViewPager() {
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        TimeLinePagerAdapter adapter = new TimeLinePagerAdapter(getSupportFragmentManager());
-        viewPager.setOverScrollMode(View.OVER_SCROLL_NEVER);
-        viewPager.setOffscreenPageLimit(1);
-        viewPager.setAdapter(adapter);
-        viewPager.setOnPageChangeListener(onPageChangeListener);
+    private void initLayout() {
+
+        if (getSupportFragmentManager().findFragmentByTag(BrowserWeiboMsgFragment.class.getName()) == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(android.R.id.content, new BrowserWeiboMsgFragment(msg), BrowserWeiboMsgFragment.class.getName())
+                    .commit();
+        }
+
         getWindow().setBackgroundDrawable(getResources().getDrawable(R.color.transparent));
 
-    }
-
-
-    private void buildActionBarAndViewPagerTitles() {
         ActionBar actionBar = getActionBar();
         actionBar.setDisplayShowHomeEnabled(false);
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setTitle(getString(R.string.detail));
 
     }
-
-    ViewPager.SimpleOnPageChangeListener onPageChangeListener = new ViewPager.SimpleOnPageChangeListener() {
-        @Override
-        public void onPageSelected(int position) {
-
-
-        }
-    };
 
 
     private Fragment getBrowserWeiboMsgFragment() {
@@ -187,40 +169,6 @@ public class BrowserWeiboMsgActivity extends AbstractAppActivity implements Remo
         }
     }
 
-    class TimeLinePagerAdapter extends
-            AppFragmentPagerAdapter {
-
-        List<Fragment> list = new ArrayList<Fragment>();
-
-
-        public TimeLinePagerAdapter(FragmentManager fm) {
-            super(fm);
-            if (getBrowserWeiboMsgFragment() == null) {
-                list.add(new BrowserWeiboMsgFragment(msg));
-            } else {
-                list.add(getBrowserWeiboMsgFragment());
-            }
-
-        }
-
-        @Override
-        public Fragment getItem(int i) {
-            return list.get(i);
-        }
-
-        @Override
-        protected String getTag(int position) {
-            List<String> tagList = new ArrayList<String>();
-            tagList.add(BrowserWeiboMsgFragment.class.getName());
-
-            return tagList.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return 1;
-        }
-    }
 
     public void updateCommentCount(int count) {
         msg.setComments_count(count);
@@ -244,10 +192,6 @@ public class BrowserWeiboMsgActivity extends AbstractAppActivity implements Remo
         return msg;
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        return false;
-    }
 
     class RemoveTask extends MyAsyncTask<Void, Void, Boolean> {
 
