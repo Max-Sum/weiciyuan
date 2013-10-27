@@ -16,7 +16,6 @@ import android.os.Parcelable;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
-import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -124,7 +123,7 @@ public class UserInfoActivity extends AbstractAppActivity implements IUserInfo {
 
 
         if (isMyselfProfile()) {
-            if (getClass() == MyInfoActivity.class) {
+            if (getClass() == UserInfoActivity.class) {
                 return;
             }
             Intent intent = new Intent(this, MyInfoActivity.class);

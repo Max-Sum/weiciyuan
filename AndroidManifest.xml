@@ -144,7 +144,7 @@
         <!--user activity -->
         <activity
                 android:name=".ui.userinfo.UserInfoActivity"
-                android:theme="@style/AppTheme_SwipeBack">
+                android:theme="@style/AppTheme_Dummy">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <action android:name="android.intent.action.VIEW"/>
@@ -161,7 +161,7 @@
                 android:theme="@style/AppTheme_SwipeBack"/>
         <activity
                 android:name=".ui.userinfo.MyInfoActivity"
-                android:theme="@style/AppTheme_SwipeBack"
+                android:theme="@style/AppTheme_Dummy"
                 android:launchMode="singleTop"/>
         <activity
                 android:name=".ui.userinfo.EditMyProfileActivity"
