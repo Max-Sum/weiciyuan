@@ -192,7 +192,9 @@
                     android:name="android.app.searchable"
                     android:resource="@xml/searchable"/>
         </activity>
-        <activity android:name=".ui.search.AtUserActivity"/>
+        <activity
+                android:name=".ui.search.AtUserActivity"
+                android:theme="@style/AppTheme_SwipeBack"/>
 
         <!--friend group-->
         <activity
