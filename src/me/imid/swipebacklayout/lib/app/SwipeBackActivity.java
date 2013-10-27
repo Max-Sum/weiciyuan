@@ -1,46 +1,76 @@
 
 package me.imid.swipebacklayout.lib.app;
 
-import me.imid.swipebacklayout.lib.SwipeBackLayout;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import android.util.Log;
 
-public class SwipeBackActivity extends FragmentActivity implements SwipeBackActivityBase{
-    private SwipeBackActivityHelper mHelper;
+import me.imid.swipebacklayout.lib.SwipeBackLayout;
+
+public class SwipeBackActivity extends FragmentActivity {
+
+    private SwipeBackLayout mSwipeBackLayout;
+
+    private boolean mOverrideExitAniamtion = true;
+
+    private boolean mIsFinishing;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mHelper = new SwipeBackActivityHelper(this);
-        mHelper.onActivtyCreate();
+        getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        getWindow().getDecorView().setBackgroundDrawable(null);
+        mSwipeBackLayout = new SwipeBackLayout(this);
     }
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        mHelper.onPostCreate();
+        mSwipeBackLayout.attachToActivity(this);
     }
 
     @Override
     public View findViewById(int id) {
         View v = super.findViewById(id);
-        if (v == null && mHelper != null)
-            return mHelper.findViewById(id);
-        return v;
+        if (v != null)
+            return v;
+        return mSwipeBackLayout.findViewById(id);
     }
-    
-    @Override
+
     public SwipeBackLayout getSwipeBackLayout() {
-        return mHelper.getSwipeBackLayout();
+        return mSwipeBackLayout;
     }
-    @Override
+
     public void setSwipeBackEnable(boolean enable) {
-        getSwipeBackLayout().setEnableGesture(enable);
+        mSwipeBackLayout.setEnableGesture(enable);
+    }
+
+    /**
+     * Override Exit Animation
+     * 
+     * @param override
+     */
+    public void setOverrideExitAniamtion(boolean override) {
+        mOverrideExitAniamtion = override;
+    }
+
+    /**
+     * Scroll out contentView and finish the activity
+     */
+    public void scrollToFinishActivity() {
+        mSwipeBackLayout.scrollToFinishActivity();
     }
 
     @Override
-    public void scrollToFinishActivity() {
-        getSwipeBackLayout().scrollToFinishActivity();
+    public void finish() {
+        if (mOverrideExitAniamtion && !mIsFinishing) {
+            scrollToFinishActivity();
+            mIsFinishing = true;
+            return;
+        }
+        mIsFinishing = false;
+        super.finish();
     }
 }
