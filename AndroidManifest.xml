@@ -111,6 +111,7 @@
                 android:launchMode="singleTop"/>
         <activity
                 android:name=".ui.browser.BrowserLocalPicActivity"
+                android:theme="@style/AppTheme_SwipeBack"
                 android:uiOptions="splitActionBarWhenNarrow"
                 android:launchMode="singleTop"/>
         <activity
