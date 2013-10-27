@@ -113,10 +113,11 @@
     </style>
 
     <style name="SwipeBackLayout">
-        <item name="EdgeSize">16dip</item>
-        <item name="ShadowLeft">@drawable/swipeback_shadow_left</item>
-        <item name="ShadowRight">@drawable/swipeback_shadow_right</item>
-        <item name="ShadowBottom">@drawable/swipeback_shadow_bottom</item>
+        <item name="edge_size">30dip</item>
+        <item name="shadow_left">@drawable/swipeback_shadow_left</item>
+        <item name="shadow_right">@drawable/swipeback_shadow_right</item>
+        <item name="shadow_bottom">@drawable/swipeback_shadow_bottom</item>
+        <item name="edge_flag">left</item>
     </style>
 
     <style name="SwipeBackAnimation">
