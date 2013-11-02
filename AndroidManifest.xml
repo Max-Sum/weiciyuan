@@ -55,7 +55,6 @@
 
         <!--main activity -->
         <activity
-
             android:name=".ui.main.MainTimeLineActivity"
             android:launchMode="singleTask"/>
 
@@ -100,16 +99,15 @@
         <activity
                 android:name=".ui.browser.BrowserCommentActivity"
                 android:label="@string/comment_detail"/>
-        <activity
+        <!--<activity
                 android:name=".ui.browser.BrowserBigPicActivity"
                 android:theme="@android:style/Theme.Holo.Light.Dialog.NoActionBar"
-                android:launchMode="singleTop"/>
+                android:launchMode="singleTop"/>-->
         <activity
                 android:name=".support.gallery.GalleryActivity"
                 android:theme="@style/GalleryTheme"
                 android:launchMode="singleTop"/>
         <activity
-
             android:name=".ui.browser.BrowserWriteWeiboLocalPicActivity"
             android:theme="@style/AppTheme_SwipeBack"
             android:uiOptions="splitActionBarWhenNarrow"
@@ -131,7 +129,6 @@
         <!--topic activity -->
         <activity
                 android:name=".ui.topic.SearchTopicByNameActivity"
-                android:theme="@style/AppTheme_SwipeBack"
                 android:label="@string/search_topic"
                 android:uiOptions="splitActionBarWhenNarrow">
             <intent-filter>
