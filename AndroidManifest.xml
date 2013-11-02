@@ -116,6 +116,7 @@
             android:launchMode="singleTop"/>
         <activity
                 android:name=".ui.browser.BrowserWebActivity"
+                android:theme="@style/AppTheme_SwipeBack"
                 android:uiOptions="splitActionBarWhenNarrow"
                 android:launchMode="singleTop"/>
         <activity
@@ -130,6 +131,7 @@
         <!--topic activity -->
         <activity
                 android:name=".ui.topic.SearchTopicByNameActivity"
+                android:theme="@style/AppTheme_SwipeBack"
                 android:label="@string/search_topic"
                 android:uiOptions="splitActionBarWhenNarrow">
             <intent-filter>
@@ -185,6 +187,7 @@
         <!--search activity -->
         <activity
                 android:name=".ui.search.SearchMainActivity"
+                android:theme="@style/AppTheme_SwipeBack"
                 android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH"/>
