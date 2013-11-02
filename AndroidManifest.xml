@@ -41,8 +41,8 @@
                 android:value="AIzaSyA_Ozn9WNG58ImFlmOFOItHvn1JShWvIpE"/>
 
         <activity
-                android:name=".ui.login.DummyActivity"
-                android:uiOptions="splitActionBarWhenNarrow">
+            android:name=".ui.login.AccountActivity"
+            android:uiOptions="splitActionBarWhenNarrow">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -50,23 +50,22 @@
         </activity>
 
         <!-- login activity -->
-        <activity
-                android:name=".ui.login.AccountActivity"
-                android:uiOptions="splitActionBarWhenNarrow"/>
         <activity android:name=".ui.login.OAuthActivity"/>
         <activity android:name=".ui.login.SSOActivity"/>
 
         <!--main activity -->
         <activity
-                android:name=".ui.main.MainTimeLineActivity"
 
-                android:launchMode="singleTop"/>
+            android:name=".ui.main.MainTimeLineActivity"
+            android:launchMode="singleTask"/>
 
         <!--send activity -->
         <activity
-                android:name=".ui.send.WriteWeiboActivity"
-                android:theme="@style/AppTheme_SwipeBack"
-                android:windowSoftInputMode="stateVisible|adjustResize">
+            android:name=".ui.send.WriteWeiboActivity"
+            android:theme="@style/AppTheme_SwipeBack"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="stateVisible|adjustResize">
+
             <intent-filter>
                 <action android:name="android.intent.action.SEND"/>
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -110,10 +109,11 @@
                 android:theme="@style/GalleryTheme"
                 android:launchMode="singleTop"/>
         <activity
-                android:name=".ui.browser.BrowserLocalPicActivity"
-                android:theme="@style/AppTheme_SwipeBack"
-                android:uiOptions="splitActionBarWhenNarrow"
-                android:launchMode="singleTop"/>
+
+            android:name=".ui.browser.BrowserWriteWeiboLocalPicActivity"
+            android:theme="@style/AppTheme_SwipeBack"
+            android:uiOptions="splitActionBarWhenNarrow"
+            android:launchMode="singleTop"/>
         <activity
                 android:name=".ui.browser.BrowserWebActivity"
                 android:uiOptions="splitActionBarWhenNarrow"
