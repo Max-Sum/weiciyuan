@@ -22,3 +22,5 @@ proguard-project.txt
 build.xml
 project.properties
 weiciyuan.iml
+.gradle
+build
