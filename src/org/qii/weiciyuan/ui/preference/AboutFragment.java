@@ -43,7 +43,7 @@ public class AboutFragment extends PreferenceFragment {
 
     private boolean playing;
 
-    private int blackMagicCount = 0;
+    private int blackMagicCount = 3;
 
     private static final String DEBUG_INFO = "pref_debug_info_key";
 
