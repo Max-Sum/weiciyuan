@@ -1,6 +1,28 @@
 package org.qii.weiciyuan.support.utils;
 
-import android.app.*;
+import org.qii.weiciyuan.BuildConfig;
+import org.qii.weiciyuan.R;
+import org.qii.weiciyuan.bean.AccountBean;
+import org.qii.weiciyuan.bean.GeoBean;
+import org.qii.weiciyuan.bean.MessageBean;
+import org.qii.weiciyuan.bean.android.TimeLinePosition;
+import org.qii.weiciyuan.othercomponent.unreadnotification.NotificationServiceHelper;
+import org.qii.weiciyuan.support.file.FileLocationMethod;
+import org.qii.weiciyuan.support.file.FileManager;
+import org.qii.weiciyuan.support.lib.AutoScrollListView;
+import org.qii.weiciyuan.support.lib.MyAsyncTask;
+import org.qii.weiciyuan.support.settinghelper.SettingUtility;
+import org.qii.weiciyuan.ui.blackmagic.BlackMagicActivity;
+import org.qii.weiciyuan.ui.login.AccountActivity;
+import org.qii.weiciyuan.ui.login.OAuthActivity;
+import org.qii.weiciyuan.ui.login.SSOActivity;
+
+import android.app.ActionBar;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -24,34 +46,28 @@ import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
-import android.view.*;
+import android.view.Display;
+import android.view.HapticFeedbackConstants;
+import android.view.KeyCharacterMap;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
+import android.view.SoundEffectConstants;
+import android.view.View;
+import android.view.ViewConfiguration;
+import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ShareActionProvider;
 import android.widget.TextView;
-import org.qii.weiciyuan.BuildConfig;
-import org.qii.weiciyuan.R;
-import org.qii.weiciyuan.bean.AccountBean;
-import org.qii.weiciyuan.bean.GeoBean;
-import org.qii.weiciyuan.bean.MessageBean;
-import org.qii.weiciyuan.bean.android.TimeLinePosition;
-import org.qii.weiciyuan.othercomponent.unreadnotification.NotificationServiceHelper;
-import org.qii.weiciyuan.support.file.FileLocationMethod;
-import org.qii.weiciyuan.support.file.FileManager;
-import org.qii.weiciyuan.support.lib.AutoScrollListView;
-import org.qii.weiciyuan.support.lib.MyAsyncTask;
-import org.qii.weiciyuan.support.settinghelper.SettingUtility;
-import org.qii.weiciyuan.ui.blackmagic.BlackMagicActivity;
-import org.qii.weiciyuan.ui.login.AccountActivity;
-import org.qii.weiciyuan.ui.login.OAuthActivity;
-import org.qii.weiciyuan.ui.login.SSOActivity;
 
-import javax.microedition.khronos.opengles.GL10;
-import javax.microedition.khronos.opengles.GL11;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.Closeable;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -62,6 +78,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+
+import javax.microedition.khronos.opengles.GL10;
+import javax.microedition.khronos.opengles.GL11;
 
 
 public class Utility {
@@ -84,12 +103,14 @@ public class Utility {
             String value = param.get(key);
             //pain...EditMyProfileDao params' values can be empty
             if (!TextUtils.isEmpty(value) || key.equals("description") || key.equals("url")) {
-                if (first)
+                if (first) {
                     first = false;
-                else
+                } else {
                     sb.append("&");
+                }
                 try {
-                    sb.append(URLEncoder.encode(key, "UTF-8")).append("=").append(URLEncoder.encode(param.get(key), "UTF-8"));
+                    sb.append(URLEncoder.encode(key, "UTF-8")).append("=")
+                            .append(URLEncoder.encode(param.get(key), "UTF-8"));
                 } catch (UnsupportedEncodingException e) {
 
                 }
@@ -108,7 +129,8 @@ public class Utility {
             for (String parameter : array) {
                 String v[] = parameter.split("=");
                 try {
-                    params.putString(URLDecoder.decode(v[0], "UTF-8"), URLDecoder.decode(v[1], "UTF-8"));
+                    params.putString(URLDecoder.decode(v[0], "UTF-8"),
+                            URLDecoder.decode(v[1], "UTF-8"));
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
 
@@ -119,12 +141,13 @@ public class Utility {
     }
 
     public static void closeSilently(Closeable closeable) {
-        if (closeable != null)
+        if (closeable != null) {
             try {
                 closeable.close();
             } catch (IOException ignored) {
 
             }
+        }
     }
 
     /**
@@ -145,8 +168,9 @@ public class Utility {
 
     public static void cancelTasks(MyAsyncTask... tasks) {
         for (MyAsyncTask task : tasks) {
-            if (task != null)
+            if (task != null) {
                 task.cancel(true);
+            }
         }
     }
 
@@ -155,10 +179,11 @@ public class Utility {
     }
 
     public static void stopListViewScrollingAndScrollToTop(ListView listView) {
-        if (listView instanceof AutoScrollListView)
+        if (listView instanceof AutoScrollListView) {
             ((AutoScrollListView) listView).requestPositionToScreen(0, true);
-        else
+        } else {
             listView.smoothScrollToPosition(0, 0);
+        }
     }
 
     public static int dip2px(int dipValue) {
@@ -172,16 +197,18 @@ public class Utility {
     }
 
     public static float sp2px(int spValue) {
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, spValue, GlobalContext.getInstance().getResources().getDisplayMetrics());
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, spValue,
+                GlobalContext.getInstance().getResources().getDisplayMetrics());
     }
 
     public static int length(String paramString) {
         int i = 0;
         for (int j = 0; j < paramString.length(); j++) {
-            if (paramString.substring(j, j + 1).matches("[Α-￥]"))
+            if (paramString.substring(j, j + 1).matches("[Α-￥]")) {
                 i += 2;
-            else
+            } else {
                 i++;
+            }
         }
 
         if (i % 2 > 0) {
@@ -352,6 +379,10 @@ public class Utility {
         return android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN;
     }
 
+    public static boolean isKK() {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
+    }
+
     public static int getScreenWidth() {
         Activity activity = GlobalContext.getInstance().getActivity();
         if (activity != null) {
@@ -375,9 +406,42 @@ public class Utility {
         return 800;
     }
 
+    public static String getLatestCameraPicture(Activity activity) {
+        String[] projection = new String[]{MediaStore.Images.ImageColumns._ID,
+                MediaStore.Images.ImageColumns.DATA,
+                MediaStore.Images.ImageColumns.BUCKET_DISPLAY_NAME,
+                MediaStore.Images.ImageColumns.DATE_TAKEN,
+                MediaStore.Images.ImageColumns.MIME_TYPE
+        };
+        final Cursor cursor = activity.getContentResolver()
+                .query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                        projection, null, null,
+                        MediaStore.Images.ImageColumns.DATE_TAKEN + " DESC");
+        if (cursor.moveToFirst()) {
+            String path = cursor.getString(1);
+            return path;
+        }
+        return null;
+    }
+
+    public static void copyFile(InputStream in, File destFile) throws IOException {
+        BufferedInputStream bufferedInputStream = new BufferedInputStream(in);
+        FileOutputStream outputStream = new FileOutputStream(destFile);
+        BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(outputStream);
+        byte[] buffer = new byte[1024];
+        int len;
+        while ((len = bufferedInputStream.read(buffer)) != -1) {
+            bufferedOutputStream.write(buffer, 0, len);
+        }
+        closeSilently(bufferedInputStream);
+        closeSilently(bufferedOutputStream);
+    }
+
     public static Rect locateView(View v) {
         int[] location = new int[2];
-        if (v == null) return null;
+        if (v == null) {
+            return null;
+        }
         try {
             v.getLocationOnScreen(location);
         } catch (NullPointerException npe) {
@@ -403,16 +467,21 @@ public class Utility {
         }
     }
 
-    public static void setShareIntent(Activity activity, ShareActionProvider mShareActionProvider, MessageBean msg) {
+    public static void setShareIntent(Activity activity, ShareActionProvider mShareActionProvider,
+            MessageBean msg) {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         if (msg != null && msg.getUser() != null) {
             shareIntent.setType("text/plain");
-            shareIntent.putExtra(Intent.EXTRA_TEXT, "@" + msg.getUser().getScreen_name() + "：" + msg.getText());
+            shareIntent.putExtra(Intent.EXTRA_TEXT,
+                    "@" + msg.getUser().getScreen_name() + "：" + msg.getText());
             if (!TextUtils.isEmpty(msg.getThumbnail_pic())) {
                 Uri picUrl = null;
-                String smallPath = FileManager.getFilePathFromUrl(msg.getThumbnail_pic(), FileLocationMethod.picture_thumbnail);
-                String middlePath = FileManager.getFilePathFromUrl(msg.getBmiddle_pic(), FileLocationMethod.picture_bmiddle);
-                String largePath = FileManager.getFilePathFromUrl(msg.getOriginal_pic(), FileLocationMethod.picture_large);
+                String smallPath = FileManager.getFilePathFromUrl(msg.getThumbnail_pic(),
+                        FileLocationMethod.picture_thumbnail);
+                String middlePath = FileManager.getFilePathFromUrl(msg.getBmiddle_pic(),
+                        FileLocationMethod.picture_bmiddle);
+                String largePath = FileManager.getFilePathFromUrl(msg.getOriginal_pic(),
+                        FileLocationMethod.picture_large);
                 if (new File(largePath).exists()) {
                     picUrl = Uri.fromFile(new File(largePath));
                 } else if (new File(middlePath).exists()) {
@@ -431,7 +500,8 @@ public class Utility {
         }
     }
 
-    public static void setShareIntent(Activity activity, ShareActionProvider mShareActionProvider, String content) {
+    public static void setShareIntent(Activity activity, ShareActionProvider mShareActionProvider,
+            String content) {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
         shareIntent.putExtra(Intent.EXTRA_TEXT, content);
@@ -442,8 +512,9 @@ public class Utility {
     }
 
     public static void buildTabCount(ActionBar.Tab tab, String tabStrRes, int count) {
-        if (tab == null)
+        if (tab == null) {
             return;
+        }
         String content = tab.getText().toString();
         int value = 0;
         int start = content.indexOf("(");
@@ -458,8 +529,9 @@ public class Utility {
     }
 
     public static void buildTabCount(TextView tab, String tabStrRes, int count) {
-        if (tab == null)
+        if (tab == null) {
             return;
+        }
 //        String content = tab.getText().toString();
 //        int value = 0;
 //        int start = content.indexOf("(");
@@ -481,18 +553,44 @@ public class Utility {
     }
 
     public static String getIdFromWeiboAccountLink(String url) {
+
+        url = convertWeiboCnToWeiboCom(url);
+
         String id = url.substring("http://weibo.com/u/".length());
         id = id.replace("/", "");
         return id;
     }
 
     public static String getDomainFromWeiboAccountLink(String url) {
-        String domain = url.substring("http://weibo.com/".length());
+        url = convertWeiboCnToWeiboCom(url);
+
+        final String NORMAL_DOMAIN_PREFIX = "http://weibo.com/";
+        final String ENTERPRISE_DOMAIN_PREFIX = "http://e.weibo.com/";
+
+        if (TextUtils.isEmpty(url)) {
+            throw new IllegalArgumentException("Url can't be empty");
+        }
+
+        if (!url.startsWith(NORMAL_DOMAIN_PREFIX) && !url.startsWith(ENTERPRISE_DOMAIN_PREFIX)) {
+            throw new IllegalArgumentException(
+                    "Url must start with " + NORMAL_DOMAIN_PREFIX + " or "
+                            + ENTERPRISE_DOMAIN_PREFIX);
+        }
+
+        String domain = null;
+        if (url.startsWith(ENTERPRISE_DOMAIN_PREFIX)) {
+            domain = url.substring(ENTERPRISE_DOMAIN_PREFIX.length());
+
+        } else if (url.startsWith(NORMAL_DOMAIN_PREFIX)) {
+            domain = url.substring(NORMAL_DOMAIN_PREFIX.length());
+        }
         domain = domain.replace("/", "");
         return domain;
     }
 
     public static boolean isWeiboAccountIdLink(String url) {
+        url = convertWeiboCnToWeiboCom(url);
+
         return !TextUtils.isEmpty(url) && url.startsWith("http://weibo.com/u/");
     }
 
@@ -501,12 +599,15 @@ public class Utility {
         if (TextUtils.isEmpty(url)) {
             return false;
         } else {
-            boolean a = url.startsWith("http://weibo.com/");
+            url = convertWeiboCnToWeiboCom(url);
+            boolean a = url.startsWith("http://weibo.com/") || url
+                    .startsWith("http://e.weibo.com/");
             boolean b = !url.contains("?");
 
             String tmp = url;
-            if (tmp.endsWith("/"))
+            if (tmp.endsWith("/")) {
                 tmp = tmp.substring(0, tmp.lastIndexOf("/"));
+            }
 
             int count = 0;
             char[] value = tmp.toCharArray();
@@ -517,6 +618,52 @@ public class Utility {
             }
             return a && b && count == 3;
         }
+    }
+
+    //http://www.weibo.com/2125954191/Aj3W9z25s
+    public static boolean isWeiboMid(String url) {
+        if (TextUtils.isEmpty(url)) {
+            return false;
+        } else {
+            url = convertWeiboCnToWeiboCom(url);
+            boolean urlValide = url.startsWith("http://www.weibo.com/");
+
+            if (!urlValide) {
+                return false;
+            }
+
+            if (url.endsWith("/")) {
+                url = url.substring(0, url.length() - 1);
+            }
+
+            url = url.substring("http://www.weibo.com/".length(), url.length());
+
+            String[] result = url.split("/");
+
+            return result != null && result.length == 2;
+
+
+        }
+    }
+
+
+    public static String getMidFromUrl(String url) {
+        url = convertWeiboCnToWeiboCom(url);
+
+        if (url.endsWith("/")) {
+            url = url.substring(0, url.length() - 1);
+        }
+
+        url = url.substring("http://www.weibo.com/".length(), url.length());
+
+        return url.split("/")[1];
+    }
+
+    private static String convertWeiboCnToWeiboCom(String url) {
+        if (!TextUtils.isEmpty(url) && url.startsWith("http://weibo.cn")) {
+            url = url.replace("http://weibo.cn", "http://weibo.com");
+        }
+        return url;
     }
 
     public static void vibrate(Context context, View view) {
@@ -549,12 +696,14 @@ public class Utility {
     }
 
     public static boolean isDevicePort() {
-        return GlobalContext.getInstance().getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;
+        return GlobalContext.getInstance().getResources().getConfiguration().orientation
+                == Configuration.ORIENTATION_PORTRAIT;
     }
 
     public static void printStackTrace(Exception e) {
-        if (BuildConfig.DEBUG)
+        if (BuildConfig.DEBUG) {
             e.printStackTrace();
+        }
     }
 
     public static boolean isTokenValid(AccountBean account) {
@@ -564,12 +713,14 @@ public class Utility {
     }
 
     public static boolean isTokenExpiresInThreeDay(AccountBean account) {
-        long days = TimeUnit.MILLISECONDS.toDays(account.getExpires_time() - System.currentTimeMillis());
+        long days = TimeUnit.MILLISECONDS
+                .toDays(account.getExpires_time() - System.currentTimeMillis());
         return days > 0 && days <= 3;
     }
 
     public static long calcTokenExpiresInDays(AccountBean account) {
-        long days = TimeUnit.MILLISECONDS.toDays(account.getExpires_time() - System.currentTimeMillis());
+        long days = TimeUnit.MILLISECONDS
+                .toDays(account.getExpires_time() - System.currentTimeMillis());
         return days;
     }
 
@@ -578,16 +729,19 @@ public class Utility {
         int tenThousandInt = thousandInt * 10;
         int number = Integer.valueOf(numberStr);
         if (number == tenThousandInt) {
-            return String.valueOf((number / tenThousandInt) + context.getString(R.string.ten_thousand));
+            return String
+                    .valueOf((number / tenThousandInt) + context.getString(R.string.ten_thousand));
         }
         if (number > tenThousandInt) {
-            String result = String.valueOf((number / tenThousandInt) + context.getString(R.string.ten_thousand));
+            String result = String
+                    .valueOf((number / tenThousandInt) + context.getString(R.string.ten_thousand));
             if (number > tenThousandInt * 10) {
                 return result;
             }
             String thousand = String.valueOf(numberStr.charAt(numberStr.length() - 4));
-            if (Integer.valueOf(thousand) != 0)
+            if (Integer.valueOf(thousand) != 0) {
                 result += thousand;
+            }
             return result;
         }
         if (number > thousandInt) {
@@ -605,7 +759,8 @@ public class Utility {
             currentAccountTokenIsExpired = !Utility.isTokenValid(currentAccount);
         }
 
-        if (currentAccountTokenIsExpired && activity != null && !GlobalContext.getInstance().tokenExpiredDialogIsShowing) {
+        if (currentAccountTokenIsExpired && activity != null && !GlobalContext
+                .getInstance().tokenExpiredDialogIsShowing) {
             if (activity.getClass() == AccountActivity.class) {
                 return;
             }
@@ -625,16 +780,19 @@ public class Utility {
                 public void run() {
                     new AlertDialog.Builder(activity).setTitle(R.string.dialog_title_error)
                             .setMessage(R.string.your_token_is_expired)
-                            .setPositiveButton(R.string.logout_to_login_again, new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    Intent intent = new Intent(activity, AccountActivity.class);
-                                    intent.putExtra("launcher", false);
-                                    activity.startActivity(intent);
-                                    activity.finish();
-                                    GlobalContext.getInstance().tokenExpiredDialogIsShowing = false;
-                                }
-                            }).setOnCancelListener(new DialogInterface.OnCancelListener() {
+                            .setPositiveButton(R.string.logout_to_login_again,
+                                    new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            Intent intent = new Intent(activity,
+                                                    AccountActivity.class);
+                                            intent.putExtra("launcher", false);
+                                            activity.startActivity(intent);
+                                            activity.finish();
+                                            GlobalContext.getInstance().tokenExpiredDialogIsShowing
+                                                    = false;
+                                        }
+                                    }).setOnCancelListener(new DialogInterface.OnCancelListener() {
                         @Override
                         public void onCancel(DialogInterface dialog) {
                             //do nothing
@@ -648,20 +806,26 @@ public class Utility {
             Intent i = new Intent(GlobalContext.getInstance(), AccountActivity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             i.putExtra("launcher", false);
-            PendingIntent pendingIntent = PendingIntent.getActivity(GlobalContext.getInstance(), 0, i, PendingIntent.FLAG_UPDATE_CURRENT);
+            PendingIntent pendingIntent = PendingIntent
+                    .getActivity(GlobalContext.getInstance(), 0, i,
+                            PendingIntent.FLAG_UPDATE_CURRENT);
 
             Notification.Builder builder = new Notification.Builder(GlobalContext.getInstance())
                     .setContentTitle(GlobalContext.getInstance().getString(R.string.login_again))
-                    .setContentText(GlobalContext.getInstance().getString(R.string.have_account_whose_token_is_expired))
+                    .setContentText(GlobalContext.getInstance()
+                            .getString(R.string.have_account_whose_token_is_expired))
                     .setSmallIcon(R.drawable.ic_notification)
                     .setAutoCancel(true)
                     .setContentIntent(pendingIntent)
                     .setOnlyAlertOnce(true);
-            NotificationManager notificationManager = (NotificationManager) GlobalContext.getInstance()
+            NotificationManager notificationManager = (NotificationManager) GlobalContext
+                    .getInstance()
                     .getSystemService(Context.NOTIFICATION_SERVICE);
-            notificationManager.notify(NotificationServiceHelper.getTokenExpiredNotificationId(), builder.build());
+            notificationManager.notify(NotificationServiceHelper.getTokenExpiredNotificationId(),
+                    builder.build());
         } else if (GlobalContext.getInstance().tokenExpiredDialogIsShowing) {
-            NotificationManager notificationManager = (NotificationManager) GlobalContext.getInstance()
+            NotificationManager notificationManager = (NotificationManager) GlobalContext
+                    .getInstance()
                     .getSystemService(Context.NOTIFICATION_SERVICE);
             notificationManager.cancel(NotificationServiceHelper.getTokenExpiredNotificationId());
         }
@@ -727,12 +891,18 @@ public class Utility {
                 continue;
             }
 
-
             child.setBackground(null);
 
         }
 
         viewGroup.setBackground(null);
+    }
+
+    public static boolean doThisDeviceOwnNavigationBar(Context context) {
+        boolean hasMenuKey = ViewConfiguration.get(context).hasPermanentMenuKey();
+        boolean hasBackKey = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_BACK);
+
+        return !hasMenuKey && !hasBackKey;
     }
 }
 

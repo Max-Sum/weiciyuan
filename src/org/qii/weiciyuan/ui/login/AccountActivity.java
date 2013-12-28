@@ -1,25 +1,42 @@
 package org.qii.weiciyuan.ui.login;
 
-import android.app.AlertDialog;
-import android.app.LoaderManager;
-import android.content.*;
-import android.content.res.TypedArray;
-import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.text.TextUtils;
-import android.view.*;
-import android.widget.*;
+import com.crashlytics.android.Crashlytics;
+
 import org.qii.weiciyuan.R;
 import org.qii.weiciyuan.bean.AccountBean;
 import org.qii.weiciyuan.support.database.AccountDBTask;
 import org.qii.weiciyuan.support.lib.changelogdialog.ChangeLogDialog;
 import org.qii.weiciyuan.support.settinghelper.SettingUtility;
-import org.qii.weiciyuan.support.utils.BundleArgsConstants;
 import org.qii.weiciyuan.support.utils.GlobalContext;
 import org.qii.weiciyuan.support.utils.Utility;
 import org.qii.weiciyuan.ui.blackmagic.BlackMagicActivity;
 import org.qii.weiciyuan.ui.interfaces.AbstractAppActivityNoSwipe;
 import org.qii.weiciyuan.ui.main.MainTimeLineActivity;
+
+import android.app.AlertDialog;
+import android.app.LoaderManager;
+import android.content.AsyncTaskLoader;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.Loader;
+import android.content.SharedPreferences;
+import android.content.res.TypedArray;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.text.TextUtils;
+import android.view.ActionMode;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AbsListView;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -27,12 +44,18 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-public class AccountActivity extends AbstractAppActivityNoSwipe implements LoaderManager.LoaderCallbacks<List<AccountBean>> {
+
+public class AccountActivity extends AbstractAppActivityNoSwipe
+        implements LoaderManager.LoaderCallbacks<List<AccountBean>> {
 
     private ListView listView = null;
+
     private AccountAdapter listAdapter = null;
+
     private List<AccountBean> accountList = new ArrayList<AccountBean>();
+
     private final int ADD_ACCOUNT_REQUEST_CODE = 0;
+
     private final int LOADER_ID = 0;
 
     @Override
@@ -42,6 +65,7 @@ public class AccountActivity extends AbstractAppActivityNoSwipe implements Loade
         jumpToHomeActivity();
 
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.accountactivity_layout);
         getActionBar().setTitle(getString(R.string.app_name));
         listAdapter = new AccountAdapter();
@@ -52,8 +76,10 @@ public class AccountActivity extends AbstractAppActivityNoSwipe implements Loade
         listView.setMultiChoiceModeListener(new AccountMultiChoiceModeListener());
         getLoaderManager().initLoader(LOADER_ID, null, this);
 
-        if (SettingUtility.firstStart())
+        if (SettingUtility.firstStart()) {
             showChangeLogDialog();
+        }
+
     }
 
 
@@ -79,8 +105,7 @@ public class AccountActivity extends AbstractAppActivityNoSwipe implements Loade
                 if (!TextUtils.isEmpty(id)) {
                     AccountBean bean = AccountDBTask.getAccount(id);
                     if (bean != null) {
-                        Intent start = new Intent(AccountActivity.this, MainTimeLineActivity.class);
-                        start.putExtra(BundleArgsConstants.ACCOUNT_EXTRA, bean);
+                        Intent start = MainTimeLineActivity.newIntent(bean);
                         startActivity(start);
                         finish();
                     }
@@ -95,7 +120,6 @@ public class AccountActivity extends AbstractAppActivityNoSwipe implements Loade
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.actionbar_menu_accountactivity, menu);
-        menu.findItem(R.id.menu_hack_login).setVisible(false);
         return true;
     }
 
@@ -105,7 +129,7 @@ public class AccountActivity extends AbstractAppActivityNoSwipe implements Loade
         switch (item.getItemId()) {
             case R.id.menu_add_account:
                 String[] values;
-                if (getResources().getBoolean(R.bool.blackmagic)) {
+                if (SettingUtility.isBlackMagicEnabled()) {
                     values = new String[3];
                     values[0] = getString(R.string.oauth_login);
                     values[1] = getString(R.string.official_app_login);
@@ -115,19 +139,22 @@ public class AccountActivity extends AbstractAppActivityNoSwipe implements Loade
                     values[0] = getString(R.string.oauth_login);
                     values[1] = getString(R.string.official_app_login);
                 }
-                new AlertDialog.Builder(this).setItems(values, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent intent;
-                        if (which == 0)
-                            intent = new Intent(AccountActivity.this, OAuthActivity.class);
-                        else if (which == 1)
-                            intent = new Intent(AccountActivity.this, SSOActivity.class);
-                        else
-                            intent = new Intent(AccountActivity.this, BlackMagicActivity.class);
-                        startActivityForResult(intent, ADD_ACCOUNT_REQUEST_CODE);
-                    }
-                }).show();
+                new AlertDialog.Builder(this)
+                        .setItems(values, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent;
+                                if (which == 0) {
+                                    intent = new Intent(AccountActivity.this, OAuthActivity.class);
+                                } else if (which == 1) {
+                                    intent = new Intent(AccountActivity.this, SSOActivity.class);
+                                } else {
+                                    intent = new Intent(AccountActivity.this,
+                                            BlackMagicActivity.class);
+                                }
+                                startActivityForResult(intent, ADD_ACCOUNT_REQUEST_CODE);
+                            }
+                        }).show();
 
                 break;
 //            case R.id.menu_hack_login:
@@ -143,12 +170,14 @@ public class AccountActivity extends AbstractAppActivityNoSwipe implements Loade
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == ADD_ACCOUNT_REQUEST_CODE && resultCode == RESULT_OK) {
             refresh();
-            if (data == null)
+            if (data == null) {
                 return;
+            }
             String expires_time = data.getExtras().getString("expires_in");
             long expiresDays = TimeUnit.SECONDS.toDays(Long.valueOf(expires_time));
 
-            String content = String.format(getString(R.string.token_expires_in_time), String.valueOf(expiresDays));
+            String content = String
+                    .format(getString(R.string.token_expires_in_time), String.valueOf(expiresDays));
             AlertDialog.Builder builder = new AlertDialog.Builder(this)
                     .setMessage(content)
                     .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
@@ -185,11 +214,11 @@ public class AccountActivity extends AbstractAppActivityNoSwipe implements Loade
     }
 
     private class AccountListItemClickListener implements AdapterView.OnItemClickListener {
+
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-            Intent intent = new Intent(AccountActivity.this, MainTimeLineActivity.class);
-            intent.putExtra("account", accountList.get(i));
+            Intent intent = MainTimeLineActivity.newIntent(accountList.get(i));
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
             finish();
@@ -228,7 +257,8 @@ public class AccountActivity extends AbstractAppActivityNoSwipe implements Loade
         }
 
         @Override
-        public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
+        public void onItemCheckedStateChanged(ActionMode mode, int position, long id,
+                boolean checked) {
             listAdapter.notifyDataSetChanged();
         }
     }
@@ -237,6 +267,7 @@ public class AccountActivity extends AbstractAppActivityNoSwipe implements Loade
     private class AccountAdapter extends BaseAdapter {
 
         int checkedBG;
+
         int defaultBG;
 
         public AccountAdapter() {
@@ -272,7 +303,8 @@ public class AccountActivity extends AbstractAppActivityNoSwipe implements Loade
 
             LayoutInflater layoutInflater = getLayoutInflater();
 
-            View mView = layoutInflater.inflate(R.layout.accountactivity_listview_item_layout, viewGroup, false);
+            View mView = layoutInflater
+                    .inflate(R.layout.accountactivity_listview_item_layout, viewGroup, false);
             mView.findViewById(R.id.listview_root).setBackgroundColor(defaultBG);
 
             if (listView.getCheckedItemPositions().get(i)) {
@@ -280,14 +312,16 @@ public class AccountActivity extends AbstractAppActivityNoSwipe implements Loade
             }
 
             TextView textView = (TextView) mView.findViewById(R.id.account_name);
-            if (accountList.get(i).getInfo() != null)
+            if (accountList.get(i).getInfo() != null) {
                 textView.setText(accountList.get(i).getInfo().getScreen_name());
-            else
+            } else {
                 textView.setText(accountList.get(i).getUsernick());
+            }
             ImageView imageView = (ImageView) mView.findViewById(R.id.imageView_avatar);
 
             if (!TextUtils.isEmpty(accountList.get(i).getAvatar_url())) {
-                getBitmapDownloader().downloadAvatar(imageView, accountList.get(i).getInfo(), false);
+                getBitmapDownloader()
+                        .downloadAvatar(imageView, accountList.get(i).getInfo(), false);
             }
 
             TextView token = (TextView) mView.findViewById(R.id.token_expired);
@@ -302,6 +336,7 @@ public class AccountActivity extends AbstractAppActivityNoSwipe implements Loade
     }
 
     private static class AccountDataLoader extends AsyncTaskLoader<List<AccountBean>> {
+
         public AccountDataLoader(Context context, Bundle args) {
             super(context);
         }

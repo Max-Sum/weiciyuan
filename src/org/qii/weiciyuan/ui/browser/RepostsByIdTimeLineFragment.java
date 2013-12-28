@@ -1,18 +1,5 @@
 package org.qii.weiciyuan.ui.browser;
 
-import android.app.ActionBar;
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.support.v4.content.Loader;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.*;
 import org.qii.weiciyuan.R;
 import org.qii.weiciyuan.bean.MessageBean;
 import org.qii.weiciyuan.bean.RepostListBean;
@@ -27,8 +14,28 @@ import org.qii.weiciyuan.support.utils.Utility;
 import org.qii.weiciyuan.ui.actionmenu.RepostSingleChoiceModeListener;
 import org.qii.weiciyuan.ui.adapter.StatusListAdapter;
 import org.qii.weiciyuan.ui.basefragment.AbstractMessageTimeLineFragment;
+import org.qii.weiciyuan.ui.common.QuickSendProgressFragment;
 import org.qii.weiciyuan.ui.loader.RepostByIdMsgLoader;
-import org.qii.weiciyuan.ui.widgets.QuickSendProgressFragment;
+
+import android.app.ActionBar;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.v4.content.Loader;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AbsListView;
+import android.widget.AdapterView;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * User: qii
@@ -45,6 +52,7 @@ public class RepostsByIdTimeLineFragment extends AbstractMessageTimeLineFragment
     private LinearLayout quick_repost;
 
     private String token;
+
     private String id;
 
     private RepostListBean bean = new RepostListBean();
@@ -94,7 +102,8 @@ public class RepostsByIdTimeLineFragment extends AbstractMessageTimeLineFragment
             return true;
         } else {
             if (!haveToken) {
-                Toast.makeText(getActivity(), getString(R.string.dont_have_account), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getString(R.string.dont_have_account),
+                        Toast.LENGTH_SHORT).show();
             }
 
             if (!contentNumBelow140) {
@@ -129,23 +138,31 @@ public class RepostsByIdTimeLineFragment extends AbstractMessageTimeLineFragment
                 break;
         }
 
-
         getListView().setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
         getListView().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position,
+                    long id) {
                 if (position - 1 < getList().getSize() && position - 1 >= 0) {
                     if (mActionMode != null) {
                         mActionMode.finish();
                         mActionMode = null;
                         getListView().setItemChecked(position, true);
                         timeLineAdapter.notifyDataSetChanged();
-                        mActionMode = getActivity().startActionMode(new RepostSingleChoiceModeListener(getListView(), (StatusListAdapter) timeLineAdapter, RepostsByIdTimeLineFragment.this, quick_repost, bean.getItemList().get(position - 1)));
+                        mActionMode = getActivity().startActionMode(
+                                new RepostSingleChoiceModeListener(getListView(),
+                                        (StatusListAdapter) timeLineAdapter,
+                                        RepostsByIdTimeLineFragment.this, quick_repost,
+                                        bean.getItemList().get(position - 1)));
                         return true;
                     } else {
                         getListView().setItemChecked(position, true);
                         timeLineAdapter.notifyDataSetChanged();
-                        mActionMode = getActivity().startActionMode(new RepostSingleChoiceModeListener(getListView(), (StatusListAdapter) timeLineAdapter, RepostsByIdTimeLineFragment.this, quick_repost, bean.getItemList().get(position - 1)));
+                        mActionMode = getActivity().startActionMode(
+                                new RepostSingleChoiceModeListener(getListView(),
+                                        (StatusListAdapter) timeLineAdapter,
+                                        RepostsByIdTimeLineFragment.this, quick_repost,
+                                        bean.getItemList().get(position - 1)));
                         return true;
                     }
 
@@ -170,26 +187,28 @@ public class RepostsByIdTimeLineFragment extends AbstractMessageTimeLineFragment
 
     @Override
     public View onCreateView(LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+            ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.repostsbyidtimelinefragment_layout, container, false);
         empty = (TextView) view.findViewById(R.id.empty);
         progressBar = (ProgressBar) view.findViewById(R.id.progressbar);
         quick_repost = (LinearLayout) view.findViewById(R.id.quick_repost);
         pullToRefreshListView = (PullToRefreshListView) view.findViewById(R.id.listView);
-        pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
-            @Override
-            public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+        pullToRefreshListView
+                .setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
+                    @Override
+                    public void onRefresh(PullToRefreshBase<ListView> refreshView) {
 
-                loadNewMsg();
+                        loadNewMsg();
 
-            }
-        });
-        pullToRefreshListView.setOnLastItemVisibleListener(new PullToRefreshBase.OnLastItemVisibleListener() {
-            @Override
-            public void onLastItemVisible() {
-                loadOldMsg(null);
-            }
-        });
+                    }
+                });
+        pullToRefreshListView
+                .setOnLastItemVisibleListener(new PullToRefreshBase.OnLastItemVisibleListener() {
+                    @Override
+                    public void onLastItemVisible() {
+                        loadOldMsg(null);
+                    }
+                });
         getListView().setScrollingCacheEnabled(false);
 
         getListView().setHeaderDividersEnabled(false);
@@ -242,7 +261,8 @@ public class RepostsByIdTimeLineFragment extends AbstractMessageTimeLineFragment
     }
 
     protected void buildListAdapter() {
-        timeLineAdapter = new StatusListAdapter(this, getList().getItemList(), getListView(), false);
+        timeLineAdapter = new StatusListAdapter(this, getList().getItemList(), getListView(),
+                false);
         pullToRefreshListView.setAdapter(timeLineAdapter);
     }
 
@@ -254,6 +274,7 @@ public class RepostsByIdTimeLineFragment extends AbstractMessageTimeLineFragment
 
 
     class SimpleTask extends AsyncTask<Void, Void, MessageBean> {
+
         WeiboException e;
 
         QuickSendProgressFragment progressFragment = new QuickSendProgressFragment();
@@ -307,13 +328,15 @@ public class RepostsByIdTimeLineFragment extends AbstractMessageTimeLineFragment
 
         @Override
         protected void onPostExecute(MessageBean s) {
-            if (progressFragment != null)
+            if (progressFragment != null) {
                 progressFragment.dismissAllowingStateLoss();
+            }
             if (s != null) {
                 et.setText("");
                 loadNewMsg();
             } else {
-                Toast.makeText(getActivity(), getString(R.string.send_failed), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getString(R.string.send_failed), Toast.LENGTH_SHORT)
+                        .show();
             }
             super.onPostExecute(s);
 
@@ -322,10 +345,9 @@ public class RepostsByIdTimeLineFragment extends AbstractMessageTimeLineFragment
 
 
     protected void listViewItemClick(AdapterView parent, View view, int position, long id) {
-        Intent intent = new Intent(getActivity(), BrowserWeiboMsgActivity.class);
-        intent.putExtra("msg", bean.getItemList().get(position));
-        intent.putExtra("token", GlobalContext.getInstance().getSpecialToken());
-        startActivity(intent);
+        startActivity(BrowserWeiboMsgActivity
+                .newIntent(bean.getItemList().get(position),
+                        GlobalContext.getInstance().getSpecialToken()));
     }
 
 
@@ -371,7 +393,8 @@ public class RepostsByIdTimeLineFragment extends AbstractMessageTimeLineFragment
             invlidateTabText();
 
         } else {
-            Toast.makeText(getActivity(), getString(R.string.older_message_empty), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), getString(R.string.older_message_empty),
+                    Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -388,7 +411,8 @@ public class RepostsByIdTimeLineFragment extends AbstractMessageTimeLineFragment
         bundle.putString("endId", endId);
         bundle.putInt("position", position);
         VelocityListView velocityListView = (VelocityListView) getListView();
-        bundle.putBoolean("towardsBottom", velocityListView.getTowardsOrientation() == VelocityListView.TOWARDS_BOTTOM);
+        bundle.putBoolean("towardsBottom",
+                velocityListView.getTowardsOrientation() == VelocityListView.TOWARDS_BOTTOM);
         getLoaderManager().restartLoader(MIDDLE_MSG_LOADER_ID, bundle, msgCallback);
 
     }
@@ -411,7 +435,8 @@ public class RepostsByIdTimeLineFragment extends AbstractMessageTimeLineFragment
     }
 
 
-    protected Loader<AsyncTaskLoaderResult<RepostListBean>> onCreateNewMsgLoader(int loaderId, Bundle args) {
+    protected Loader<AsyncTaskLoaderResult<RepostListBean>> onCreateNewMsgLoader(int loaderId,
+            Bundle args) {
         String sinceId = null;
         if (getList().getItemList().size() > 0) {
             sinceId = getList().getItemList().get(0).getId();
@@ -419,11 +444,14 @@ public class RepostsByIdTimeLineFragment extends AbstractMessageTimeLineFragment
         return new RepostByIdMsgLoader(getActivity(), id, token, sinceId, null);
     }
 
-    protected Loader<AsyncTaskLoaderResult<RepostListBean>> onCreateMiddleMsgLoader(int loaderId, Bundle args, String middleBeginId, String middleEndId, String middleEndTag, int middlePosition) {
+    protected Loader<AsyncTaskLoaderResult<RepostListBean>> onCreateMiddleMsgLoader(int loaderId,
+            Bundle args, String middleBeginId, String middleEndId, String middleEndTag,
+            int middlePosition) {
         return new RepostByIdMsgLoader(getActivity(), id, token, middleBeginId, middleEndId);
     }
 
-    protected Loader<AsyncTaskLoaderResult<RepostListBean>> onCreateOldMsgLoader(int loaderId, Bundle args) {
+    protected Loader<AsyncTaskLoaderResult<RepostListBean>> onCreateOldMsgLoader(int loaderId,
+            Bundle args) {
         String maxId = null;
 
         if (getList().getSize() > 0) {
