@@ -18,10 +18,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
-import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
@@ -46,6 +44,8 @@ import java.util.concurrent.TimeUnit;
 public class AccountActivity extends AbstractAppActivityNoSwipe
         implements LoaderManager.LoaderCallbacks<List<AccountBean>> {
 
+    private static final String ACTION_OPEN_FROM_APP_INNER = "org.qii.weiciyuan:accountactivity";
+
     private ListView listView = null;
 
     private AccountAdapter listAdapter = null;
@@ -56,11 +56,18 @@ public class AccountActivity extends AbstractAppActivityNoSwipe
 
     private final int LOADER_ID = 0;
 
+    public static Intent newIntent() {
+        Intent intent = new Intent(GlobalContext.getInstance(), AccountActivity.class);
+        intent.setAction(ACTION_OPEN_FROM_APP_INNER);
+        return intent;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
-        GlobalContext.getInstance().startedApp = true;
-        jumpToHomeActivity();
+        if (getIntent() != null && !ACTION_OPEN_FROM_APP_INNER.equals(getIntent().getAction())) {
+            jumpToMainTimeLineActivity();
+        }
 
         super.onCreate(savedInstanceState);
 
@@ -83,7 +90,6 @@ public class AccountActivity extends AbstractAppActivityNoSwipe
 
     @Override
     public void onBackPressed() {
-        GlobalContext.getInstance().startedApp = false;
         super.onBackPressed();
     }
 
@@ -93,24 +99,18 @@ public class AccountActivity extends AbstractAppActivityNoSwipe
     }
 
 
-    private void jumpToHomeActivity() {
-        Intent intent = getIntent();
-        if (intent != null) {
-            boolean launcher = intent.getBooleanExtra("launcher", true);
-            if (launcher) {
-                SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-                String id = sharedPref.getString("id", "");
-                if (!TextUtils.isEmpty(id)) {
-                    AccountBean bean = AccountDBTask.getAccount(id);
-                    if (bean != null) {
-                        Intent start = MainTimeLineActivity.newIntent(bean);
-                        startActivity(start);
-                        finish();
-                    }
-                }
+    private void jumpToMainTimeLineActivity() {
+
+        String id = SettingUtility.getDefaultAccountId();
+
+        if (!TextUtils.isEmpty(id)) {
+            AccountBean bean = AccountDBTask.getAccount(id);
+            if (bean != null) {
+                Intent start = MainTimeLineActivity.newIntent(bean);
+                startActivity(start);
+                finish();
             }
         }
-
 
     }
 
@@ -123,42 +123,36 @@ public class AccountActivity extends AbstractAppActivityNoSwipe
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent;
         switch (item.getItemId()) {
             case R.id.menu_add_account:
-                String[] values;
-                if (SettingUtility.isBlackMagicEnabled()) {
-                    values = new String[3];
-                    values[0] = getString(R.string.oauth_login);
-                    values[1] = getString(R.string.official_app_login);
-                    values[2] = getString(R.string.hack_login);
-                } else {
-                    values = new String[2];
-                    values[0] = getString(R.string.oauth_login);
-                    values[1] = getString(R.string.official_app_login);
+                final ArrayList<Class> activityList = new ArrayList<Class>();
+                ArrayList<String> itemValueList = new ArrayList<String>();
+
+                activityList.add(OAuthActivity.class);
+                itemValueList.add(getString(R.string.oauth_login));
+
+                if (Utility.isSinaWeiboSafe(this)) {
+                    activityList.add(SSOActivity.class);
+                    itemValueList.add(getString(R.string.official_app_login));
                 }
+
+                if (SettingUtility.isBlackMagicEnabled()) {
+                    activityList.add(BlackMagicActivity.class);
+                    itemValueList.add(getString(R.string.hack_login));
+                }
+
                 new AlertDialog.Builder(this)
-                        .setItems(values, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Intent intent;
-                                if (which == 0) {
-                                    intent = new Intent(AccountActivity.this, OAuthActivity.class);
-                                } else if (which == 1) {
-                                    intent = new Intent(AccountActivity.this, SSOActivity.class);
-                                } else {
-                                    intent = new Intent(AccountActivity.this,
-                                            BlackMagicActivity.class);
-                                }
-                                startActivityForResult(intent, ADD_ACCOUNT_REQUEST_CODE);
-                            }
-                        }).show();
+                        .setItems(itemValueList.toArray(new String[0]),
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent intent = new Intent(AccountActivity.this,
+                                                activityList.get(which));
+                                        startActivityForResult(intent, ADD_ACCOUNT_REQUEST_CODE);
+                                    }
+                                }).show();
 
                 break;
-//            case R.id.menu_hack_login:
-//                intent = new Intent(this, BlackMagicActivity.class);
-//                startActivityForResult(intent, ADD_ACCOUNT_REQUEST_CODE);
-//                break;
         }
         return true;
     }
@@ -196,7 +190,7 @@ public class AccountActivity extends AbstractAppActivityNoSwipe
 
     @Override
     public Loader<List<AccountBean>> onCreateLoader(int id, Bundle args) {
-        return new AccountDataLoader(AccountActivity.this, args);
+        return new AccountDBLoader(AccountActivity.this, args);
     }
 
     @Override
@@ -333,9 +327,9 @@ public class AccountActivity extends AbstractAppActivityNoSwipe
         }
     }
 
-    private static class AccountDataLoader extends AsyncTaskLoader<List<AccountBean>> {
+    private static class AccountDBLoader extends AsyncTaskLoader<List<AccountBean>> {
 
-        public AccountDataLoader(Context context, Bundle args) {
+        public AccountDBLoader(Context context, Bundle args) {
             super(context);
         }
 

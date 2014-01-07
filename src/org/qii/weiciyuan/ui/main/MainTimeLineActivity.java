@@ -378,7 +378,6 @@ public class MainTimeLineActivity extends MainTimeLineParentActivity implements 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        GlobalContext.getInstance().startedApp = false;
         GlobalContext.getInstance().getBitmapCache().evictAll();
         finish();
     }
@@ -495,9 +494,10 @@ public class MainTimeLineActivity extends MainTimeLineParentActivity implements 
     @Override
     protected void onPause() {
         super.onPause();
-        unregisterReceiver(newMsgInterruptBroadcastReceiver);
+        Utility.unregisterReceiverIgnoredReceiverNotRegisteredException(this,
+                newMsgInterruptBroadcastReceiver);
         if (musicReceiver != null) {
-            unregisterReceiver(musicReceiver);
+            Utility.unregisterReceiverIgnoredReceiverNotRegisteredException(this, musicReceiver);
         }
 
         if (isFinishing()) {

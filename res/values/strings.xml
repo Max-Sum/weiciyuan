@@ -370,6 +370,7 @@
     <string name="share_sum">微博统计的分享次数</string>
     <string name="total_share_count">累计分享了%s次</string>
     <string name="cant_not_convert_to_weibo_id">链接地址无法解析成微博地址</string>
+    <string name="converting_weibo_link">正在转换微博链接……</string>
 
 
     <!--gallery-->
@@ -544,7 +545,8 @@
     <string name="comment_sent_to_you">评论了你的微博</string>
     <string name="reply_to_you">回复了你的评论</string>
     <string name="comment_at_to_you">在评论中提到了你</string>
-    <string name="weibo_at_to_you">转发了你的微博</string>
+    <string name="weibo_at_to_you">提到了你</string>
+    <string name="retweeted_your_weibo">转发了你的微博</string>
     <string name="next_message">下一条</string>
     <string name="first_message">第一条</string>
 </resources>
