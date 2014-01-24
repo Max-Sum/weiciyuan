@@ -112,7 +112,7 @@ public class FriendsTimeLineDBTask {
 //                    + HomeTable.HomeDataTable.ACCOUNTID
 //                    + " in " + "(" + accountId + ") order by " + HomeTable.HomeDataTable.ID + " desc limit " + needDeletedNumber + " ) ";
 //
-//            dgetWsd().execSQL(sql);
+//            getWsd().execSQL(sql);
 //        }
     }
 
