@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import org.qii.weiciyuan.support.utils.ThemeUtility;
-
+import org.qii.weiciyuan.R;
 /**
  * User: qii
  * Date: 13-10-15
@@ -26,6 +26,7 @@ public class SwipeFrameLayout extends FrameLayout {
 
     private void init() {
         setBackground(ThemeUtility.getDrawable(android.R.attr.windowBackground));
+        this.setId(R.id.swipe_framelayout);
     }
 
 }

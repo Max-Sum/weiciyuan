@@ -19,7 +19,7 @@ public class AppConfig {
     public static final int DEFAULT_MENTIONS_WEIBO_DB_CACHE_COUNT = 100;
     public static final int DEFAULT_COMMENTS_TO_ME_DB_CACHE_COUNT = 100;
     public static final int DEFAULT_COMMENTS_BY_ME_DB_CACHE_COUNT = 100;
-    public static final int DEFAULT_HOME_DB_CACHE_COUNT = 500;
+    public static final int DEFAULT_HOME_DB_CACHE_COUNT = 300;
 
     public static final int DB_CACHE_COUNT_OFFSET = 10;
 
@@ -35,7 +35,7 @@ public class AppConfig {
     public static final int SAVED_DAYS = 2;
 
     //swipe to close,300px
-    public static final int SWIPE_MIN_DISTANCE = 300;
+    //public static final int SWIPE_MIN_DISTANCE = 300;
 
 
     public static final int REFRESH_DELAYED_MILL_SECOND_TIME = 600;
@@ -43,7 +43,7 @@ public class AppConfig {
     public static final int CREATE_MODIFY_FRIEND_GROUP_NAME_LENGTH_LIMIT = 10;
 
     //ViewConfiguration
-    public static int getScrollSlop() {
-        return Utility.dip2px(2);
-    }
+    //public static int getScrollSlop() {
+    //    return Utility.dip2px(2);
+    //}
 }
