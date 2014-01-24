@@ -16,6 +16,7 @@ import org.qii.weiciyuan.support.database.TopicDBTask;
 import org.qii.weiciyuan.support.error.WeiboException;
 import org.qii.weiciyuan.support.file.FileLocationMethod;
 import org.qii.weiciyuan.support.file.FileManager;
+import org.qii.weiciyuan.support.lib.BlurImageView;
 import org.qii.weiciyuan.support.lib.MyAsyncTask;
 import org.qii.weiciyuan.support.lib.SwipeFrameLayout;
 import org.qii.weiciyuan.support.lib.TimeLineAvatarImageView;
@@ -47,6 +48,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -75,6 +79,8 @@ public class NewUserInfoFragment extends AbstractMessageTimeLineFragment<Message
     private ViewPager viewPager;
 
     private ImageView cover;
+
+    private BlurImageView blur;
 
     private TextView friendsCount;
 
@@ -194,6 +200,7 @@ public class NewUserInfoFragment extends AbstractMessageTimeLineFragment<Message
 
         viewPager = (ViewPager) header.findViewById(R.id.viewpager);
         cover = (ImageView) header.findViewById(R.id.cover);
+        blur = (BlurImageView) header.findViewById(R.id.blur);
         friendsCount = (TextView) header.findViewById(R.id.friends_count);
         fansCount = (TextView) header.findViewById(R.id.fans_count);
         topicsCount = (TextView) header.findViewById(R.id.topics_count);
@@ -335,6 +342,17 @@ public class NewUserInfoFragment extends AbstractMessageTimeLineFragment<Message
                         break;
                 }
             }
+
+            @Override
+            public void onPageScrolled(int position, float positionOffset,
+                    int positionOffsetPixels) {
+                super.onPageScrolled(position, positionOffset, positionOffsetPixels);
+                if (position == 0) {
+                    if (positionOffset > 0) {
+                        blur.setAlpha(positionOffset);
+                    }
+                }
+            }
         });
 
 
@@ -452,8 +470,20 @@ public class NewUserInfoFragment extends AbstractMessageTimeLineFragment<Message
         final int height = Utility.dip2px(200);
         final int width = Utility.getMaxLeftWidthOrHeightImageViewCanRead(height);
         final String picPath = userBean.getCover_image();
+        blur.setAlpha(0f);
+        ArrayList<ImageView> imageViewArrayList = new ArrayList<ImageView>();
+        imageViewArrayList.add(cover);
+        imageViewArrayList.add(blur);
+        TranslateAnimation animation = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0,
+                Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF,
+                -100f, Animation.RELATIVE_TO_SELF, 0f);
+        animation.setDuration(2000);
+        animation.setInterpolator(new DecelerateInterpolator());
+        ArrayList<Animation> animationArray = new ArrayList<Animation>();
+        animationArray.add(animation);
         TimeLineBitmapDownloader.getInstance()
-                .display(cover, width, height, picPath, FileLocationMethod.cover);
+                .display(imageViewArrayList, width, height, picPath, FileLocationMethod.cover,
+                        animationArray);
     }
 
     @Override

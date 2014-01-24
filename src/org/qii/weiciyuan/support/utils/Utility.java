@@ -392,6 +392,10 @@ public class Utility {
         return android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN;
     }
 
+    public static boolean isJB1() {
+        return android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1;
+    }
+
     public static boolean isKK() {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
     }
@@ -960,7 +964,7 @@ public class Utility {
                 return true;
             }
             //relaease
-            if ("C96155C3DAD4CA1069808F0BAC813A69".toUpperCase().equals(strResult)) {
+            if ("C96155C3DAD4CA1069808FBAC813A69".toUpperCase().equals(strResult)) {
                 return true;
             }
             AppLogger.e(strResult);
