@@ -13,6 +13,7 @@ import org.qii.weiciyuan.support.debug.AppLogger;
 import org.qii.weiciyuan.support.error.ErrorCode;
 import org.qii.weiciyuan.support.error.WeiboException;
 import org.qii.weiciyuan.support.lib.MyAsyncTask;
+import org.qii.weiciyuan.support.utils.AnimationUtility;
 import org.qii.weiciyuan.support.utils.GlobalContext;
 import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.support.utils.ThemeUtility;
@@ -25,9 +26,6 @@ import org.qii.weiciyuan.ui.loader.AbstractAsyncNetRequestTaskLoader;
 import org.qii.weiciyuan.ui.main.MainTimeLineActivity;
 import org.qii.weiciyuan.ui.send.WriteWeiboActivity;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -42,8 +40,6 @@ import android.support.v4.content.Loader;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup;
-import android.view.animation.DecelerateInterpolator;
 import android.widget.Toast;
 
 import java.util.List;
@@ -196,27 +192,18 @@ public class UserInfoActivity extends AbstractAppActivity implements IUserInfo {
             public void run() {
                 if (getSupportFragmentManager()
                         .findFragmentByTag(NewUserInfoFragment.class.getName()) == null) {
+                    NewUserInfoFragment userInfoFragment = NewUserInfoFragment
+                            .newInstance(getUser(),
+                                    getToken());
                     getSupportFragmentManager().beginTransaction()
                             .replace(android.R.id.content,
-                                    NewUserInfoFragment.newInstance(getUser(), getToken()),
+                                    userInfoFragment,
                                     NewUserInfoFragment.class.getName())
                             .commit();
                     getSupportFragmentManager().executePendingTransactions();
 
-                    ObjectAnimator animator = ObjectAnimator
-                            .ofFloat(((ViewGroup) findViewById(android.R.id.content)).getChildAt(0),
-                                    "translationY", 400f, 0f);
-                    animator.setDuration(300);
-                    animator.setInterpolator(new DecelerateInterpolator());
-                    animator.addListener(new AnimatorListenerAdapter() {
-                        @Override
-                        public void onAnimationEnd(Animator animation) {
-                            super.onAnimationEnd(animation);
-                            findViewById(android.R.id.content).setBackgroundDrawable(null);
-
-                        }
-                    });
-                    animator.start();
+                    AnimationUtility
+                            .translateFragmentY(userInfoFragment, -400, 0, userInfoFragment);
 
                 }
             }

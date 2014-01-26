@@ -32,6 +32,7 @@ import org.qii.weiciyuan.ui.main.LeftMenuFragment;
 import org.qii.weiciyuan.ui.main.MainTimeLineActivity;
 import org.qii.weiciyuan.ui.topic.UserTopicListActivity;
 
+import android.animation.Animator;
 import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
@@ -66,7 +67,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * Date: 13-6-20
  */
 public class NewUserInfoFragment extends AbstractMessageTimeLineFragment<MessageListBean>
-        implements MainTimeLineActivity.ScrollableListFragment {
+        implements MainTimeLineActivity.ScrollableListFragment, Animator.AnimatorListener {
 
 
     private static final String LIMITED_READ_MESSAGE_COUNT = "10";
@@ -363,7 +364,7 @@ public class NewUserInfoFragment extends AbstractMessageTimeLineFragment<Message
 
     }
 
-    private void setValue() {
+    private void displayBasicInfo() {
         HeaderPagerAdapter adapter = new HeaderPagerAdapter();
         viewPager.setAdapter(adapter);
 
@@ -461,16 +462,14 @@ public class NewUserInfoFragment extends AbstractMessageTimeLineFragment<Message
             followsYou.setVisibility(View.GONE);
         }
 
-        cover.post(new Runnable() {
-            @Override
-            public void run() {
-                displayCoverPicture();
-            }
-        });
-
     }
 
     private void displayCoverPicture() {
+
+        if (cover.getDrawable() != null) {
+            return;
+        }
+
 //        final int height = viewPager.getHeight();
         final int height = Utility.dip2px(200);
         final int width = Utility.getMaxLeftWidthOrHeightImageViewCanRead(height);
@@ -482,7 +481,7 @@ public class NewUserInfoFragment extends AbstractMessageTimeLineFragment<Message
         TranslateAnimation animation = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0,
                 Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF,
                 -100f, Animation.RELATIVE_TO_SELF, 0f);
-        animation.setDuration(2000);
+        animation.setDuration(3000);
         animation.setInterpolator(new DecelerateInterpolator());
         ArrayList<Animation> animationArray = new ArrayList<Animation>();
         animationArray.add(animation);
@@ -514,7 +513,8 @@ public class NewUserInfoFragment extends AbstractMessageTimeLineFragment<Message
         @Override
         public void onChange(UserBean newUserBean) {
             userBean = newUserBean;
-            setValue();
+            displayBasicInfo();
+            displayCoverPicture();
             for (MessageBean msg : getList().getItemList()) {
                 msg.setUser(newUserBean);
             }
@@ -542,19 +542,13 @@ public class NewUserInfoFragment extends AbstractMessageTimeLineFragment<Message
 
         switch (getCurrentState(savedInstanceState)) {
             case FIRST_TIME_START:
-                setValue();
-                if (isMyself() && isOpenedFromMainPage()) {
-                    readDBCache();
-                } else {
-                    fetchLastestUserInfoFromServer();
-                    loadNewMsg();
-                    fetchTopicInfoFromServer();
-                }
+                displayBasicInfo();
                 break;
             case SCREEN_ROTATE:
                 //nothing
                 refreshLayout(getList());
-                setValue();
+                displayBasicInfo();
+                displayCoverPicture();
                 if (bean.getSize() > 0) {
                     moreFooter.setVisibility(View.VISIBLE);
                     getListView().removeFooterView(progressFooter);
@@ -566,8 +560,8 @@ public class NewUserInfoFragment extends AbstractMessageTimeLineFragment<Message
                 token = savedInstanceState.getString("token");
                 getAdapter().notifyDataSetChanged();
                 refreshLayout(getList());
-                setValue();
-
+                displayBasicInfo();
+                displayCoverPicture();
                 break;
         }
 
@@ -824,6 +818,39 @@ public class NewUserInfoFragment extends AbstractMessageTimeLineFragment<Message
 
     }
 
+    @Override
+    public void onAnimationStart(Animator animation) {
+
+    }
+
+    @Override
+    public void onAnimationEnd(Animator animation) {
+        if (getActivity() == null) {
+            return;
+        }
+
+        displayCoverPicture();
+
+        if (isMyself() && isOpenedFromMainPage()) {
+            readDBCache();
+        } else {
+            fetchLastestUserInfoFromServer();
+            loadNewMsg();
+            fetchTopicInfoFromServer();
+
+        }
+    }
+
+    @Override
+    public void onAnimationCancel(Animator animation) {
+
+    }
+
+    @Override
+    public void onAnimationRepeat(Animator animation) {
+
+    }
+
 
     class HeaderPagerAdapter extends PagerAdapter {
 
@@ -977,7 +1004,8 @@ public class NewUserInfoFragment extends AbstractMessageTimeLineFragment<Message
             if (o == null || getActivity() == null) {
                 return;
             }
-            setValue();
+            displayBasicInfo();
+            displayCoverPicture();
             if (getActivity() instanceof UserInfoActivity) {
                 ((UserInfoActivity) getActivity()).setUser(o);
                 getActivity().invalidateOptionsMenu();
