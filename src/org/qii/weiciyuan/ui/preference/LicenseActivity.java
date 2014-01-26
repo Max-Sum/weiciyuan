@@ -1,6 +1,7 @@
 package org.qii.weiciyuan.ui.preference;
 
 import org.qii.weiciyuan.R;
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.support.utils.Utility;
 import org.qii.weiciyuan.ui.interfaces.AbstractAppActivity;
 
@@ -80,7 +81,8 @@ public class LicenseActivity extends AbstractAppActivity {
             case android.R.id.home:
                 intent = new Intent(this, AboutActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
+                SwipebackActivityUtils.startSwipebackActivity(this, intent);
+                //startActivity(intent);
                 return true;
             case R.id.menu_print:
                 PrintManager printManager = (PrintManager) getSystemService(Context.PRINT_SERVICE);

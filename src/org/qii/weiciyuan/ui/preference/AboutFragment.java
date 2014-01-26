@@ -6,6 +6,7 @@ import org.qii.weiciyuan.support.file.FileManager;
 import org.qii.weiciyuan.support.lib.changelogdialog.ChangeLogDialog;
 import org.qii.weiciyuan.support.settinghelper.SettingUtility;
 import org.qii.weiciyuan.support.utils.GlobalContext;
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.ui.send.WriteWeiboActivity;
 
 import android.app.ActivityManager;
@@ -62,7 +63,8 @@ public class AboutFragment extends PreferenceFragment {
                         intent.putExtra("token", GlobalContext.getInstance().getSpecialToken());
                         intent.putExtra("account", GlobalContext.getInstance().getAccountBean());
                         intent.putExtra("content", buildContent());
-                        startActivity(intent);
+                        SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
+                        //startActivity(intent);
                         return true;
                     }
                 });
@@ -75,7 +77,8 @@ public class AboutFragment extends PreferenceFragment {
                         intent.putExtra("token", GlobalContext.getInstance().getSpecialToken());
                         intent.putExtra("account", GlobalContext.getInstance().getAccountBean());
                         intent.putExtra("content", getString(R.string.recommend_content));
-                        startActivity(intent);
+                        SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
+                        //startActivity(intent);
                         return true;
                     }
                 });

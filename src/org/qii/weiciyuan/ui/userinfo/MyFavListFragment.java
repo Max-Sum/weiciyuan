@@ -13,6 +13,7 @@ import org.qii.weiciyuan.support.database.FavouriteDBTask;
 import org.qii.weiciyuan.support.error.WeiboException;
 import org.qii.weiciyuan.support.lib.MyAsyncTask;
 import org.qii.weiciyuan.support.utils.GlobalContext;
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.support.utils.Utility;
 import org.qii.weiciyuan.ui.basefragment.AbstractMessageTimeLineFragment;
 import org.qii.weiciyuan.ui.browser.BrowserWeiboMsgActivity;
@@ -127,9 +128,10 @@ public class MyFavListFragment extends AbstractMessageTimeLineFragment<FavListBe
     }
 
     protected void listViewItemClick(AdapterView parent, View view, int position, long id) {
-        startActivityForResult(
-                BrowserWeiboMsgActivity.newIntent(bean.getItem(position),
-                        GlobalContext.getInstance().getSpecialToken()),
+        Intent intent = BrowserWeiboMsgActivity.newIntent(bean.getItem(position),
+                GlobalContext.getInstance().getSpecialToken());
+        SwipebackActivityUtils.setActivityScreenshot(getActivity(), intent);
+        startActivityForResult(intent,
                 MainTimeLineActivity.REQUEST_CODE_UPDATE_MY_FAV_TIMELINE_COMMENT_REPOST_COUNT);
 
     }

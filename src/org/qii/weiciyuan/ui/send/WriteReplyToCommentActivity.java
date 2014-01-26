@@ -16,6 +16,7 @@ import org.qii.weiciyuan.othercomponent.sendweiboservice.SendReplyToCommentServi
 import org.qii.weiciyuan.support.database.DraftDBManager;
 import org.qii.weiciyuan.support.database.draftbean.ReplyDraftBean;
 import org.qii.weiciyuan.support.utils.GlobalContext;
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.support.utils.Utility;
 import org.qii.weiciyuan.ui.search.AtUserActivity;
 
@@ -192,7 +193,8 @@ public class WriteReplyToCommentActivity extends AbstractWriteActivity<CommentBe
             case R.id.menu_at:
                 Intent intent = new Intent(WriteReplyToCommentActivity.this, AtUserActivity.class);
                 intent.putExtra("token", token);
-                startActivityForResult(intent, AT_USER);
+                SwipebackActivityUtils.startSwipebackActivity(this, intent);
+                //startActivityForResult(intent, AT_USER);
                 break;
             case R.id.menu_clear:
                 clearContentMenu();

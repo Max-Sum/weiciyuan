@@ -22,6 +22,7 @@ import org.qii.weiciyuan.support.lib.SwipeFrameLayout;
 import org.qii.weiciyuan.support.lib.TimeLineAvatarImageView;
 import org.qii.weiciyuan.support.lib.pulltorefresh.PullToRefreshBase;
 import org.qii.weiciyuan.support.utils.GlobalContext;
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.support.utils.TimeLineUtility;
 import org.qii.weiciyuan.support.utils.Utility;
 import org.qii.weiciyuan.ui.basefragment.AbstractMessageTimeLineFragment;
@@ -238,7 +239,8 @@ public class NewUserInfoFragment extends AbstractMessageTimeLineFragment<Message
                 Intent intent = new Intent(getActivity(), UserTimeLineActivity.class);
                 intent.putExtra("token", GlobalContext.getInstance().getSpecialToken());
                 intent.putExtra("user", userBean);
-                startActivity(intent);
+                SwipebackActivityUtils.startSwipebackActivity(getActivity(),intent);
+                //startActivity(intent);
             }
         });
 
@@ -248,7 +250,8 @@ public class NewUserInfoFragment extends AbstractMessageTimeLineFragment<Message
                 Intent intent = new Intent(getActivity(), FriendListActivity.class);
                 intent.putExtra("token", GlobalContext.getInstance().getSpecialToken());
                 intent.putExtra("user", userBean);
-                startActivity(intent);
+                SwipebackActivityUtils.startSwipebackActivity(getActivity(),intent);
+                //startActivity(intent);
             }
         });
 
@@ -258,7 +261,8 @@ public class NewUserInfoFragment extends AbstractMessageTimeLineFragment<Message
                 Intent intent = new Intent(getActivity(), FanListActivity.class);
                 intent.putExtra("token", GlobalContext.getInstance().getSpecialToken());
                 intent.putExtra("user", userBean);
-                startActivity(intent);
+                SwipebackActivityUtils.startSwipebackActivity(getActivity(),intent);
+                //startActivity(intent);
             }
         });
 
@@ -268,7 +272,8 @@ public class NewUserInfoFragment extends AbstractMessageTimeLineFragment<Message
                 Intent intent = new Intent(getActivity(), UserTopicListActivity.class);
                 intent.putExtra("userBean", userBean);
                 intent.putStringArrayListExtra("topicList", topicList);
-                startActivity(intent);
+                SwipebackActivityUtils.startSwipebackActivity(getActivity(),intent);
+                //startActivity(intent);
             }
         });
 
@@ -607,10 +612,10 @@ public class NewUserInfoFragment extends AbstractMessageTimeLineFragment<Message
 
     protected void listViewItemClick(AdapterView parent, View view, int position, long id) {
 
-        startActivityForResult(
-                BrowserWeiboMsgActivity.newIntent(getList().getItem(position),
-                        GlobalContext.getInstance().getSpecialToken()),
-                0);
+        Intent intent = BrowserWeiboMsgActivity.newIntent(getList().getItem(position),
+                GlobalContext.getInstance().getSpecialToken());
+        SwipebackActivityUtils.startSwipebackActivity(getActivity(),intent);
+        //startActivityForResult(intent, 0);
 
     }
 
@@ -692,7 +697,8 @@ public class NewUserInfoFragment extends AbstractMessageTimeLineFragment<Message
         Intent intent = new Intent(getActivity(), UserTimeLineActivity.class);
         intent.putExtra("token", GlobalContext.getInstance().getSpecialToken());
         intent.putExtra("user", userBean);
-        startActivity(intent);
+        SwipebackActivityUtils.startSwipebackActivity(getActivity(),intent);
+        //startActivity(intent);
     }
 
 
@@ -741,7 +747,8 @@ public class NewUserInfoFragment extends AbstractMessageTimeLineFragment<Message
                     Intent intent = new Intent(getActivity(), EditMyProfileActivity.class);
                     intent.putExtra("userBean",
                             GlobalContext.getInstance().getAccountBean().getInfo());
-                    startActivity(intent);
+                    SwipebackActivityUtils.startSwipebackActivity(getActivity(),intent);
+                    //startActivity(intent);
                     return true;
                 } else {
                     return super.onOptionsItemSelected(item);

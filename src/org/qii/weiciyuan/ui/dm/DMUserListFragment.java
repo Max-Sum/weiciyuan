@@ -6,6 +6,7 @@ import org.qii.weiciyuan.bean.android.AsyncTaskLoaderResult;
 import org.qii.weiciyuan.support.database.DMDBTask;
 import org.qii.weiciyuan.support.lib.MyAsyncTask;
 import org.qii.weiciyuan.support.utils.GlobalContext;
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.support.utils.Utility;
 import org.qii.weiciyuan.ui.adapter.DMUserListAdapter;
 import org.qii.weiciyuan.ui.basefragment.AbstractTimeLineFragment;
@@ -126,7 +127,8 @@ public class DMUserListFragment extends AbstractTimeLineFragment<DMUserListBean>
         switch (item.getItemId()) {
             case R.id.menu_write_dm:
                 Intent intent = new Intent(getActivity(), DMSelectUserActivity.class);
-                startActivityForResult(intent, 0);
+                SwipebackActivityUtils.startSwipebackActivity(getActivity(),intent);
+                //startActivityForResult(intent, 0);
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -136,7 +138,8 @@ public class DMUserListFragment extends AbstractTimeLineFragment<DMUserListBean>
     protected void listViewItemClick(AdapterView parent, View view, int position, long id) {
         Intent intent = new Intent(getActivity(), DMActivity.class);
         intent.putExtra("user", bean.getItem(position).getUser());
-        startActivity(intent);
+        SwipebackActivityUtils.startSwipebackActivity(getActivity(),intent);
+        //startActivity(intent);
     }
 
     @Override
@@ -148,7 +151,8 @@ public class DMUserListFragment extends AbstractTimeLineFragment<DMUserListBean>
 
         Intent intent = new Intent(getActivity(), DMActivity.class);
         intent.putExtra("user", data.getParcelableExtra("user"));
-        startActivity(intent);
+        SwipebackActivityUtils.startSwipebackActivity(getActivity(),intent);
+        //startActivity(intent);
     }
 
     @Override

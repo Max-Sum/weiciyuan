@@ -14,6 +14,7 @@ import org.qii.weiciyuan.support.error.ErrorCode;
 import org.qii.weiciyuan.support.error.WeiboException;
 import org.qii.weiciyuan.support.lib.MyAsyncTask;
 import org.qii.weiciyuan.support.utils.GlobalContext;
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.support.utils.ThemeUtility;
 import org.qii.weiciyuan.support.utils.Utility;
 import org.qii.weiciyuan.ui.common.CommonErrorDialogFragment;
@@ -141,7 +142,8 @@ public class UserInfoActivity extends AbstractAppActivity implements IUserInfo {
             userBean.setId(GlobalContext.getInstance().getCurrentAccountId());
             intent.putExtra("user", bean);
             intent.putExtra("account", GlobalContext.getInstance().getAccountBean());
-            startActivity(intent);
+            SwipebackActivityUtils.startSwipebackActivity(this, intent);
+            //startActivity(intent);
             finish();
         }
 
@@ -277,14 +279,16 @@ public class UserInfoActivity extends AbstractAppActivity implements IUserInfo {
             case R.id.menu_edit:
                 intent = new Intent(this, EditMyProfileActivity.class);
                 intent.putExtra("userBean", GlobalContext.getInstance().getAccountBean().getInfo());
-                startActivity(intent);
+                SwipebackActivityUtils.startSwipebackActivity(this, intent);
+                //startActivity(intent);
                 return true;
             case R.id.menu_at:
                 intent = new Intent(this, WriteWeiboActivity.class);
                 intent.putExtra("token", getToken());
                 intent.putExtra("content", "@" + bean.getScreen_name());
                 intent.putExtra("account", GlobalContext.getInstance().getAccountBean());
-                startActivity(intent);
+                SwipebackActivityUtils.startSwipebackActivity(this, intent);
+                //startActivity(intent);
                 break;
             case R.id.menu_modify_remark:
                 UpdateRemarkDialog dialog = new UpdateRemarkDialog();

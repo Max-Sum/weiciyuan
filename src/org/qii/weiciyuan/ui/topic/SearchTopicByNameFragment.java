@@ -7,10 +7,12 @@ import org.qii.weiciyuan.dao.topic.TopicDao;
 import org.qii.weiciyuan.support.error.WeiboException;
 import org.qii.weiciyuan.support.lib.MyAsyncTask;
 import org.qii.weiciyuan.support.utils.GlobalContext;
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.support.utils.Utility;
 import org.qii.weiciyuan.ui.basefragment.AbstractMessageTimeLineFragment;
 import org.qii.weiciyuan.ui.browser.BrowserWeiboMsgActivity;
 import org.qii.weiciyuan.ui.loader.SearchTopicByNameLoader;
+import org.qii.weiciyuan.ui.preference.SettingActivity;
 import org.qii.weiciyuan.ui.send.WriteWeiboActivity;
 
 import android.content.Intent;
@@ -153,8 +155,10 @@ public class SearchTopicByNameFragment
 
     @Override
     protected void listViewItemClick(AdapterView parent, View view, int position, long id) {
-        startActivity(BrowserWeiboMsgActivity.newIntent(bean.getItemList().get(position),
+        SwipebackActivityUtils.startSwipebackActivity(getActivity(), BrowserWeiboMsgActivity.newIntent(bean.getItemList().get(position),
                 GlobalContext.getInstance().getSpecialToken()));
+        //startActivity(BrowserWeiboMsgActivity.newIntent(bean.getItemList().get(position),
+        //        GlobalContext.getInstance().getSpecialToken()));
     }
 
 

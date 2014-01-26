@@ -25,6 +25,7 @@ import org.qii.weiciyuan.support.lib.pulltorefresh.PullToRefreshBase;
 import org.qii.weiciyuan.support.lib.pulltorefresh.PullToRefreshListView;
 import org.qii.weiciyuan.support.utils.AppEventAction;
 import org.qii.weiciyuan.support.utils.GlobalContext;
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.support.utils.ThemeUtility;
 import org.qii.weiciyuan.support.utils.Utility;
 import org.qii.weiciyuan.ui.actionmenu.CommentSingleChoiceModeListener;
@@ -404,7 +405,8 @@ public class BrowserWeiboMsgFragment extends AbstractAppFragment implements IRem
                 Intent intent = new Intent(getActivity(), UserInfoActivity.class);
                 intent.putExtra("token", GlobalContext.getInstance().getSpecialToken());
                 intent.putExtra("user", msg.getUser());
-                startActivity(intent);
+                SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
+                //startActivity(intent);
             }
         });
         layout.recontent.setOnClickListener(repostContentOnClickListener);
@@ -515,7 +517,8 @@ public class BrowserWeiboMsgFragment extends AbstractAppFragment implements IRem
                         Intent intent = new Intent(getActivity(), GalleryActivity.class);
                         intent.putExtra("msg", msg);
                         intent.putExtra("position", finalI);
-                        getActivity().startActivity(intent);
+                        SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
+                        //getActivity().startActivity(intent);
                     }
                 });
 
@@ -675,9 +678,12 @@ public class BrowserWeiboMsgFragment extends AbstractAppFragment implements IRem
                     || msg.getRetweeted_status().getUser() == null;
 
             if (isNotLink && !isDeleted) {
-                startActivity(BrowserWeiboMsgActivity
+                SwipebackActivityUtils.startSwipebackActivity(getActivity(), BrowserWeiboMsgActivity
                         .newIntent(msg.getRetweeted_status(),
                                 GlobalContext.getInstance().getSpecialToken()));
+                //startActivity(BrowserWeiboMsgActivity
+                //        .newIntent(msg.getRetweeted_status(),
+                //                GlobalContext.getInstance().getSpecialToken()));
             } else if (isNotLink && isDeleted) {
                 Toast.makeText(getActivity(), getString(R.string.cant_open_deleted_weibo),
                         Toast.LENGTH_SHORT).show();
@@ -698,7 +704,8 @@ public class BrowserWeiboMsgFragment extends AbstractAppFragment implements IRem
                         .equals(layout.location.getText())) {
                     intent.putExtra("locationStr", layout.location.getText());
                 }
-                startActivity(intent);
+                SwipebackActivityUtils.startSwipebackActivity(getActivity(),intent);
+                //startActivity(intent);
             } else {
                 GeoBean bean = msg.getGeo();
                 String geoUriString = "geo:" + bean.getLat() + "," + bean.getLon() + "?q="
@@ -706,7 +713,8 @@ public class BrowserWeiboMsgFragment extends AbstractAppFragment implements IRem
                 Uri geoUri = Uri.parse(geoUriString);
                 Intent mapCall = new Intent(Intent.ACTION_VIEW, geoUri);
                 if (Utility.isIntentSafe(getActivity(), mapCall)) {
-                    startActivity(mapCall);
+                    SwipebackActivityUtils.startSwipebackActivity(getActivity(),mapCall);
+                    //startActivity(mapCall);
                 }
 
             }
@@ -785,9 +793,12 @@ public class BrowserWeiboMsgFragment extends AbstractAppFragment implements IRem
 
             if (position - listView.getHeaderViewsCount() < repostList.getSize()
                     && position >= listView.getHeaderViewsCount()) {
-                startActivity(BrowserWeiboMsgActivity.newIntent(
+                SwipebackActivityUtils.startSwipebackActivity(getActivity(),BrowserWeiboMsgActivity.newIntent(
                         repostList.getItemList().get(position - listView.getHeaderViewsCount()),
                         GlobalContext.getInstance().getSpecialToken()));
+                //startActivity(BrowserWeiboMsgActivity.newIntent(
+                //        repostList.getItemList().get(position - listView.getHeaderViewsCount()),
+                //        GlobalContext.getInstance().getSpecialToken()));
             } else {
                 loadOldRepostData();
             }

@@ -20,6 +20,7 @@ import android.widget.Switch;
 import org.qii.weiciyuan.R;
 import org.qii.weiciyuan.support.lib.AppFragmentPagerAdapter;
 import org.qii.weiciyuan.support.settinghelper.SettingUtility;
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.ui.interfaces.AbstractAppActivity;
 import org.qii.weiciyuan.ui.preference.filter.FilterKeywordFragment;
 import org.qii.weiciyuan.ui.preference.filter.FilterSourceFragment;
@@ -213,7 +214,8 @@ public class FilterActivity extends AbstractAppActivity {
             case android.R.id.home:
                 intent = new Intent(this, SettingActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
+                SwipebackActivityUtils.startSwipebackActivity(this, intent);
+                //startActivity(intent);
                 return true;
             case R.id.filter_rule:
                 new FilterRuleDialog().show(getSupportFragmentManager(), "");

@@ -16,6 +16,7 @@ import org.qii.weiciyuan.othercomponent.sendweiboservice.SendRepostService;
 import org.qii.weiciyuan.support.database.DraftDBManager;
 import org.qii.weiciyuan.support.database.draftbean.RepostDraftBean;
 import org.qii.weiciyuan.support.utils.GlobalContext;
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.support.utils.Utility;
 import org.qii.weiciyuan.ui.search.AtUserActivity;
 
@@ -249,7 +250,8 @@ public class WriteRepostActivity extends AbstractWriteActivity<MessageBean> {
             case R.id.menu_at:
                 Intent intent = new Intent(WriteRepostActivity.this, AtUserActivity.class);
                 intent.putExtra("token", token);
-                startActivityForResult(intent, AT_USER);
+                SwipebackActivityUtils.startSwipebackActivity(this, intent);
+                //startActivityForResult(intent, AT_USER);
                 break;
             case R.id.menu_clear:
                 clearContentMenu();

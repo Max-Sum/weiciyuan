@@ -18,6 +18,7 @@ import android.widget.Toast;
 import org.qii.weiciyuan.R;
 import org.qii.weiciyuan.bean.CommentBean;
 import org.qii.weiciyuan.support.utils.GlobalContext;
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.support.utils.TimeLineUtility;
 import org.qii.weiciyuan.support.utils.Utility;
 import org.qii.weiciyuan.ui.send.WriteReplyToCommentActivity;
@@ -99,7 +100,8 @@ public class BrowserCommentFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), UserInfoActivity.class);
                 intent.putExtra("token", GlobalContext.getInstance().getSpecialToken());
                 intent.putExtra("user", msg.getUser());
-                startActivity(intent);
+                SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
+                //startActivity(intent);
             }
         });
 
@@ -165,7 +167,8 @@ public class BrowserCommentFragment extends Fragment {
                 intent = new Intent(getActivity(), WriteReplyToCommentActivity.class);
                 intent.putExtra("token", GlobalContext.getInstance().getSpecialToken());
                 intent.putExtra("msg", msg);
-                getActivity().startActivity(intent);
+                SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
+                //getActivity().startActivity(intent);
 
                 break;
 

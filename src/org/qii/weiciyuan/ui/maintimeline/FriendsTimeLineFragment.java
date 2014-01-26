@@ -22,6 +22,7 @@ import org.qii.weiciyuan.support.settinghelper.SettingUtility;
 import org.qii.weiciyuan.support.utils.AppConfig;
 import org.qii.weiciyuan.support.utils.BundleArgsConstants;
 import org.qii.weiciyuan.support.utils.GlobalContext;
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.support.utils.Utility;
 import org.qii.weiciyuan.ui.adapter.AbstractAppListAdapter;
 import org.qii.weiciyuan.ui.adapter.StatusListAdapter;
@@ -604,11 +605,11 @@ public class FriendsTimeLineFragment extends AbstractMessageTimeLineFragment<Mes
 
     @Override
     protected void listViewItemClick(AdapterView parent, View view, int position, long id) {
-        startActivityForResult(
-                BrowserWeiboMsgActivity.newIntent(getList().getItem(position),
-                        GlobalContext.getInstance().getSpecialToken()),
+        Intent intent = BrowserWeiboMsgActivity.newIntent(getList().getItem(position),
+                GlobalContext.getInstance().getSpecialToken());
+        SwipebackActivityUtils.setActivityScreenshot(getActivity(), intent);
+        startActivityForResult(intent,
                 MainTimeLineActivity.REQUEST_CODE_UPDATE_FRIENDS_TIMELINE_COMMENT_REPOST_COUNT);
-
 
     }
 
@@ -625,7 +626,8 @@ public class FriendsTimeLineFragment extends AbstractMessageTimeLineFragment<Mes
                 Intent intent = new Intent(getActivity(), WriteWeiboActivity.class);
                 intent.putExtra("token", token);
                 intent.putExtra("account", accountBean);
-                startActivity(intent);
+                SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
+                //startActivity(intent);
                 break;
             case R.id.refresh:
                 if (allowRefresh()) {

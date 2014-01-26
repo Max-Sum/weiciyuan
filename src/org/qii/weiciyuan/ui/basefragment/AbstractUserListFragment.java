@@ -10,6 +10,7 @@ import org.qii.weiciyuan.support.lib.pulltorefresh.extras.SoundPullEventListener
 import org.qii.weiciyuan.support.settinghelper.SettingUtility;
 import org.qii.weiciyuan.support.utils.BundleArgsConstants;
 import org.qii.weiciyuan.support.utils.GlobalContext;
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.support.utils.Utility;
 import org.qii.weiciyuan.ui.adapter.UserListAdapter;
 import org.qii.weiciyuan.ui.interfaces.AbstractAppFragment;
@@ -176,7 +177,8 @@ public abstract class AbstractUserListFragment extends AbstractAppFragment {
         Intent intent = new Intent(getActivity(), UserInfoActivity.class);
         intent.putExtra("token", GlobalContext.getInstance().getSpecialToken());
         intent.putExtra("user", bean.getUsers().get(position));
-        startActivity(intent);
+        SwipebackActivityUtils.startSwipebackActivity(getActivity(),intent);
+        //startActivity(intent);
     }
 
     protected void refreshLayout(UserListBean bean) {

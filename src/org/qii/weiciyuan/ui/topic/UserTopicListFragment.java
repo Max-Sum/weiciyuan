@@ -17,6 +17,7 @@ import org.qii.weiciyuan.dao.topic.UserTopicListDao;
 import org.qii.weiciyuan.support.error.WeiboException;
 import org.qii.weiciyuan.support.lib.MyAsyncTask;
 import org.qii.weiciyuan.support.utils.GlobalContext;
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.support.utils.Utility;
 
 import java.util.ArrayList;
@@ -96,7 +97,8 @@ public class UserTopicListFragment extends ListFragment {
                 }
                 Intent intent = new Intent(getActivity(), SearchTopicByNameActivity.class);
                 intent.putExtra("q", q);
-                startActivity(intent);
+                SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
+                //startActivity(intent);
             }
         });
         if (result == null || result.size() == 0) {

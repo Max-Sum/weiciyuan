@@ -17,6 +17,7 @@ import org.qii.weiciyuan.support.database.draftbean.*;
 import org.qii.weiciyuan.support.database.table.DraftTable;
 import org.qii.weiciyuan.support.lib.MyAsyncTask;
 import org.qii.weiciyuan.support.utils.GlobalContext;
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.ui.send.WriteCommentActivity;
 import org.qii.weiciyuan.ui.send.WriteReplyToCommentActivity;
 import org.qii.weiciyuan.ui.send.WriteRepostActivity;
@@ -90,7 +91,8 @@ public class DraftFragment extends ListFragment {
                         intent.setAction(WriteWeiboActivity.ACTION_DRAFT);
                         intent.putExtra("draft", item.getStatusDraftBean());
                         intent.putExtra("account", accountBean);
-                        startActivity(intent);
+                        SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
+                        //startActivity(intent);
                         break;
 
                     case DraftTable.TYPE_REPOST:
@@ -100,7 +102,8 @@ public class DraftFragment extends ListFragment {
                         intent.setAction(WriteRepostActivity.ACTION_DRAFT);
                         intent.putExtra("draft", repostDraftBean);
                         intent.putExtra("account", accountBean);
-                        startActivity(intent);
+                        SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
+                        //startActivity(intent);
                         break;
                     case DraftTable.TYPE_COMMENT:
                         CommentDraftBean commentDraftBean = list.get(position).getCommentDraftBean();
@@ -114,7 +117,8 @@ public class DraftFragment extends ListFragment {
                         intent = new Intent(getActivity(), WriteReplyToCommentActivity.class);
                         intent.setAction(WriteReplyToCommentActivity.ACTION_DRAFT);
                         intent.putExtra("draft", replyDraftBean);
-                        startActivity(intent);
+                        SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
+                        //startActivity(intent);
                         break;
                 }
 

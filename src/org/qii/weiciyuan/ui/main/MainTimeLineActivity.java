@@ -29,8 +29,10 @@ import org.qii.weiciyuan.ui.send.WriteWeiboActivity;
 import org.qii.weiciyuan.ui.userinfo.MyFavListFragment;
 import org.qii.weiciyuan.ui.userinfo.NewUserInfoFragment;
 import org.qii.weiciyuan.ui.userinfo.UserInfoActivity;
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 
 import android.app.ActionBar;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
@@ -308,7 +310,8 @@ public class MainTimeLineActivity extends MainTimeLineParentActivity implements 
                 Intent intent = new Intent(MainTimeLineActivity.this, WriteWeiboActivity.class);
                 intent.putExtra("token", GlobalContext.getInstance().getSpecialToken());
                 intent.putExtra("account", GlobalContext.getInstance().getAccountBean());
-                startActivity(intent);
+                SwipebackActivityUtils.startSwipebackActivity(MainTimeLineActivity.this, intent);
+                //startActivity(intent);
             }
         });
         ActionBar.LayoutParams layoutParams = new ActionBar.LayoutParams(
@@ -368,6 +371,7 @@ public class MainTimeLineActivity extends MainTimeLineParentActivity implements 
             finish();
             overridePendingTransition(0, 0);
             intent.putExtra("account", newAccountBean);
+            //SwipebackActivityUtils.startSwipebackActivity(this, intent);
             startActivity(intent);
             overridePendingTransition(0, 0);
         }
@@ -470,14 +474,18 @@ public class MainTimeLineActivity extends MainTimeLineParentActivity implements 
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             if (Utility.isWeiboAccountIdLink(url)) {
-                                Intent intent = new Intent(getActivity(), UserInfoActivity.class);
+                                Activity mActivity = getActivity();
+                                Intent intent = new Intent(mActivity, UserInfoActivity.class);
                                 intent.putExtra("id", Utility.getIdFromWeiboAccountLink(url));
-                                startActivity(intent);
+                                SwipebackActivityUtils.startSwipebackActivity(mActivity, intent);
+                                //startActivity(intent);
                             } else if (Utility.isWeiboAccountDomainLink(url)) {
-                                Intent intent = new Intent(getActivity(), UserInfoActivity.class);
+                                Activity mActivity = getActivity();
+                                Intent intent = new Intent(mActivity, UserInfoActivity.class);
                                 intent.putExtra("domain",
                                         Utility.getDomainFromWeiboAccountLink(url));
-                                startActivity(intent);
+                                SwipebackActivityUtils.startSwipebackActivity(mActivity, intent);
+                                //startActivity(intent);
                             }
                         }
                     })

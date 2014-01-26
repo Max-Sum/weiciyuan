@@ -2,11 +2,18 @@
 package me.imid.swipebacklayout.lib.app;
 
 import android.app.Activity;
+import android.app.Application;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 
 import java.lang.reflect.Method;
+
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils.SwipebackScreenshotManager;
 
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
 
@@ -48,8 +55,26 @@ public class SwipeBackActivityHelper {
         });
     }
 
+    public void onDestroy() {
+        if (mActivity.isFinishing()) {
+            final Intent intent = mActivity.getIntent();
+            final Context context = mActivity;
+            final Application app = (Application) context.getApplicationContext();
+            final SwipebackScreenshotManager sm = new SwipebackScreenshotManager(app);
+            sm.remove(intent.getLongExtra("activity_screenshot_id", -1));
+        }
+    }
+
     public void onPostCreate() {
         mSwipeBackLayout.attachToActivity(mActivity);
+        final Intent intent = mActivity.getIntent();
+        final Context context = mActivity;
+        final Application app = (Application) context.getApplicationContext();
+        final SwipebackScreenshotManager sm = new SwipebackScreenshotManager(app);
+        final Bitmap b = sm.get(intent.getLongExtra("activity_screenshot_id", -1));
+        if (b != null) {
+            mSwipeBackLayout.setWindowBackgroundDrawable(new BitmapDrawable(mActivity.getResources(), b));
+        }
         convertActivityFromTranslucent();
     }
 

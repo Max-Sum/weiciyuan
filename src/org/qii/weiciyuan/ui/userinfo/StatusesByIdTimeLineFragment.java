@@ -7,6 +7,7 @@ import org.qii.weiciyuan.bean.UserBean;
 import org.qii.weiciyuan.bean.android.AsyncTaskLoaderResult;
 import org.qii.weiciyuan.support.utils.AppConfig;
 import org.qii.weiciyuan.support.utils.GlobalContext;
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.ui.basefragment.AbstractMessageTimeLineFragment;
 import org.qii.weiciyuan.ui.browser.BrowserWeiboMsgActivity;
 import org.qii.weiciyuan.ui.loader.StatusesByIdLoader;
@@ -138,10 +139,10 @@ public class StatusesByIdTimeLineFragment extends AbstractMessageTimeLineFragmen
 
 
     protected void listViewItemClick(AdapterView parent, View view, int position, long id) {
-        startActivityForResult(
-                BrowserWeiboMsgActivity.newIntent(getList().getItem(position),
-                        GlobalContext.getInstance().getSpecialToken()),
-                0);
+        Intent intent = BrowserWeiboMsgActivity.newIntent(getList().getItem(position),
+                GlobalContext.getInstance().getSpecialToken());
+        SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
+        //startActivityForResult(intent,0);
     }
 
 

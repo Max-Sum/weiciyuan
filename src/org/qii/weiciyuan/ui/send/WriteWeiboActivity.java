@@ -16,6 +16,7 @@ import org.qii.weiciyuan.support.lib.MyAsyncTask;
 import org.qii.weiciyuan.support.smileypicker.SmileyPicker;
 import org.qii.weiciyuan.support.utils.GlobalContext;
 import org.qii.weiciyuan.support.utils.SmileyPickerUtility;
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.support.utils.Utility;
 import org.qii.weiciyuan.ui.browser.AppMapActivity;
 import org.qii.weiciyuan.ui.browser.BrowserWriteWeiboLocalPicActivity;
@@ -359,7 +360,8 @@ public class WriteWeiboActivity extends AbstractAppActivity
             Toast.makeText(this, this.getString(R.string.share_failed_because_of_no_account),
                     Toast.LENGTH_SHORT).show();
             Intent intent = AccountActivity.newIntent();
-            startActivity(intent);
+            SwipebackActivityUtils.startSwipebackActivity(this, intent);
+            //startActivity(intent);
             finish();
             return;
         }
@@ -475,7 +477,8 @@ public class WriteWeiboActivity extends AbstractAppActivity
                                     intent.putExtra("lat", geoBean.getLat());
                                     intent.putExtra("lon", geoBean.getLon());
                                     intent.putExtra("locationStr", location);
-                                    startActivity(intent);
+                                    SwipebackActivityUtils.startSwipebackActivity(WriteWeiboActivity.this, intent);
+                                    //startActivity(intent);
                                 } else {
                                     StringBuilder geoUriString = new StringBuilder()
                                             .append("geo:" + geoBean.getLat() + "," + geoBean
@@ -665,7 +668,8 @@ public class WriteWeiboActivity extends AbstractAppActivity
             case R.id.menu_at:
                 intent = new Intent(WriteWeiboActivity.this, AtUserActivity.class);
                 intent.putExtra("token", token);
-                startActivityForResult(intent, AT_USER);
+                SwipebackActivityUtils.startSwipebackActivity(this, intent);
+                //startActivityForResult(intent, AT_USER);
                 break;
             case R.id.menu_txt_to_pic:
                 convertStringToBitmap();
@@ -749,7 +753,8 @@ public class WriteWeiboActivity extends AbstractAppActivity
         Intent intent = new Intent(WriteWeiboActivity.this,
                 BrowserWriteWeiboLocalPicActivity.class);
         intent.putExtra("path", picPath);
-        startActivityForResult(intent, BROWSER_PIC);
+        SwipebackActivityUtils.startSwipebackActivity(this, intent);
+        //startActivityForResult(intent, BROWSER_PIC);
     }
 
     protected void executeTask(String contentString) {
@@ -811,7 +816,8 @@ public class WriteWeiboActivity extends AbstractAppActivity
                 case R.id.menu_at:
                     Intent intent = new Intent(WriteWeiboActivity.this, AtUserActivity.class);
                     intent.putExtra("token", token);
-                    startActivityForResult(intent, AT_USER);
+                    SwipebackActivityUtils.startSwipebackActivity(WriteWeiboActivity.this, intent);
+                    //startActivityForResult(intent, AT_USER);
                     break;
 
             }

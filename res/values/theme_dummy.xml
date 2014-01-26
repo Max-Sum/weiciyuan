@@ -2,11 +2,11 @@
 <resources>
 
     <style name="AppTheme_Dummy">
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
     </style>
 
     <style name="AppTheme_SwipeBack">
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowAnimationStyle">@style/SwipeBackAnimation</item>
     </style>
 

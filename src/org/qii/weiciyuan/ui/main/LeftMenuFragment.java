@@ -13,6 +13,7 @@ import org.qii.weiciyuan.support.database.MentionWeiboTimeLineDBTask;
 import org.qii.weiciyuan.support.file.FileLocationMethod;
 import org.qii.weiciyuan.support.utils.AppEventAction;
 import org.qii.weiciyuan.support.utils.GlobalContext;
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.support.utils.Utility;
 import org.qii.weiciyuan.ui.dm.DMUserListFragment;
 import org.qii.weiciyuan.ui.interfaces.AbstractAppFragment;
@@ -219,7 +220,8 @@ public class LeftMenuFragment extends AbstractAppFragment {
     }
 
     private void showSettingPage() {
-        startActivity(new Intent(getActivity(), SettingActivity.class));
+        SwipebackActivityUtils.startSwipebackActivity(getActivity(), new Intent(getActivity(), SettingActivity.class));
+        //startActivity(new Intent(getActivity(), SettingActivity.class));
     }
 
 

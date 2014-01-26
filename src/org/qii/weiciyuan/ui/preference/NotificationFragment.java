@@ -19,6 +19,7 @@ import android.widget.Switch;
 import org.qii.weiciyuan.R;
 import org.qii.weiciyuan.othercomponent.AppNewMsgAlarm;
 import org.qii.weiciyuan.support.settinghelper.SettingUtility;
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,7 +83,8 @@ public class NotificationFragment extends PreferenceFragment implements SharedPr
                 intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_NOTIFICATION);
                 intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, uri);
                 intent.putExtra(RingtoneManager.EXTRA_RINGTONE_DEFAULT_URI, uri);
-                startActivityForResult(intent, 1);
+                SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
+                //startActivityForResult(intent, 1);
                 return true;
             }
         });

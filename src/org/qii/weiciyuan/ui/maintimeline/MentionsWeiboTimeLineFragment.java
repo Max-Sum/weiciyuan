@@ -20,6 +20,7 @@ import org.qii.weiciyuan.support.lib.TopTipBar;
 import org.qii.weiciyuan.support.utils.AppEventAction;
 import org.qii.weiciyuan.support.utils.BundleArgsConstants;
 import org.qii.weiciyuan.support.utils.GlobalContext;
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.support.utils.Utility;
 import org.qii.weiciyuan.ui.adapter.StatusListAdapter;
 import org.qii.weiciyuan.ui.basefragment.AbstractMessageTimeLineFragment;
@@ -323,9 +324,10 @@ public class MentionsWeiboTimeLineFragment
 
     @Override
     protected void listViewItemClick(AdapterView parent, View view, int position, long id) {
-        startActivityForResult(
-                BrowserWeiboMsgActivity.newIntent(bean.getItemList().get(position),
-                        GlobalContext.getInstance().getSpecialToken()),
+        Intent intent = BrowserWeiboMsgActivity.newIntent(bean.getItemList().get(position),
+                GlobalContext.getInstance().getSpecialToken());
+        SwipebackActivityUtils.setActivityScreenshot(getActivity(), intent);
+        startActivityForResult(intent,
                 MainTimeLineActivity.REQUEST_CODE_UPDATE_MENTIONS_WEIBO_TIMELINE_COMMENT_REPOST_COUNT);
 
     }

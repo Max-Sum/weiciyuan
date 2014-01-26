@@ -1,9 +1,12 @@
 
 package me.imid.swipebacklayout.lib.app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
+
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
 
@@ -45,4 +48,5 @@ public class SwipeBackActivity extends FragmentActivity implements SwipeBackActi
     public void scrollToFinishActivity() {
         getSwipeBackLayout().scrollToFinishActivity();
     }
+
 }
