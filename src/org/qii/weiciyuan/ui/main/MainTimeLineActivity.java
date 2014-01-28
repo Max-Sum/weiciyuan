@@ -305,7 +305,6 @@ public class MainTimeLineActivity extends MainTimeLineParentActivity implements 
                 intent.putExtra("token", GlobalContext.getInstance().getSpecialToken());
                 intent.putExtra("account", GlobalContext.getInstance().getAccountBean());
                 SwipebackActivityUtils.startSwipebackActivity(MainTimeLineActivity.this, intent);
-                //startActivity(intent);
             }
         });
         ActionBar.LayoutParams layoutParams = new ActionBar.LayoutParams(
@@ -365,7 +364,6 @@ public class MainTimeLineActivity extends MainTimeLineParentActivity implements 
             finish();
             overridePendingTransition(0, 0);
             intent.putExtra("account", newAccountBean);
-            //SwipebackActivityUtils.startSwipebackActivity(this, intent);
             startActivity(intent);
             overridePendingTransition(0, 0);
         }
@@ -458,14 +456,12 @@ public class MainTimeLineActivity extends MainTimeLineParentActivity implements 
                                 Intent intent = new Intent(mActivity, UserInfoActivity.class);
                                 intent.putExtra("id", Utility.getIdFromWeiboAccountLink(url));
                                 SwipebackActivityUtils.startSwipebackActivity(mActivity, intent);
-                                //startActivity(intent);
                             } else if (Utility.isWeiboAccountDomainLink(url)) {
                                 Activity mActivity = getActivity();
                                 Intent intent = new Intent(mActivity, UserInfoActivity.class);
                                 intent.putExtra("domain",
                                         Utility.getDomainFromWeiboAccountLink(url));
                                 SwipebackActivityUtils.startSwipebackActivity(mActivity, intent);
-                                //startActivity(intent);
                             }
                         }
                     })

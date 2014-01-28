@@ -10,6 +10,7 @@ import org.qii.weiciyuan.support.lib.VelocityListView;
 import org.qii.weiciyuan.support.lib.pulltorefresh.PullToRefreshBase;
 import org.qii.weiciyuan.support.lib.pulltorefresh.PullToRefreshListView;
 import org.qii.weiciyuan.support.utils.GlobalContext;
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.support.utils.Utility;
 import org.qii.weiciyuan.ui.actionmenu.RepostSingleChoiceModeListener;
 import org.qii.weiciyuan.ui.adapter.StatusListAdapter;
@@ -345,7 +346,7 @@ public class RepostsByIdTimeLineFragment extends AbstractMessageTimeLineFragment
 
 
     protected void listViewItemClick(AdapterView parent, View view, int position, long id) {
-        startActivity(BrowserWeiboMsgActivity
+        SwipebackActivityUtils.startSwipebackActivity(getActivity(), BrowserWeiboMsgActivity
                 .newIntent(bean.getItemList().get(position),
                         GlobalContext.getInstance().getSpecialToken()));
     }

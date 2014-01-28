@@ -11,7 +11,7 @@
     </style>
 
     <style name="DialogWhenLarge_SwipeBack" parent="android:Theme.Holo.DialogWhenLarge">
-        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowAnimationStyle">@style/SwipeBackAnimation</item>
     </style>
 

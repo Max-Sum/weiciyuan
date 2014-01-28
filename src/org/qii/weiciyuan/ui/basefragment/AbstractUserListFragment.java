@@ -178,7 +178,6 @@ public abstract class AbstractUserListFragment extends AbstractAppFragment {
         intent.putExtra("token", GlobalContext.getInstance().getSpecialToken());
         intent.putExtra("user", bean.getUsers().get(position));
         SwipebackActivityUtils.startSwipebackActivity(getActivity(),intent);
-        //startActivity(intent);
     }
 
     protected void refreshLayout(UserListBean bean) {

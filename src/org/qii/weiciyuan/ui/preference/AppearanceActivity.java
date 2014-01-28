@@ -43,7 +43,6 @@ public class AppearanceActivity extends AbstractAppActivity implements SharedPre
                 intent = new Intent(this, SettingActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 SwipebackActivityUtils.startSwipebackActivity(this, intent);
-                //startActivity(intent);
                 return true;
         }
         return false;
@@ -62,7 +61,6 @@ public class AppearanceActivity extends AbstractAppActivity implements SharedPre
 
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             SwipebackActivityUtils.startSwipebackActivity(this, intent);
-            //startActivity(intent);
             overridePendingTransition(R.anim.stay, R.anim.alphaout);
         }
 

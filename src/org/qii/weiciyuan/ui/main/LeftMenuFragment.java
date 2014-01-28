@@ -221,7 +221,6 @@ public class LeftMenuFragment extends AbstractAppFragment {
 
     private void showSettingPage() {
         SwipebackActivityUtils.startSwipebackActivity(getActivity(), new Intent(getActivity(), SettingActivity.class));
-        //startActivity(new Intent(getActivity(), SettingActivity.class));
     }
 
 

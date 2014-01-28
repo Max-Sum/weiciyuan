@@ -16,6 +16,7 @@ import org.qii.weiciyuan.R;
 import org.qii.weiciyuan.support.utils.GlobalContext;
 import org.qii.weiciyuan.support.utils.Utility;
 import org.qii.weiciyuan.support.utils.WebBrowserSelector;
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.ui.adapter.LongClickLinkDialog;
 import org.qii.weiciyuan.ui.userinfo.UserInfoActivity;
 
@@ -59,11 +60,11 @@ public class MyURLSpan extends ClickableSpan implements ParcelableSpan {
             if (Utility.isWeiboAccountIdLink(url)) {
                 Intent intent = new Intent(context, UserInfoActivity.class);
                 intent.putExtra("id", Utility.getIdFromWeiboAccountLink(url));
-                context.startActivity(intent);
+                SwipebackActivityUtils.startSwipebackActivity((Activity)context, intent);
             } else if (Utility.isWeiboAccountDomainLink(url)) {
                 Intent intent = new Intent(context, UserInfoActivity.class);
                 intent.putExtra("domain", Utility.getDomainFromWeiboAccountLink(url));
-                context.startActivity(intent);
+                SwipebackActivityUtils.startSwipebackActivity((Activity)context, intent);
             } else {
                 //otherwise some urls cant be opened, will be redirected to sina error page
                 String openUrl = url;
@@ -74,7 +75,7 @@ public class MyURLSpan extends ClickableSpan implements ParcelableSpan {
         } else {
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             intent.putExtra(Browser.EXTRA_APPLICATION_ID, context.getPackageName());
-            context.startActivity(intent);
+            SwipebackActivityUtils.startSwipebackActivity((Activity)context, intent);
         }
     }
 

@@ -11,6 +11,7 @@ import org.qii.weiciyuan.support.lib.TimeLineAvatarImageView;
 import org.qii.weiciyuan.support.lib.TimeTextView;
 import org.qii.weiciyuan.support.settinghelper.SettingUtility;
 import org.qii.weiciyuan.support.utils.GlobalContext;
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.support.utils.ThemeUtility;
 import org.qii.weiciyuan.support.utils.TimeLineUtility;
 import org.qii.weiciyuan.support.utils.Utility;
@@ -491,7 +492,7 @@ public class BrowserWeiboMsgCommentAndRepostAdapter extends BaseAdapter {
                 Intent intent = new Intent(getActivity(), UserInfoActivity.class);
                 intent.putExtra("token", GlobalContext.getInstance().getSpecialToken());
                 intent.putExtra("user", user);
-                getActivity().startActivity(intent);
+                SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
             }
         });
         view.setOnLongClickListener(new View.OnLongClickListener() {

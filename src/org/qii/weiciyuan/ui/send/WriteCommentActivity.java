@@ -251,8 +251,8 @@ public class WriteCommentActivity extends AbstractWriteActivity<ItemBean> {
             case R.id.menu_at:
                 Intent intent = new Intent(WriteCommentActivity.this, AtUserActivity.class);
                 intent.putExtra("token", token);
-                SwipebackActivityUtils.startSwipebackActivity(WriteCommentActivity.this, intent);
-                //startActivityForResult(intent, AT_USER);
+                SwipebackActivityUtils.setActivityScreenshot(WriteCommentActivity.this, intent);
+                startActivityForResult(intent, AT_USER);
                 break;
             case R.id.menu_clear:
                 clearContentMenu();

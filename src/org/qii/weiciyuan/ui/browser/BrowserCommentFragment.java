@@ -101,7 +101,6 @@ public class BrowserCommentFragment extends Fragment {
                 intent.putExtra("token", GlobalContext.getInstance().getSpecialToken());
                 intent.putExtra("user", msg.getUser());
                 SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
-                //startActivity(intent);
             }
         });
 
@@ -168,7 +167,6 @@ public class BrowserCommentFragment extends Fragment {
                 intent.putExtra("token", GlobalContext.getInstance().getSpecialToken());
                 intent.putExtra("msg", msg);
                 SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
-                //getActivity().startActivity(intent);
 
                 break;
 

@@ -167,8 +167,7 @@ public class SearchMainActivity extends AbstractAppActivity {
             case android.R.id.home:
                 intent = MainTimeLineActivity.newIntent();
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                SwipebackActivityUtils.startSwipebackActivity(this, intent);
-                //startActivity(intent);
+                startActivity(intent);
                 return true;
         }
 

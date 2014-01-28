@@ -129,7 +129,7 @@ public class SearchTopicByNameFragment
                 intent.putExtra("token", GlobalContext.getInstance().getSpecialToken());
                 intent.putExtra("account", GlobalContext.getInstance().getAccountBean());
                 intent.putExtra("content", "#" + q + "#");
-                startActivity(intent);
+                SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
                 break;
 
             case R.id.menu_refresh:
@@ -157,8 +157,6 @@ public class SearchTopicByNameFragment
     protected void listViewItemClick(AdapterView parent, View view, int position, long id) {
         SwipebackActivityUtils.startSwipebackActivity(getActivity(), BrowserWeiboMsgActivity.newIntent(bean.getItemList().get(position),
                 GlobalContext.getInstance().getSpecialToken()));
-        //startActivity(BrowserWeiboMsgActivity.newIntent(bean.getItemList().get(position),
-        //        GlobalContext.getInstance().getSpecialToken()));
     }
 
 

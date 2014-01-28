@@ -9,6 +9,7 @@ import org.qii.weiciyuan.support.debug.AppLogger;
 import org.qii.weiciyuan.support.error.WeiboException;
 import org.qii.weiciyuan.support.lib.MyAsyncTask;
 import org.qii.weiciyuan.support.utils.GlobalContext;
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.ui.friendgroup.ManageGroupActivity;
 
 import android.app.AlertDialog;
@@ -123,7 +124,7 @@ public class ManageGroupDialog extends DialogFragment {
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), ManageGroupActivity.class));
+                SwipebackActivityUtils.startSwipebackActivity(getActivity(), new Intent(getActivity(), ManageGroupActivity.class));
             }
         });
 

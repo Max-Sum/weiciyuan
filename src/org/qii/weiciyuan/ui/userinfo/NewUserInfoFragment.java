@@ -241,7 +241,6 @@ public class NewUserInfoFragment extends AbstractMessageTimeLineFragment<Message
                 intent.putExtra("token", GlobalContext.getInstance().getSpecialToken());
                 intent.putExtra("user", userBean);
                 SwipebackActivityUtils.startSwipebackActivity(getActivity(),intent);
-                //startActivity(intent);
             }
         });
 
@@ -252,7 +251,6 @@ public class NewUserInfoFragment extends AbstractMessageTimeLineFragment<Message
                 intent.putExtra("token", GlobalContext.getInstance().getSpecialToken());
                 intent.putExtra("user", userBean);
                 SwipebackActivityUtils.startSwipebackActivity(getActivity(),intent);
-                //startActivity(intent);
             }
         });
 
@@ -263,7 +261,6 @@ public class NewUserInfoFragment extends AbstractMessageTimeLineFragment<Message
                 intent.putExtra("token", GlobalContext.getInstance().getSpecialToken());
                 intent.putExtra("user", userBean);
                 SwipebackActivityUtils.startSwipebackActivity(getActivity(),intent);
-                //startActivity(intent);
             }
         });
 
@@ -274,7 +271,6 @@ public class NewUserInfoFragment extends AbstractMessageTimeLineFragment<Message
                 intent.putExtra("userBean", userBean);
                 intent.putStringArrayListExtra("topicList", topicList);
                 SwipebackActivityUtils.startSwipebackActivity(getActivity(),intent);
-                //startActivity(intent);
             }
         });
 
@@ -608,8 +604,8 @@ public class NewUserInfoFragment extends AbstractMessageTimeLineFragment<Message
 
         Intent intent = BrowserWeiboMsgActivity.newIntent(getList().getItem(position),
                 GlobalContext.getInstance().getSpecialToken());
-        SwipebackActivityUtils.startSwipebackActivity(getActivity(),intent);
-        //startActivityForResult(intent, 0);
+        SwipebackActivityUtils.setActivityScreenshot(getActivity(),intent);
+        startActivityForResult(intent, 0);
 
     }
 
@@ -692,7 +688,6 @@ public class NewUserInfoFragment extends AbstractMessageTimeLineFragment<Message
         intent.putExtra("token", GlobalContext.getInstance().getSpecialToken());
         intent.putExtra("user", userBean);
         SwipebackActivityUtils.startSwipebackActivity(getActivity(),intent);
-        //startActivity(intent);
     }
 
 
@@ -742,7 +737,6 @@ public class NewUserInfoFragment extends AbstractMessageTimeLineFragment<Message
                     intent.putExtra("userBean",
                             GlobalContext.getInstance().getAccountBean().getInfo());
                     SwipebackActivityUtils.startSwipebackActivity(getActivity(),intent);
-                    //startActivity(intent);
                     return true;
                 } else {
                     return super.onOptionsItemSelected(item);

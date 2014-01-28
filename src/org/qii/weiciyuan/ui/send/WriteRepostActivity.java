@@ -250,8 +250,8 @@ public class WriteRepostActivity extends AbstractWriteActivity<MessageBean> {
             case R.id.menu_at:
                 Intent intent = new Intent(WriteRepostActivity.this, AtUserActivity.class);
                 intent.putExtra("token", token);
-                SwipebackActivityUtils.startSwipebackActivity(this, intent);
-                //startActivityForResult(intent, AT_USER);
+                SwipebackActivityUtils.setActivityScreenshot(this, intent);
+                startActivityForResult(intent, AT_USER);
                 break;
             case R.id.menu_clear:
                 clearContentMenu();

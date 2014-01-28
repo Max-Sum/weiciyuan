@@ -83,8 +83,8 @@ public class NotificationFragment extends PreferenceFragment implements SharedPr
                 intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_NOTIFICATION);
                 intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, uri);
                 intent.putExtra(RingtoneManager.EXTRA_RINGTONE_DEFAULT_URI, uri);
-                SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
-                //startActivityForResult(intent, 1);
+                SwipebackActivityUtils.setActivityScreenshot(getActivity(), intent);
+                startActivityForResult(intent, 1);
                 return true;
             }
         });

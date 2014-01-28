@@ -98,7 +98,6 @@ public class UserTopicListFragment extends ListFragment {
                 Intent intent = new Intent(getActivity(), SearchTopicByNameActivity.class);
                 intent.putExtra("q", q);
                 SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
-                //startActivity(intent);
             }
         });
         if (result == null || result.size() == 0) {

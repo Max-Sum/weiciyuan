@@ -17,7 +17,7 @@ import org.qii.weiciyuan.support.smileypicker.SmileyPicker;
 import org.qii.weiciyuan.support.utils.GlobalContext;
 import org.qii.weiciyuan.support.utils.SmileyPickerUtility;
 import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
-import org.qii.weiciyuan.ui.interfaces.AbstractAppActivity;
+import org.qii.weiciyuan.ui.interfaces.AbstractAppActivityNoSwipe;
 import org.qii.weiciyuan.ui.maintimeline.SaveDraftDialog;
 import org.qii.weiciyuan.ui.search.AtUserActivity;
 
@@ -25,7 +25,7 @@ import org.qii.weiciyuan.ui.search.AtUserActivity;
  * User: qii
  * Date: 12-9-25
  */
-public abstract class AbstractWriteActivity<T> extends AbstractAppActivity implements View.OnClickListener, ClearContentDialog.IClear
+public abstract class AbstractWriteActivity<T> extends AbstractAppActivityNoSwipe implements View.OnClickListener, ClearContentDialog.IClear
         , SaveDraftDialog.IDraft {
 
 
@@ -184,8 +184,8 @@ public abstract class AbstractWriteActivity<T> extends AbstractAppActivity imple
             case R.id.menu_at:
                 Intent intent = new Intent(AbstractWriteActivity.this, AtUserActivity.class);
                 intent.putExtra("token", token);
-                SwipebackActivityUtils.startSwipebackActivity(AbstractWriteActivity.this, intent);
-                //startActivityForResult(intent, AT_USER);
+                SwipebackActivityUtils.setActivityScreenshot(AbstractWriteActivity.this, intent);
+                startActivityForResult(intent, AT_USER);
                 break;
         }
     }

@@ -139,7 +139,6 @@ public class UserInfoActivity extends AbstractAppActivity implements IUserInfo {
             intent.putExtra("user", bean);
             intent.putExtra("account", GlobalContext.getInstance().getAccountBean());
             SwipebackActivityUtils.startSwipebackActivity(this, intent);
-            //startActivity(intent);
             finish();
         }
 
@@ -267,7 +266,6 @@ public class UserInfoActivity extends AbstractAppActivity implements IUserInfo {
                 intent = new Intent(this, EditMyProfileActivity.class);
                 intent.putExtra("userBean", GlobalContext.getInstance().getAccountBean().getInfo());
                 SwipebackActivityUtils.startSwipebackActivity(this, intent);
-                //startActivity(intent);
                 return true;
             case R.id.menu_at:
                 intent = new Intent(this, WriteWeiboActivity.class);
@@ -275,7 +273,6 @@ public class UserInfoActivity extends AbstractAppActivity implements IUserInfo {
                 intent.putExtra("content", "@" + bean.getScreen_name());
                 intent.putExtra("account", GlobalContext.getInstance().getAccountBean());
                 SwipebackActivityUtils.startSwipebackActivity(this, intent);
-                //startActivity(intent);
                 break;
             case R.id.menu_modify_remark:
                 UpdateRemarkDialog dialog = new UpdateRemarkDialog();

@@ -18,6 +18,7 @@ import org.qii.weiciyuan.support.file.FileLocationMethod;
 import org.qii.weiciyuan.support.file.FileManager;
 import org.qii.weiciyuan.support.lib.MyAsyncTask;
 import org.qii.weiciyuan.support.utils.GlobalContext;
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.support.utils.TimeLineUtility;
 import org.qii.weiciyuan.support.utils.Utility;
 import org.qii.weiciyuan.ui.interfaces.AbstractAppFragment;
@@ -227,7 +228,7 @@ public class UserInfoFragment extends AbstractAppFragment {
                 Intent intent = new Intent(getActivity(), FriendListActivity.class);
                 intent.putExtra("token", GlobalContext.getInstance().getSpecialToken());
                 intent.putExtra("user", bean);
-                startActivity(intent);
+                SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
             }
         });
         fan_layout.setOnClickListener(new View.OnClickListener() {
@@ -236,7 +237,7 @@ public class UserInfoFragment extends AbstractAppFragment {
                 Intent intent = new Intent(getActivity(), FanListActivity.class);
                 intent.putExtra("token", GlobalContext.getInstance().getSpecialToken());
                 intent.putExtra("user", bean);
-                startActivity(intent);
+                SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
             }
         });
         topic_layout.setOnClickListener(new View.OnClickListener() {
@@ -245,7 +246,7 @@ public class UserInfoFragment extends AbstractAppFragment {
                 Intent intent = new Intent(getActivity(), UserTopicListActivity.class);
                 intent.putExtra("userBean", bean);
                 intent.putStringArrayListExtra("topicList", topicList);
-                startActivity(intent);
+                SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
 
             }
         });

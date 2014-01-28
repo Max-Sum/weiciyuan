@@ -1,12 +1,14 @@
 package org.qii.weiciyuan.ui.preference;
 
 import org.qii.weiciyuan.R;
+import org.qii.weiciyuan.support.utils.GlobalContext;
 import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.ui.interfaces.AbstractAppActivity;
 import org.qii.weiciyuan.ui.main.MainTimeLineActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.view.MenuItem;
 
@@ -16,9 +18,25 @@ import android.view.MenuItem;
  */
 public class SettingActivity extends AbstractAppActivity {
 
-    public static final String SOUND = "sound";
+    public static final String SOUND = "perf_sound_key";
 
-    public static final String AUTO_REFRESH = "auto_refresh";
+    public static final String AUTO_REFRESH = "perf_auto_refresh_key";
+
+    public static final String DISPLAY = "perf_display_key";
+
+    public static final String READ = "perf_read_key";
+
+    public static final String NOTIFICATION = "perf_notification_key";
+
+    public static final String DRAFT = "perf_draft_key";
+
+    public static final String DATA_CONTROL = "perf_data_control_key";
+
+    public static final String PERFORMANCE = "perf_performance_key";
+
+    public static final String OTHER = "perf_other_key";
+
+    public static final String ABOUT = "perf_about_key";
 
     //appearance
     public static final String THEME = "theme";
@@ -141,8 +159,7 @@ public class SettingActivity extends AbstractAppActivity {
             case android.R.id.home:
                 intent = MainTimeLineActivity.newIntent();
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                SwipebackActivityUtils.startSwipebackActivity(this, intent);
-                //startActivity(intent);
+                startActivity(intent);
                 return true;
         }
         return false;
@@ -154,7 +171,97 @@ public class SettingActivity extends AbstractAppActivity {
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.pref);
+            findPreference(SettingActivity.DISPLAY)
+                    .setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                        @Override
+                        public boolean onPreferenceClick(Preference preference) {
+                            Intent intent = new Intent(getActivity(), AppearanceActivity.class);
+                            SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
+                            return true;
+                        }
+                    });
+
+            findPreference(SettingActivity.READ)
+                    .setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                        @Override
+                        public boolean onPreferenceClick(Preference preference) {
+                            Intent intent = new Intent(getActivity(), ReadActivity.class);
+                            SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
+                            return true;
+                        }
+                    });
+
+            findPreference(SettingActivity.NOTIFICATION)
+                    .setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                        @Override
+                        public boolean onPreferenceClick(Preference preference) {
+                            Intent intent = new Intent(getActivity(), NotificationActivity.class);
+                            SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
+                            return true;
+                        }
+                    });
+
+            findPreference(SettingActivity.DRAFT)
+                    .setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                        @Override
+                        public boolean onPreferenceClick(Preference preference) {
+                            Intent intent = new Intent(getActivity(), DraftActivity.class);
+                            SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
+                            return true;
+                        }
+                    });
+
+            findPreference(SettingActivity.DATA_CONTROL)
+                    .setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                        @Override
+                        public boolean onPreferenceClick(Preference preference) {
+                            Intent intent = new Intent(getActivity(), ControlActivity.class);
+                            SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
+                            return true;
+                        }
+                    });
+
+            findPreference(SettingActivity.FILTER)
+                    .setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                        @Override
+                        public boolean onPreferenceClick(Preference preference) {
+                            Intent intent = new Intent(getActivity(), FilterActivity.class);
+                            SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
+                            return true;
+                        }
+                    });
+
+            findPreference(SettingActivity.PERFORMANCE)
+                    .setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                        @Override
+                        public boolean onPreferenceClick(Preference preference) {
+                            Intent intent = new Intent(getActivity(), PerformanceActivity.class);
+                            SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
+                            return true;
+                        }
+                    });
+
+            findPreference(SettingActivity.OTHER)
+                    .setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                        @Override
+                        public boolean onPreferenceClick(Preference preference) {
+                            Intent intent = new Intent(getActivity(), OtherActivity.class);
+                            SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
+                            return true;
+                        }
+                    });
+
+            findPreference(SettingActivity.ABOUT)
+                    .setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                        @Override
+                        public boolean onPreferenceClick(Preference preference) {
+                            Intent intent = new Intent(getActivity(), AboutActivity.class);
+                            SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
+                            return true;
+                        }
+                    });
         }
+
     }
 
 }

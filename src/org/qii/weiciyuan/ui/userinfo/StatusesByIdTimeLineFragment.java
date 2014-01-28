@@ -141,8 +141,8 @@ public class StatusesByIdTimeLineFragment extends AbstractMessageTimeLineFragmen
     protected void listViewItemClick(AdapterView parent, View view, int position, long id) {
         Intent intent = BrowserWeiboMsgActivity.newIntent(getList().getItem(position),
                 GlobalContext.getInstance().getSpecialToken());
-        SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
-        //startActivityForResult(intent,0);
+        SwipebackActivityUtils.setActivityScreenshot(getActivity(), intent);
+        startActivityForResult(intent,0);
     }
 
 

@@ -92,7 +92,6 @@ public class DraftFragment extends ListFragment {
                         intent.putExtra("draft", item.getStatusDraftBean());
                         intent.putExtra("account", accountBean);
                         SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
-                        //startActivity(intent);
                         break;
 
                     case DraftTable.TYPE_REPOST:
@@ -103,14 +102,13 @@ public class DraftFragment extends ListFragment {
                         intent.putExtra("draft", repostDraftBean);
                         intent.putExtra("account", accountBean);
                         SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
-                        //startActivity(intent);
                         break;
                     case DraftTable.TYPE_COMMENT:
                         CommentDraftBean commentDraftBean = list.get(position).getCommentDraftBean();
                         intent = new Intent(getActivity(), WriteCommentActivity.class);
                         intent.setAction(WriteCommentActivity.ACTION_DRAFT);
                         intent.putExtra("draft", commentDraftBean);
-                        startActivity(intent);
+                        SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
                         break;
                     case DraftTable.TYPE_REPLY:
                         ReplyDraftBean replyDraftBean = list.get(position).getReplyDraftBean();
@@ -118,7 +116,6 @@ public class DraftFragment extends ListFragment {
                         intent.setAction(WriteReplyToCommentActivity.ACTION_DRAFT);
                         intent.putExtra("draft", replyDraftBean);
                         SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
-                        //startActivity(intent);
                         break;
                 }
 

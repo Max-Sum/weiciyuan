@@ -406,7 +406,6 @@ public class BrowserWeiboMsgFragment extends AbstractAppFragment implements IRem
                 intent.putExtra("token", GlobalContext.getInstance().getSpecialToken());
                 intent.putExtra("user", msg.getUser());
                 SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
-                //startActivity(intent);
             }
         });
         layout.recontent.setOnClickListener(repostContentOnClickListener);
@@ -518,7 +517,6 @@ public class BrowserWeiboMsgFragment extends AbstractAppFragment implements IRem
                         intent.putExtra("msg", msg);
                         intent.putExtra("position", finalI);
                         SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
-                        //getActivity().startActivity(intent);
                     }
                 });
 
@@ -681,9 +679,6 @@ public class BrowserWeiboMsgFragment extends AbstractAppFragment implements IRem
                 SwipebackActivityUtils.startSwipebackActivity(getActivity(), BrowserWeiboMsgActivity
                         .newIntent(msg.getRetweeted_status(),
                                 GlobalContext.getInstance().getSpecialToken()));
-                //startActivity(BrowserWeiboMsgActivity
-                //        .newIntent(msg.getRetweeted_status(),
-                //                GlobalContext.getInstance().getSpecialToken()));
             } else if (isNotLink && isDeleted) {
                 Toast.makeText(getActivity(), getString(R.string.cant_open_deleted_weibo),
                         Toast.LENGTH_SHORT).show();
@@ -705,7 +700,6 @@ public class BrowserWeiboMsgFragment extends AbstractAppFragment implements IRem
                     intent.putExtra("locationStr", layout.location.getText());
                 }
                 SwipebackActivityUtils.startSwipebackActivity(getActivity(),intent);
-                //startActivity(intent);
             } else {
                 GeoBean bean = msg.getGeo();
                 String geoUriString = "geo:" + bean.getLat() + "," + bean.getLon() + "?q="
@@ -714,7 +708,6 @@ public class BrowserWeiboMsgFragment extends AbstractAppFragment implements IRem
                 Intent mapCall = new Intent(Intent.ACTION_VIEW, geoUri);
                 if (Utility.isIntentSafe(getActivity(), mapCall)) {
                     SwipebackActivityUtils.startSwipebackActivity(getActivity(),mapCall);
-                    //startActivity(mapCall);
                 }
 
             }
@@ -796,9 +789,6 @@ public class BrowserWeiboMsgFragment extends AbstractAppFragment implements IRem
                 SwipebackActivityUtils.startSwipebackActivity(getActivity(),BrowserWeiboMsgActivity.newIntent(
                         repostList.getItemList().get(position - listView.getHeaderViewsCount()),
                         GlobalContext.getInstance().getSpecialToken()));
-                //startActivity(BrowserWeiboMsgActivity.newIntent(
-                //        repostList.getItemList().get(position - listView.getHeaderViewsCount()),
-                //        GlobalContext.getInstance().getSpecialToken()));
             } else {
                 loadOldRepostData();
             }

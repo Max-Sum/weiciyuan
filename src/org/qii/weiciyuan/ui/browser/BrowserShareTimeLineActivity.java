@@ -3,6 +3,7 @@ package org.qii.weiciyuan.ui.browser;
 import org.qii.weiciyuan.bean.ShareListBean;
 import org.qii.weiciyuan.bean.android.AsyncTaskLoaderResult;
 import org.qii.weiciyuan.support.utils.GlobalContext;
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.ui.basefragment.AbstractMessageTimeLineFragment;
 import org.qii.weiciyuan.ui.interfaces.AbstractAppActivity;
 import org.qii.weiciyuan.ui.loader.BrowserShareMsgLoader;
@@ -107,9 +108,10 @@ public class BrowserShareTimeLineActivity extends AbstractAppActivity {
 
         @Override
         protected void listViewItemClick(AdapterView parent, View view, int position, long id) {
-            startActivityForResult(
-                    BrowserWeiboMsgActivity.newIntent(getList().getItemList().get(position),
-                            GlobalContext.getInstance().getSpecialToken()), 0);
+            Intent intent = BrowserWeiboMsgActivity.newIntent(getList().getItemList().get(position),
+                    GlobalContext.getInstance().getSpecialToken());
+            SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
+            startActivityForResult(intent , 0);
         }
 
         @Override

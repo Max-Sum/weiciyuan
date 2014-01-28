@@ -64,7 +64,6 @@ public class AboutFragment extends PreferenceFragment {
                         intent.putExtra("account", GlobalContext.getInstance().getAccountBean());
                         intent.putExtra("content", buildContent());
                         SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
-                        //startActivity(intent);
                         return true;
                     }
                 });
@@ -78,7 +77,6 @@ public class AboutFragment extends PreferenceFragment {
                         intent.putExtra("account", GlobalContext.getInstance().getAccountBean());
                         intent.putExtra("content", getString(R.string.recommend_content));
                         SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
-                        //startActivity(intent);
                         return true;
                     }
                 });

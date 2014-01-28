@@ -127,8 +127,8 @@ public class DMUserListFragment extends AbstractTimeLineFragment<DMUserListBean>
         switch (item.getItemId()) {
             case R.id.menu_write_dm:
                 Intent intent = new Intent(getActivity(), DMSelectUserActivity.class);
-                SwipebackActivityUtils.startSwipebackActivity(getActivity(),intent);
-                //startActivityForResult(intent, 0);
+                SwipebackActivityUtils.setActivityScreenshot(getActivity(),intent);
+                startActivityForResult(intent, 0);
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -139,7 +139,6 @@ public class DMUserListFragment extends AbstractTimeLineFragment<DMUserListBean>
         Intent intent = new Intent(getActivity(), DMActivity.class);
         intent.putExtra("user", bean.getItem(position).getUser());
         SwipebackActivityUtils.startSwipebackActivity(getActivity(),intent);
-        //startActivity(intent);
     }
 
     @Override
@@ -152,7 +151,6 @@ public class DMUserListFragment extends AbstractTimeLineFragment<DMUserListBean>
         Intent intent = new Intent(getActivity(), DMActivity.class);
         intent.putExtra("user", data.getParcelableExtra("user"));
         SwipebackActivityUtils.startSwipebackActivity(getActivity(),intent);
-        //startActivity(intent);
     }
 
     @Override

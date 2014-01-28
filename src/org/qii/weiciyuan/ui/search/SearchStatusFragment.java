@@ -3,6 +3,7 @@ package org.qii.weiciyuan.ui.search;
 import org.qii.weiciyuan.bean.SearchStatusListBean;
 import org.qii.weiciyuan.bean.android.AsyncTaskLoaderResult;
 import org.qii.weiciyuan.support.utils.GlobalContext;
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.ui.basefragment.AbstractMessageTimeLineFragment;
 import org.qii.weiciyuan.ui.browser.BrowserWeiboMsgActivity;
 import org.qii.weiciyuan.ui.loader.SearchStatusLoader;
@@ -65,7 +66,7 @@ public class SearchStatusFragment extends AbstractMessageTimeLineFragment<Search
 
 
     protected void listViewItemClick(AdapterView parent, View view, int position, long id) {
-        startActivity(BrowserWeiboMsgActivity.newIntent(bean.getItem(position),
+        SwipebackActivityUtils.startSwipebackActivity(getActivity(), BrowserWeiboMsgActivity.newIntent(bean.getItem(position),
                 GlobalContext.getInstance().getSpecialToken()));
     }
 

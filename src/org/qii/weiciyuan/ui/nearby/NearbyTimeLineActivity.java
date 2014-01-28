@@ -16,17 +16,20 @@ import org.qii.weiciyuan.dao.location.NearbyTimeLineDao;
 import org.qii.weiciyuan.support.error.WeiboException;
 import org.qii.weiciyuan.support.lib.MyAsyncTask;
 import org.qii.weiciyuan.support.utils.GlobalContext;
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.support.utils.Utility;
 import org.qii.weiciyuan.ui.browser.BrowserWeiboMsgActivity;
 import org.qii.weiciyuan.ui.interfaces.AbstractAppActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Browser;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -108,8 +111,10 @@ public class NearbyTimeLineActivity extends AbstractAppActivity {
                     public void onInfoWindowClick(Marker marker) {
                         MessageBean msg = bindEvent.get(marker);
                         if (msg != null) {
-                            startActivityForResult(BrowserWeiboMsgActivity.newIntent(msg,
-                                    GlobalContext.getInstance().getSpecialToken()), 0);
+                            Intent intent = BrowserWeiboMsgActivity.newIntent(msg,
+                                    GlobalContext.getInstance().getSpecialToken());
+                            SwipebackActivityUtils.setActivityScreenshot(NearbyTimeLineActivity.this, intent);
+                            startActivityForResult(intent, 0);
                         }
                     }
                 });

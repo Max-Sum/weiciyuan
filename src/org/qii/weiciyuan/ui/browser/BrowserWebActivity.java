@@ -6,6 +6,7 @@ import org.qii.weiciyuan.support.error.WeiboException;
 import org.qii.weiciyuan.support.lib.CheatSheet;
 import org.qii.weiciyuan.support.lib.MyAsyncTask;
 import org.qii.weiciyuan.support.utils.GlobalContext;
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.ui.interfaces.AbstractAppActivityNoSwipe;
 import org.qii.weiciyuan.ui.main.MainTimeLineActivity;
 
@@ -59,7 +60,7 @@ public class BrowserWebActivity extends AbstractAppActivityNoSwipe {
                         BrowserShareTimeLineActivity.class);
                 intent.putExtra("url", url);
                 intent.putExtra("count", shareCountInt);
-                startActivity(intent);
+                SwipebackActivityUtils.startSwipebackActivity(BrowserWebActivity.this, intent);
             }
         });
         getActionBar().setCustomView(title, new ActionBar.LayoutParams(Gravity.RIGHT));

@@ -627,7 +627,6 @@ public class FriendsTimeLineFragment extends AbstractMessageTimeLineFragment<Mes
                 intent.putExtra("token", token);
                 intent.putExtra("account", accountBean);
                 SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
-                //startActivity(intent);
                 break;
             case R.id.refresh:
                 if (allowRefresh()) {

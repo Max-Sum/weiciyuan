@@ -18,6 +18,7 @@ import org.qii.weiciyuan.support.asyncdrawable.TimeLineBitmapDownloader;
 import org.qii.weiciyuan.support.lib.TimeLineAvatarImageView;
 import org.qii.weiciyuan.support.settinghelper.SettingUtility;
 import org.qii.weiciyuan.support.utils.GlobalContext;
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.support.utils.TimeLineUtility;
 import org.qii.weiciyuan.ui.basefragment.AbstractTimeLineFragment;
 import org.qii.weiciyuan.ui.userinfo.UserInfoActivity;
@@ -216,7 +217,7 @@ public class DMConversationAdapter extends BaseAdapter {
                     Intent intent = new Intent(getActivity(), UserInfoActivity.class);
                     intent.putExtra("token", GlobalContext.getInstance().getSpecialToken());
                     intent.putExtra("user", user);
-                    getActivity().startActivity(intent);
+                    SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
                 }
             });
 

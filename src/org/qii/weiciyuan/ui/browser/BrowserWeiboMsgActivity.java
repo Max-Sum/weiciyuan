@@ -214,7 +214,6 @@ public class BrowserWeiboMsgActivity extends AbstractAppActivity
                 Intent intent = MainTimeLineActivity.newIntent();
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 SwipebackActivityUtils.startSwipebackActivity(this, intent);
-                //startActivity(intent);
                 return true;
             case R.id.menu_repost:
                 intent = new Intent(this, WriteRepostActivity.class);
@@ -222,7 +221,6 @@ public class BrowserWeiboMsgActivity extends AbstractAppActivity
                 intent.putExtra("id", getMsg().getId());
                 intent.putExtra("msg", getMsg());
                 SwipebackActivityUtils.startSwipebackActivity(this, intent);
-                //startActivity(intent);
                 return true;
             case R.id.menu_comment:
 
@@ -231,7 +229,6 @@ public class BrowserWeiboMsgActivity extends AbstractAppActivity
                 intent.putExtra("id", getMsg().getId());
                 intent.putExtra("msg", getMsg());
                 SwipebackActivityUtils.startSwipebackActivity(this, intent);
-                //startActivity(intent);
 
                 return true;
 

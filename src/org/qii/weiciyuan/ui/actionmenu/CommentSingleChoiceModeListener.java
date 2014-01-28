@@ -19,6 +19,7 @@ import android.widget.Toast;
 import org.qii.weiciyuan.R;
 import org.qii.weiciyuan.bean.CommentBean;
 import org.qii.weiciyuan.support.utils.GlobalContext;
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.ui.basefragment.AbstractTimeLineFragment;
 import org.qii.weiciyuan.ui.browser.BrowserCommentActivity;
 import org.qii.weiciyuan.ui.browser.BrowserWeiboMsgFragment;
@@ -117,7 +118,7 @@ public class CommentSingleChoiceModeListener implements ActionMode.Callback {
                 intent = new Intent(getActivity(), BrowserCommentActivity.class);
                 intent.putExtra("comment", bean);
                 intent.putExtra("token", GlobalContext.getInstance().getSpecialToken());
-                getActivity().startActivity(intent);
+                SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
                 listView.clearChoices();
                 mode.finish();
 

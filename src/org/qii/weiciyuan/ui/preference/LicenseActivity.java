@@ -81,8 +81,7 @@ public class LicenseActivity extends AbstractAppActivity {
             case android.R.id.home:
                 intent = new Intent(this, AboutActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                SwipebackActivityUtils.startSwipebackActivity(this, intent);
-                //startActivity(intent);
+                startActivity(intent);
                 return true;
             case R.id.menu_print:
                 PrintManager printManager = (PrintManager) getSystemService(Context.PRINT_SERVICE);

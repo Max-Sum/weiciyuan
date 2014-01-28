@@ -10,6 +10,7 @@ import android.provider.Browser;
 import android.widget.Toast;
 import org.qii.weiciyuan.R;
 import org.qii.weiciyuan.support.utils.GlobalContext;
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.support.utils.Utility;
 import org.qii.weiciyuan.support.utils.WebBrowserSelector;
 import org.qii.weiciyuan.ui.userinfo.UserInfoActivity;
@@ -62,18 +63,18 @@ public class LongClickLinkDialog extends DialogFragment {
                                     if (Utility.isWeiboAccountIdLink(url)) {
                                         Intent intent = new Intent(context, UserInfoActivity.class);
                                         intent.putExtra("id", Utility.getIdFromWeiboAccountLink(url));
-                                        context.startActivity(intent);
+                                        SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
                                     } else if (Utility.isWeiboAccountDomainLink(url)) {
                                         Intent intent = new Intent(context, UserInfoActivity.class);
                                         intent.putExtra("domain", Utility.getDomainFromWeiboAccountLink(url));
-                                        context.startActivity(intent);
+                                        SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
                                     } else {
                                         WebBrowserSelector.openLink(context, uri);
                                     }
                                 } else {
                                     Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                                     intent.putExtra(Browser.EXTRA_APPLICATION_ID, context.getPackageName());
-                                    context.startActivity(intent);
+                                    SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
                                 }
                                 break;
                             case 1:
