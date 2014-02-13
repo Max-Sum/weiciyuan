@@ -18,10 +18,10 @@ import org.qii.weiciyuan.support.utils.GlobalContext;
 import org.qii.weiciyuan.support.utils.SmileyPickerUtility;
 import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.support.utils.Utility;
+import org.qii.weiciyuan.support.utils.ViewUtility;
 import org.qii.weiciyuan.ui.browser.AppMapActivity;
 import org.qii.weiciyuan.ui.browser.BrowserWriteWeiboLocalPicActivity;
 import org.qii.weiciyuan.ui.interfaces.AbstractAppActivityNoSwipe;
-import org.qii.weiciyuan.ui.interfaces.IAccountInfo;
 import org.qii.weiciyuan.ui.login.AccountActivity;
 import org.qii.weiciyuan.ui.main.MainTimeLineActivity;
 import org.qii.weiciyuan.ui.maintimeline.SaveDraftDialog;
@@ -67,7 +67,7 @@ import java.util.Locale;
  */
 public class WriteWeiboActivity extends AbstractAppActivityNoSwipe
         implements DialogInterface.OnClickListener,
-        IAccountInfo, ClearContentDialog.IClear, SaveDraftDialog.IDraft {
+        ClearContentDialog.IClear, SaveDraftDialog.IDraft {
 
     private static final int CAMERA_RESULT = 0;
 
@@ -102,6 +102,8 @@ public class WriteWeiboActivity extends AbstractAppActivityNoSwipe
 
     private KeyboardControlEditText content = null;
 
+    private ImageView preview = null;
+
     private SmileyPicker smiley = null;
 
     private RelativeLayout container = null;
@@ -109,6 +111,13 @@ public class WriteWeiboActivity extends AbstractAppActivityNoSwipe
     private String2PicTask string2PicTask;
 
     private GetGoogleLocationInfo locationTask;
+
+    public static Intent newIntent(AccountBean accountBean) {
+        Intent intent = new Intent(GlobalContext.getInstance(), WriteWeiboActivity.class);
+        intent.putExtra("token", accountBean.getAccess_token());
+        intent.putExtra("account", accountBean);
+        return intent;
+    }
 
     public static Intent startBecauseSendFailed(Context context,
             AccountBean accountBean,
@@ -212,11 +221,20 @@ public class WriteWeiboActivity extends AbstractAppActivityNoSwipe
         if (bitmap != null) {
             ((ImageButton) findViewById(R.id.menu_add_pic)).setImageBitmap(bitmap);
         }
+        bitmap = ImageUtility.decodeBitmapFromSDCard(picPath, Utility.getScreenWidth(),
+                Utility.getScreenHeight());
+        if (bitmap != null) {
+            preview.setVisibility(View.VISIBLE);
+            preview.setImageBitmap(bitmap);
+        }
     }
 
     private void disablePicture() {
         ((ImageButton) findViewById(R.id.menu_add_pic))
                 .setImageDrawable(getResources().getDrawable(R.drawable.camera_light));
+
+        preview.setVisibility(View.INVISIBLE);
+        preview.setImageBitmap(null);
     }
 
 
@@ -513,6 +531,8 @@ public class WriteWeiboActivity extends AbstractAppActivityNoSwipe
                 (ProgressBar) title.findViewById(R.id.have_suggest_progressbar));
         content.setAdapter(adapter);
 
+        preview = ViewUtility.findViewById(this, R.id.status_image_preview);
+
         View.OnClickListener onClickListener = new BottomButtonClickListener();
         findViewById(R.id.menu_at).setOnClickListener(onClickListener);
         findViewById(R.id.menu_emoticon).setOnClickListener(onClickListener);
@@ -777,7 +797,6 @@ public class WriteWeiboActivity extends AbstractAppActivityNoSwipe
         }
     }
 
-    @Override
     public AccountBean getAccount() {
         return accountBean;
     }

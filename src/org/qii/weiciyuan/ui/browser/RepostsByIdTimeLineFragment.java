@@ -145,12 +145,12 @@ public class RepostsByIdTimeLineFragment extends AbstractMessageTimeLineFragment
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position,
                     long id) {
                 if (position - 1 < getList().getSize() && position - 1 >= 0) {
-                    if (mActionMode != null) {
-                        mActionMode.finish();
-                        mActionMode = null;
+                    if (actionMode != null) {
+                        actionMode.finish();
+                        actionMode = null;
                         getListView().setItemChecked(position, true);
                         timeLineAdapter.notifyDataSetChanged();
-                        mActionMode = getActivity().startActionMode(
+                        actionMode = getActivity().startActionMode(
                                 new RepostSingleChoiceModeListener(getListView(),
                                         (StatusListAdapter) timeLineAdapter,
                                         RepostsByIdTimeLineFragment.this, quick_repost,
@@ -159,7 +159,7 @@ public class RepostsByIdTimeLineFragment extends AbstractMessageTimeLineFragment
                     } else {
                         getListView().setItemChecked(position, true);
                         timeLineAdapter.notifyDataSetChanged();
-                        mActionMode = getActivity().startActionMode(
+                        actionMode = getActivity().startActionMode(
                                 new RepostSingleChoiceModeListener(getListView(),
                                         (StatusListAdapter) timeLineAdapter,
                                         RepostsByIdTimeLineFragment.this, quick_repost,
@@ -222,10 +222,10 @@ public class RepostsByIdTimeLineFragment extends AbstractMessageTimeLineFragment
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                if (mActionMode != null) {
+                if (actionMode != null) {
                     getListView().clearChoices();
-                    mActionMode.finish();
-                    mActionMode = null;
+                    actionMode.finish();
+                    actionMode = null;
                     return;
                 }
                 getListView().clearChoices();
@@ -375,7 +375,7 @@ public class RepostsByIdTimeLineFragment extends AbstractMessageTimeLineFragment
 
 
     @Override
-    protected void newMsgOnPostExecute(RepostListBean newValue, Bundle loaderArgs) {
+    protected void newMsgLoaderSuccessCallback(RepostListBean newValue, Bundle loaderArgs) {
         if (Utility.isAllNotNull(getActivity(), newValue) && newValue.getSize() > 0) {
             getList().replaceAll(newValue);
             getAdapter().notifyDataSetChanged();
@@ -388,7 +388,7 @@ public class RepostsByIdTimeLineFragment extends AbstractMessageTimeLineFragment
     }
 
     @Override
-    protected void oldMsgOnPostExecute(RepostListBean newValue) {
+    protected void oldMsgLoaderSuccessCallback(RepostListBean newValue) {
         if (Utility.isAllNotNull(getActivity(), newValue) && newValue.getSize() > 1) {
             getList().addOldData(newValue);
             invlidateTabText();
@@ -414,7 +414,7 @@ public class RepostsByIdTimeLineFragment extends AbstractMessageTimeLineFragment
         VelocityListView velocityListView = (VelocityListView) getListView();
         bundle.putBoolean("towardsBottom",
                 velocityListView.getTowardsOrientation() == VelocityListView.TOWARDS_BOTTOM);
-        getLoaderManager().restartLoader(MIDDLE_MSG_LOADER_ID, bundle, msgCallback);
+        getLoaderManager().restartLoader(MIDDLE_MSG_LOADER_ID, bundle, msgAsyncTaskLoaderCallback);
 
     }
 
@@ -423,7 +423,7 @@ public class RepostsByIdTimeLineFragment extends AbstractMessageTimeLineFragment
         getLoaderManager().destroyLoader(MIDDLE_MSG_LOADER_ID);
         getLoaderManager().destroyLoader(OLD_MSG_LOADER_ID);
         dismissFooterView();
-        getLoaderManager().restartLoader(NEW_MSG_LOADER_ID, null, msgCallback);
+        getLoaderManager().restartLoader(NEW_MSG_LOADER_ID, null, msgAsyncTaskLoaderCallback);
     }
 
 
@@ -432,7 +432,7 @@ public class RepostsByIdTimeLineFragment extends AbstractMessageTimeLineFragment
         getLoaderManager().destroyLoader(NEW_MSG_LOADER_ID);
         getPullToRefreshListView().onRefreshComplete();
         getLoaderManager().destroyLoader(MIDDLE_MSG_LOADER_ID);
-        getLoaderManager().restartLoader(OLD_MSG_LOADER_ID, null, msgCallback);
+        getLoaderManager().restartLoader(OLD_MSG_LOADER_ID, null, msgAsyncTaskLoaderCallback);
     }
 
 

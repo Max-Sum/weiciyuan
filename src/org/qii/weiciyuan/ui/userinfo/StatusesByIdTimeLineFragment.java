@@ -33,10 +33,25 @@ public class StatusesByIdTimeLineFragment extends AbstractMessageTimeLineFragmen
 
     private MessageListBean bean = new MessageListBean();
 
+    public static StatusesByIdTimeLineFragment newInstance(UserBean userBean, String token) {
+        StatusesByIdTimeLineFragment fragment = new StatusesByIdTimeLineFragment();
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("userBean", userBean);
+        bundle.putString("token", token);
+        fragment.setArguments(bundle);
+        return fragment;
+    }
+
     public StatusesByIdTimeLineFragment() {
 
     }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        userBean = getArguments().getParcelable("userBean");
+        token = getArguments().getString("token");
+    }
 
     @Override
     public MessageListBean getList() {
@@ -89,11 +104,6 @@ public class StatusesByIdTimeLineFragment extends AbstractMessageTimeLineFragmen
             getAdapter().notifyDataSetChanged();
         }
     };
-
-    public StatusesByIdTimeLineFragment(UserBean userBean, String token) {
-        this.userBean = userBean;
-        this.token = token;
-    }
 
 
     @Override
@@ -160,7 +170,7 @@ public class StatusesByIdTimeLineFragment extends AbstractMessageTimeLineFragmen
 
 
     @Override
-    protected void newMsgOnPostExecute(MessageListBean newValue, Bundle loaderArgs) {
+    protected void newMsgLoaderSuccessCallback(MessageListBean newValue, Bundle loaderArgs) {
         if (getActivity() != null && newValue.getSize() > 0) {
             getList().addNewData(newValue);
             getAdapter().notifyDataSetChanged();
@@ -173,7 +183,7 @@ public class StatusesByIdTimeLineFragment extends AbstractMessageTimeLineFragmen
     }
 
     @Override
-    protected void oldMsgOnPostExecute(MessageListBean newValue) {
+    protected void oldMsgLoaderSuccessCallback(MessageListBean newValue) {
         if (newValue != null && newValue.getSize() > 1) {
             getList().addOldData(newValue);
             getActivity().invalidateOptionsMenu();

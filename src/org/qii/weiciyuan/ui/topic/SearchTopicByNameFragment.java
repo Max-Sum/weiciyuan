@@ -96,7 +96,7 @@ public class SearchTopicByNameFragment
     }
 
     @Override
-    protected void newMsgOnPostExecute(TopicResultListBean newValue, Bundle loaderArgs) {
+    protected void newMsgLoaderSuccessCallback(TopicResultListBean newValue, Bundle loaderArgs) {
         if (newValue != null && getActivity() != null && newValue.getSize() > 0) {
             getList().addNewData(newValue);
             getAdapter().notifyDataSetChanged();
@@ -106,7 +106,7 @@ public class SearchTopicByNameFragment
     }
 
     @Override
-    protected void oldMsgOnPostExecute(TopicResultListBean newValue) {
+    protected void oldMsgLoaderSuccessCallback(TopicResultListBean newValue) {
         if (newValue != null && newValue.getSize() > 0) {
             getList().addOldData(newValue);
             page++;

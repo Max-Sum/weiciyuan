@@ -1,8 +1,8 @@
 package org.qii.weiciyuan.ui.userinfo;
 
 import org.qii.weiciyuan.bean.UserBean;
+import org.qii.weiciyuan.support.utils.GlobalContext;
 import org.qii.weiciyuan.ui.interfaces.AbstractAppActivity;
-import org.qii.weiciyuan.ui.interfaces.IUserInfo;
 import org.qii.weiciyuan.ui.main.MainTimeLineActivity;
 
 import android.content.Intent;
@@ -13,14 +13,14 @@ import android.view.MenuItem;
  * User: qii
  * Date: 13-6-21
  */
-public class UserTimeLineActivity extends AbstractAppActivity implements IUserInfo {
-
-    private UserBean bean;
+public class UserTimeLineActivity extends AbstractAppActivity {
 
 
-    @Override
-    public UserBean getUser() {
-        return bean;
+    public static Intent newIntent(String token, UserBean userBean) {
+        Intent intent = new Intent(GlobalContext.getInstance(), UserTimeLineActivity.class);
+        intent.putExtra("token", token);
+        intent.putExtra("user", userBean);
+        return intent;
     }
 
     @Override
@@ -30,13 +30,13 @@ public class UserTimeLineActivity extends AbstractAppActivity implements IUserIn
         getActionBar().setDisplayShowTitleEnabled(true);
         getActionBar().setDisplayShowHomeEnabled(false);
         String token = getIntent().getStringExtra("token");
-        bean = (UserBean) getIntent().getParcelableExtra("user");
+        UserBean bean = getIntent().getParcelableExtra("user");
         getActionBar().setTitle(bean.getScreen_name());
         if (getSupportFragmentManager()
                 .findFragmentByTag(StatusesByIdTimeLineFragment.class.getName()) == null) {
             getSupportFragmentManager().beginTransaction()
                     .replace(android.R.id.content,
-                            new StatusesByIdTimeLineFragment(getUser(), token),
+                            StatusesByIdTimeLineFragment.newInstance(bean, token),
                             StatusesByIdTimeLineFragment.class.getName())
                     .commit();
         }

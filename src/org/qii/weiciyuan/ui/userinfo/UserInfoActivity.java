@@ -21,7 +21,6 @@ import org.qii.weiciyuan.support.utils.Utility;
 import org.qii.weiciyuan.ui.common.CommonErrorDialogFragment;
 import org.qii.weiciyuan.ui.common.CommonProgressDialogFragment;
 import org.qii.weiciyuan.ui.interfaces.AbstractAppActivity;
-import org.qii.weiciyuan.ui.interfaces.IUserInfo;
 import org.qii.weiciyuan.ui.loader.AbstractAsyncNetRequestTaskLoader;
 import org.qii.weiciyuan.ui.main.MainTimeLineActivity;
 import org.qii.weiciyuan.ui.send.WriteWeiboActivity;
@@ -48,7 +47,7 @@ import java.util.List;
  * User: Jiang Qi
  * Date: 12-8-14
  */
-public class UserInfoActivity extends AbstractAppActivity implements IUserInfo {
+public class UserInfoActivity extends AbstractAppActivity {
 
     private String token;
 
@@ -68,7 +67,6 @@ public class UserInfoActivity extends AbstractAppActivity implements IUserInfo {
         return token;
     }
 
-    @Override
     public UserBean getUser() {
         return bean;
     }
@@ -190,14 +188,14 @@ public class UserInfoActivity extends AbstractAppActivity implements IUserInfo {
             @Override
             public void run() {
                 if (getSupportFragmentManager()
-                        .findFragmentByTag(NewUserInfoFragment.class.getName()) == null) {
-                    NewUserInfoFragment userInfoFragment = NewUserInfoFragment
+                        .findFragmentByTag(UserInfoFragment.class.getName()) == null) {
+                    UserInfoFragment userInfoFragment = UserInfoFragment
                             .newInstance(getUser(),
                                     getToken());
                     getSupportFragmentManager().beginTransaction()
                             .replace(android.R.id.content,
                                     userInfoFragment,
-                                    NewUserInfoFragment.class.getName())
+                                    UserInfoFragment.class.getName())
                             .commit();
                     getSupportFragmentManager().executePendingTransactions();
 
@@ -319,9 +317,9 @@ public class UserInfoActivity extends AbstractAppActivity implements IUserInfo {
     }
 
 
-    private NewUserInfoFragment getInfoFragment() {
-        return ((NewUserInfoFragment) getSupportFragmentManager().findFragmentByTag(
-                NewUserInfoFragment.class.getName()));
+    private UserInfoFragment getInfoFragment() {
+        return ((UserInfoFragment) getSupportFragmentManager().findFragmentByTag(
+                UserInfoFragment.class.getName()));
     }
 
     private void manageGroup() {

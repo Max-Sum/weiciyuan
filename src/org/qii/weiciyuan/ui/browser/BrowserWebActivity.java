@@ -56,10 +56,7 @@ public class BrowserWebActivity extends AbstractAppActivityNoSwipe {
         shareCountBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(BrowserWebActivity.this,
-                        BrowserShareTimeLineActivity.class);
-                intent.putExtra("url", url);
-                intent.putExtra("count", shareCountInt);
+                Intent intent = BrowserShareTimeLineActivity.newIntent(url);
                 SwipebackActivityUtils.startSwipebackActivity(BrowserWebActivity.this, intent);
             }
         });

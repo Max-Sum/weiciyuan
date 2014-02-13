@@ -190,7 +190,7 @@ public class DMUserListFragment extends AbstractTimeLineFragment<DMUserListBean>
     }
 
     @Override
-    protected void newMsgOnPostExecute(DMUserListBean newValue, Bundle loaderArgs) {
+    protected void newMsgLoaderSuccessCallback(DMUserListBean newValue, Bundle loaderArgs) {
         if (newValue != null && newValue.getSize() > 0 && getActivity() != null) {
             getList().addNewData(newValue);
             getAdapter().notifyDataSetChanged();
@@ -202,7 +202,7 @@ public class DMUserListFragment extends AbstractTimeLineFragment<DMUserListBean>
     }
 
     @Override
-    protected void oldMsgOnPostExecute(DMUserListBean newValue) {
+    protected void oldMsgLoaderSuccessCallback(DMUserListBean newValue) {
         if (newValue != null && newValue.getSize() > 0 && getActivity() != null) {
             getList().addOldData(newValue);
             getAdapter().notifyDataSetChanged();
