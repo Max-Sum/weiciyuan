@@ -2,14 +2,11 @@ package org.qii.weiciyuan.ui.search;
 
 import org.qii.weiciyuan.R;
 import org.qii.weiciyuan.support.lib.AppFragmentPagerAdapter;
-import org.qii.weiciyuan.support.utils.GlobalContext;
-import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.ui.basefragment.AbstractMessageTimeLineFragment;
 import org.qii.weiciyuan.ui.interfaces.AbstractAppActivity;
 import org.qii.weiciyuan.ui.main.MainTimeLineActivity;
 
 import android.app.ActionBar;
-import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.app.SearchManager;
 import android.content.Context;
