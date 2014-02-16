@@ -90,6 +90,16 @@ public abstract class AbstractMessageTimeLineFragment<T extends ListBean<Message
         setHasOptionsMenu(true);
     }
 
+    //Reduce lists
+    @Override
+    public void onPause() {
+        super.onPause();
+        int reduceStartPosition = 50 + getListView().getFirstVisiblePosition();
+        while (getList().getSize() > reduceStartPosition){
+            getList().getItemList().remove(reduceStartPosition);
+        }
+    }
+
     /**
      * fix android bug,long press a item in the first tab's listview, rotate screen, the item
      * background is still blue(it is checked),
