@@ -470,6 +470,7 @@ public class UserInfoFragment extends AbstractMessageTimeLineFragment<MessageLis
         final int width = Utility.getMaxLeftWidthOrHeightImageViewCanRead(height);
         final String picPath = userBean.getCover_image();
         blur.setAlpha(0f);
+        blur.setOriImageUrl(picPath);
         ArrayList<ImageView> imageViewArrayList = new ArrayList<ImageView>();
         imageViewArrayList.add(cover);
         imageViewArrayList.add(blur);
