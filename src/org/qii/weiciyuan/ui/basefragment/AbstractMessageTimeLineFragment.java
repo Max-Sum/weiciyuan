@@ -11,7 +11,6 @@ import org.qii.weiciyuan.bean.ItemBean;
 import org.qii.weiciyuan.bean.ListBean;
 import org.qii.weiciyuan.bean.MessageBean;
 import org.qii.weiciyuan.dao.destroy.DestroyStatusDao;
-import org.qii.weiciyuan.support.debug.AppLogger;
 import org.qii.weiciyuan.support.error.WeiboException;
 import org.qii.weiciyuan.support.lib.MyAsyncTask;
 import org.qii.weiciyuan.support.utils.GlobalContext;
@@ -105,7 +104,6 @@ public abstract class AbstractMessageTimeLineFragment<T extends ListBean<Message
         }
         if(reduced){
             ItemBean msg = getList().getItem(reduceStartPosition - 1);
-            AppLogger.e("msg: "  + msg);
             if(msg == null) getList().getItemList().remove(reduceStartPosition - 1);
         }
     }
