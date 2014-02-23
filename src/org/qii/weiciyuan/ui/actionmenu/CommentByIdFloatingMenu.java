@@ -9,6 +9,7 @@ import android.support.v4.app.DialogFragment;
 import org.qii.weiciyuan.R;
 import org.qii.weiciyuan.bean.CommentBean;
 import org.qii.weiciyuan.support.utils.GlobalContext;
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.ui.browser.BrowserCommentActivity;
 import org.qii.weiciyuan.ui.send.WriteReplyToCommentActivity;
 
@@ -60,7 +61,7 @@ public class CommentByIdFloatingMenu extends DialogFragment {
                         intent = new Intent(getActivity(), BrowserCommentActivity.class);
                         intent.putExtra("comment", bean);
                         intent.putExtra("token", GlobalContext.getInstance().getSpecialToken());
-                        getActivity().startActivity(intent);
+                        SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
                         break;
                 }
 

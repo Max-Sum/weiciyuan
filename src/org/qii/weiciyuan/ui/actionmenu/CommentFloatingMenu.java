@@ -3,6 +3,7 @@ package org.qii.weiciyuan.ui.actionmenu;
 import org.qii.weiciyuan.R;
 import org.qii.weiciyuan.bean.CommentBean;
 import org.qii.weiciyuan.support.utils.GlobalContext;
+import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.ui.browser.BrowserWeiboMsgActivity;
 import org.qii.weiciyuan.ui.send.WriteReplyToCommentActivity;
 
@@ -52,9 +53,9 @@ public class CommentFloatingMenu extends DialogFragment {
                 Intent intent;
                 switch (which) {
                     case 0:
-                        startActivity(BrowserWeiboMsgActivity
-                                .newIntent(bean.getStatus(),
-                                        GlobalContext.getInstance().getSpecialToken()));
+                        SwipebackActivityUtils.startSwipebackActivity(getActivity(),
+                            BrowserWeiboMsgActivity.newIntent(bean.getStatus(),
+                                GlobalContext.getInstance().getSpecialToken()));
                         break;
                     case 1:
                         intent = new Intent(getActivity(), WriteReplyToCommentActivity.class);
