@@ -8,6 +8,7 @@ import android.nfc.NfcEvent;
 import android.os.Bundle;
 import android.view.ViewConfiguration;
 import android.widget.Toast;
+import org.qii.weiciyuan.R;
 import org.qii.weiciyuan.support.asyncdrawable.TimeLineBitmapDownloader;
 import org.qii.weiciyuan.support.error.WeiboException;
 import org.qii.weiciyuan.support.settinghelper.SettingUtility;
@@ -59,6 +60,7 @@ public class AbstractAppActivity extends SwipeBackActivity {
             theme = savedInstanceState.getInt("theme");
         }
         setTheme(theme);
+        setTheme(R.style.AppTheme_SwipeBack);
         super.onCreate(savedInstanceState);
         forceShowActionBarOverflowMenu();
         initNFC();

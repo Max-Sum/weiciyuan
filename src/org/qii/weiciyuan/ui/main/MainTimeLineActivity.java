@@ -298,10 +298,8 @@ public class MainTimeLineActivity extends MainTimeLineParentActivity {
         write.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = WriteWeiboActivity
-                        .newIntent(GlobalContext.getInstance().getAccountBean());
-                SwipebackActivityUtils.startSwipebackActivity(MainTimeLineActivity.this, intent);
-                startActivity(intent);
+                startActivity(WriteWeiboActivity
+                        .newIntent(GlobalContext.getInstance().getAccountBean()));
             }
         });
         ActionBar.LayoutParams layoutParams = new ActionBar.LayoutParams(

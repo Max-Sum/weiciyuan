@@ -133,6 +133,8 @@ public class SettingActivity extends AbstractAppActivity {
 
     public static final String CRASH = "pref_crash_key";
 
+    public static final String LICENSE = "pref_licence_key";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

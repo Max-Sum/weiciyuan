@@ -44,7 +44,6 @@ public abstract class AbstractWriteActivity<T> extends AbstractAppActivityNoSwip
         return et;
     }
 
-
     @Override
     public void clear() {
         getEditTextView().setText("");

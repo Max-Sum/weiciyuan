@@ -83,6 +83,16 @@ public class AboutFragment extends PreferenceFragment {
 
         findPreference(SettingActivity.VERSION).setSummary(buildVersionInfo());
 
+        findPreference(SettingActivity.LICENSE)
+                .setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                    @Override
+                    public boolean onPreferenceClick(Preference preference) {
+                        Intent intent = new Intent(getActivity(), LicenseActivity.class);
+                        SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
+                        return true;
+                    }
+                });
+
         findPreference(SettingActivity.VERSION)
                 .setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                     @Override

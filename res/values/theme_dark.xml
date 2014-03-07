@@ -85,7 +85,6 @@
         <item name="android:actionBarStyle">@style/ActionBarStyle_Black</item>
         <item name="android:actionDropDownStyle">@style/ActionBarDropDownStyle_Black</item>
         <item name="android:actionBarTabStyle">@style/ActionBarTabViewDark</item>
-        <item name="android:windowAnimationStyle">@style/SwipeBackAnimation</item>
 
     </style>
 
