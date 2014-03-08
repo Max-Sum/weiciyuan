@@ -97,7 +97,7 @@ public abstract class AbstractMessageTimeLineFragment<T extends ListBean<Message
         super.onPause();
         boolean reduced = false;
         int headerViewsCount = getListView().getHeaderViewsCount();
-        int reduceStartPosition = 50 + getListView().getFirstVisiblePosition() - headerViewsCount;
+        int reduceStartPosition = 50 + getListView().getFirstVisiblePosition() + headerViewsCount;
         while (getList().getSize() > reduceStartPosition){
             getList().getItemList().remove(reduceStartPosition);
             reduced = true;
