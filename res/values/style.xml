@@ -122,11 +122,9 @@
         <item name="scrimAlpha">0.75</item>
     </style>
 
-    <style name="SwipeBackAnimation">
+    <style name="SwipeBackAnimation" parent="@android:Animation.Activity">
         <item name="android:activityOpenEnterAnimation">@anim/swipeback_open_enter</item>
         <item name="android:activityOpenExitAnimation">@anim/swipeback_open_exit</item>
-        <item name="android:activityCloseExitAnimation">@anim/swipeback_close_exit</item>
-        <item name="android:activityCloseEnterAnimation">@anim/swipeback_close_enter</item>
     </style>
 
 </resources>
