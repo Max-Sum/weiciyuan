@@ -10,12 +10,12 @@ import org.qii.weiciyuan.support.asyncdrawable.TimeLineBitmapDownloader;
 import org.qii.weiciyuan.support.debug.AppLogger;
 import org.qii.weiciyuan.support.file.FileLocationMethod;
 import org.qii.weiciyuan.support.gallery.GalleryActivity;
-import org.qii.weiciyuan.support.lib.AnimationRect;
 import org.qii.weiciyuan.support.lib.ClickableTextViewMentionLinkOnTouchListener;
 import org.qii.weiciyuan.support.lib.ListViewMiddleMsgLoadingView;
 import org.qii.weiciyuan.support.lib.TimeLineAvatarImageView;
 import org.qii.weiciyuan.support.lib.TimeTextView;
 import org.qii.weiciyuan.support.settinghelper.SettingUtility;
+import org.qii.weiciyuan.support.utils.AnimationUtility;
 import org.qii.weiciyuan.support.utils.GlobalContext;
 import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.support.utils.ThemeUtility;
@@ -27,6 +27,7 @@ import org.qii.weiciyuan.ui.userinfo.UserInfoActivity;
 import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -566,7 +567,7 @@ public abstract class AbstractAppListAdapter<T extends ItemBean> extends BaseAda
 
             int count = msg.getPicCount();
             for (int i = 0; i < count; i++) {
-                final IWeiciyuanDrawable pic = (IWeiciyuanDrawable) gridLayout.getChildAt(i);
+                IWeiciyuanDrawable pic = (IWeiciyuanDrawable) gridLayout.getChildAt(i);
                 pic.setVisibility(View.VISIBLE);
                 if (SettingUtility.getEnableBigPic()) {
                     TimeLineBitmapDownloader.getInstance()
@@ -587,12 +588,6 @@ public abstract class AbstractAppListAdapter<T extends ItemBean> extends BaseAda
                         Intent intent = new Intent(getActivity(), GalleryActivity.class);
                         intent.putExtra("msg", msg);
                         intent.putExtra("position", finalI);
-                        AnimationRect rect = AnimationRect.buildFromImageView((ImageView) pic);
-
-                        if (rect != null) {
-                            intent.putExtra("rect", rect);
-                        }
-
                         Bundle scaleBundle = ActivityOptions.makeScaleUpAnimation(
                                 v, 0, 0, v.getWidth(), v.getHeight()).toBundle();
                         getActivity().startActivity(intent, scaleBundle);
@@ -678,7 +673,7 @@ public abstract class AbstractAppListAdapter<T extends ItemBean> extends BaseAda
                     Intent intent = new Intent(getActivity(), GalleryActivity.class);
                     intent.putExtra("msg", msg);
 
-                    AnimationRect rect = AnimationRect.buildFromImageView(imageView);
+                    Rect rect = AnimationUtility.getBitmapRectFromImageView(imageView);
 
                     if (rect != null) {
                         intent.putExtra("rect", rect);
