@@ -1,27 +1,36 @@
 package org.qii.weiciyuan.ui.preference;
 
-import android.app.ListFragment;
-import android.content.Intent;
-import android.content.res.TypedArray;
-import android.os.Bundle;
-import android.view.*;
-import android.widget.AbsListView;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
 import org.qii.weiciyuan.R;
 import org.qii.weiciyuan.bean.AccountBean;
 import org.qii.weiciyuan.support.database.AccountDBTask;
 import org.qii.weiciyuan.support.database.DraftDBManager;
-import org.qii.weiciyuan.support.database.draftbean.*;
+import org.qii.weiciyuan.support.database.draftbean.CommentDraftBean;
+import org.qii.weiciyuan.support.database.draftbean.DraftListViewItemBean;
+import org.qii.weiciyuan.support.database.draftbean.ReplyDraftBean;
+import org.qii.weiciyuan.support.database.draftbean.RepostDraftBean;
+import org.qii.weiciyuan.support.database.draftbean.StatusDraftBean;
 import org.qii.weiciyuan.support.database.table.DraftTable;
 import org.qii.weiciyuan.support.lib.MyAsyncTask;
 import org.qii.weiciyuan.support.utils.GlobalContext;
 import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
+import org.qii.weiciyuan.support.utils.ThemeUtility;
 import org.qii.weiciyuan.ui.send.WriteCommentActivity;
 import org.qii.weiciyuan.ui.send.WriteReplyToCommentActivity;
 import org.qii.weiciyuan.ui.send.WriteRepostActivity;
 import org.qii.weiciyuan.ui.send.WriteWeiboActivity;
+
+import android.app.ListFragment;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.ActionMode;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AbsListView;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -46,11 +55,13 @@ public class DraftFragment extends ListFragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        if (task != null)
+        if (task != null) {
             task.cancel(true);
+        }
 
-        if (removeTask != null)
+        if (removeTask != null) {
             removeTask.cancel(true);
+        }
     }
 
     @Override
@@ -86,7 +97,8 @@ public class DraftFragment extends ListFragment {
                 Intent intent;
                 switch (item.getType()) {
                     case DraftTable.TYPE_WEIBO:
-                        AccountBean accountBean = AccountDBTask.getAccount(item.getStatusDraftBean().getAccountId());
+                        AccountBean accountBean = AccountDBTask
+                                .getAccount(item.getStatusDraftBean().getAccountId());
                         intent = new Intent(getActivity(), WriteWeiboActivity.class);
                         intent.setAction(WriteWeiboActivity.ACTION_DRAFT);
                         intent.putExtra("draft", item.getStatusDraftBean());
@@ -95,7 +107,8 @@ public class DraftFragment extends ListFragment {
                         break;
 
                     case DraftTable.TYPE_REPOST:
-                        accountBean = AccountDBTask.getAccount(item.getRepostDraftBean().getAccountId());
+                        accountBean = AccountDBTask
+                                .getAccount(item.getRepostDraftBean().getAccountId());
                         RepostDraftBean repostDraftBean = list.get(position).getRepostDraftBean();
                         intent = new Intent(getActivity(), WriteRepostActivity.class);
                         intent.setAction(WriteRepostActivity.ACTION_DRAFT);
@@ -104,7 +117,8 @@ public class DraftFragment extends ListFragment {
                         SwipebackActivityUtils.startSwipebackActivity(getActivity(), intent);
                         break;
                     case DraftTable.TYPE_COMMENT:
-                        CommentDraftBean commentDraftBean = list.get(position).getCommentDraftBean();
+                        CommentDraftBean commentDraftBean = list.get(position)
+                                .getCommentDraftBean();
                         intent = new Intent(getActivity(), WriteCommentActivity.class);
                         intent.setAction(WriteCommentActivity.ACTION_DRAFT);
                         intent.putExtra("draft", commentDraftBean);
@@ -140,7 +154,8 @@ public class DraftFragment extends ListFragment {
         public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.menu_remove:
-                    if (removeTask == null || removeTask.getStatus() == MyAsyncTask.Status.FINISHED) {
+                    if (removeTask == null
+                            || removeTask.getStatus() == MyAsyncTask.Status.FINISHED) {
                         removeTask = new RemoveDraftDBTask();
                         removeTask.executeOnExecutor(MyAsyncTask.THREAD_POOL_EXECUTOR);
                     }
@@ -157,13 +172,16 @@ public class DraftFragment extends ListFragment {
         }
 
         @Override
-        public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
-            mode.setTitle(String.format(getString(R.string.have_selected), String.valueOf(getListView().getCheckedItemCount())));
+        public void onItemCheckedStateChanged(ActionMode mode, int position, long id,
+                boolean checked) {
+            mode.setTitle(String.format(getString(R.string.have_selected),
+                    String.valueOf(getListView().getCheckedItemCount())));
             adapter.notifyDataSetChanged();
         }
     }
 
-    private class RemoveDraftDBTask extends MyAsyncTask<Void, List<DraftListViewItemBean>, List<DraftListViewItemBean>> {
+    private class RemoveDraftDBTask
+            extends MyAsyncTask<Void, List<DraftListViewItemBean>, List<DraftListViewItemBean>> {
 
         Set<String> set = new HashSet<String>();
 
@@ -178,7 +196,8 @@ public class DraftFragment extends ListFragment {
 
         @Override
         protected List<DraftListViewItemBean> doInBackground(Void... params) {
-            return DraftDBManager.getInstance().removeAndGet(set, GlobalContext.getInstance().getAccountBean().getUid());
+            return DraftDBManager.getInstance()
+                    .removeAndGet(set, GlobalContext.getInstance().getAccountBean().getUid());
         }
 
         @Override
@@ -188,11 +207,13 @@ public class DraftFragment extends ListFragment {
         }
     }
 
-    class DBTask extends MyAsyncTask<Void, List<DraftListViewItemBean>, List<DraftListViewItemBean>> {
+    class DBTask
+            extends MyAsyncTask<Void, List<DraftListViewItemBean>, List<DraftListViewItemBean>> {
 
         @Override
         protected List<DraftListViewItemBean> doInBackground(Void... params) {
-            List<DraftListViewItemBean> set = DraftDBManager.getInstance().getDraftList(GlobalContext.getInstance().getAccountBean().getUid());
+            List<DraftListViewItemBean> set = DraftDBManager.getInstance()
+                    .getDraftList(GlobalContext.getInstance().getAccountBean().getUid());
 
             return set;
         }
@@ -209,14 +230,13 @@ public class DraftFragment extends ListFragment {
     class DraftAdapter extends BaseAdapter {
 
         int checkedBG;
+
         int defaultBG;
 
         public DraftAdapter() {
             defaultBG = getResources().getColor(R.color.transparent);
-
-            int[] attrs = new int[]{R.attr.listview_checked_color};
-            TypedArray ta = getActivity().obtainStyledAttributes(attrs);
-            checkedBG = ta.getColor(0, 430);
+            checkedBG = ThemeUtility
+                    .getColor(getActivity(), R.attr.listview_checked_color);
         }
 
         @Override
@@ -242,13 +262,13 @@ public class DraftFragment extends ListFragment {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
 
-            View view = getActivity().getLayoutInflater().inflate(android.R.layout.simple_list_item_1, parent, false);
+            View view = getActivity().getLayoutInflater()
+                    .inflate(android.R.layout.simple_list_item_1, parent, false);
             TextView tv = (TextView) view;
             tv.setBackgroundColor(defaultBG);
             if (getListView().getCheckedItemPositions().get(position)) {
                 tv.setBackgroundColor(checkedBG);
             }
-
 
             int type = list.get(position).getType();
             switch (type) {
@@ -269,7 +289,6 @@ public class DraftFragment extends ListFragment {
                     tv.setText(replyDraftBean.getContent());
                     break;
             }
-
 
             return view;
         }

@@ -146,27 +146,14 @@ public class FetchNewMsgService extends IntentService {
                 && mentionCommentsResult.getSize() > 0);
         boolean commentsToMe = (commentResult != null && commentResult.getSize() > 0);
 
-        NotificationManager notificationManager = (NotificationManager) getApplicationContext()
-                .getSystemService(NOTIFICATION_SERVICE);
-
-        if (!mentionsWeibo) {
-            notificationManager
-                    .cancel(NotificationServiceHelper.getMentionsWeiboNotificationId(accountBean));
-        }
-
-        if (!mentionsComment) {
-            notificationManager.cancel(NotificationServiceHelper.getMentionsCommentNotificationId(
-                    accountBean));
-        }
-
-        if (!commentsToMe) {
-            notificationManager.cancel(NotificationServiceHelper.getCommentsToMeNotificationId(
-                    accountBean));
-        }
-
         if (mentionsWeibo || mentionsComment || commentsToMe) {
             sendTwoKindsOfBroadcast(accountBean, commentResult, mentionStatusesResult,
                     mentionCommentsResult, unreadBean);
+        } else {
+            NotificationManager notificationManager = (NotificationManager) getApplicationContext()
+                    .getSystemService(NOTIFICATION_SERVICE);
+            notificationManager.cancel(
+                    NotificationServiceHelper.getMentionsWeiboNotificationId(accountBean));
         }
     }
 
@@ -174,15 +161,15 @@ public class FetchNewMsgService extends IntentService {
             int cmt) {
         if (mentionsWeibo == 0) {
             NotificationDBTask
-                    .asyncClearUnread(accountId, NotificationDBTask.UnreadDBType.mentionsWeibo);
+                    .asyncCleanUnread(accountId, NotificationDBTask.UnreadDBType.mentionsWeibo);
         }
         if (mentionsComment == 0) {
             NotificationDBTask
-                    .asyncClearUnread(accountId, NotificationDBTask.UnreadDBType.mentionsComment);
+                    .asyncCleanUnread(accountId, NotificationDBTask.UnreadDBType.mentionsComment);
         }
         if (cmt == 0) {
             NotificationDBTask
-                    .asyncClearUnread(accountId, NotificationDBTask.UnreadDBType.commentsToMe);
+                    .asyncCleanUnread(accountId, NotificationDBTask.UnreadDBType.commentsToMe);
         }
     }
 

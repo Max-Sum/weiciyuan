@@ -22,7 +22,6 @@ import org.qii.weiciyuan.ui.userinfo.UserInfoActivity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
 import android.text.Layout;
@@ -83,10 +82,9 @@ public class BrowserWeiboMsgCommentAndRepostAdapter extends BaseAdapter {
         this.inflater = fragment.getActivity().getLayoutInflater();
 
         this.defaultBG = fragment.getResources().getColor(R.color.transparent);
+        this.checkedBG = ThemeUtility
+                .getColor(fragment.getActivity(), R.attr.listview_checked_color);
 
-        int[] attrs = new int[]{R.attr.listview_checked_color};
-        TypedArray ta = fragment.getActivity().obtainStyledAttributes(attrs);
-        this.checkedBG = ta.getColor(0, 430);
     }
 
     protected Activity getActivity() {

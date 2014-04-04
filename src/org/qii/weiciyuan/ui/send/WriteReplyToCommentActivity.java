@@ -1,14 +1,5 @@
 package org.qii.weiciyuan.ui.send;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import android.widget.Toast;
 import org.qii.weiciyuan.R;
 import org.qii.weiciyuan.bean.AccountBean;
 import org.qii.weiciyuan.bean.CommentBean;
@@ -20,6 +11,16 @@ import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.support.utils.Utility;
 import org.qii.weiciyuan.ui.search.AtUserActivity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.Toast;
+
 /**
  * User: qii
  * Date: 12-8-28
@@ -27,11 +28,17 @@ import org.qii.weiciyuan.ui.search.AtUserActivity;
 public class WriteReplyToCommentActivity extends AbstractWriteActivity<CommentBean> {
 
     public static final String ACTION_DRAFT = "org.qii.weiciyuan.DRAFT";
-    public static final String ACTION_SEND_FAILED = "org.qii.weiciyuan.SEND_FAILED";
+
+    private static final String ACTION_SEND_FAILED = "org.qii.weiciyuan.SEND_FAILED";
+
+    private static final String ACTION_NOTIFICATION_REPLY = "org.qii.weiciyuan.NOTIFICATION_REPLY";
 
     private CommentBean bean;
+
     private ReplyDraftBean replyDraftBean;
+
     private MenuItem enableRepost;
+
     private boolean savedEnableRepost;
 
     @Override
@@ -56,7 +63,7 @@ public class WriteReplyToCommentActivity extends AbstractWriteActivity<CommentBe
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getActionBar().setTitle(getString(R.string.reply_to_comment));
-        getActionBar().setSubtitle(GlobalContext.getInstance().getCurrentAccountName());
+        getActionBar().setSubtitle(getCurrentAccountBean().getUsernick());
 
         if (savedInstanceState == null) {
 
@@ -67,6 +74,8 @@ public class WriteReplyToCommentActivity extends AbstractWriteActivity<CommentBe
                     handleDraftOperation(intent);
                 } else if (action.equals(WriteReplyToCommentActivity.ACTION_SEND_FAILED)) {
                     handleFailedOperation(intent);
+                } else if (action.equals(WriteReplyToCommentActivity.ACTION_NOTIFICATION_REPLY)) {
+                    handleNotificationReplyOperation(intent);
                 }
             } else {
                 handleNormalOperation(intent);
@@ -75,20 +84,31 @@ public class WriteReplyToCommentActivity extends AbstractWriteActivity<CommentBe
     }
 
     public static Intent startBecauseSendFailed(Context context,
-                                                AccountBean account,
-                                                String content,
-                                                CommentBean oriMsg,
-                                                ReplyDraftBean replyDraftBean,
-                                                String repostContent,
-                                                String failedReason) {
+            AccountBean account,
+            String content,
+            CommentBean oriMsg,
+            ReplyDraftBean replyDraftBean,
+            String repostContent,
+            String failedReason) {
         Intent intent = new Intent(context, WriteReplyToCommentActivity.class);
-        intent.setAction(WriteRepostActivity.ACTION_SEND_FAILED);
+        intent.setAction(WriteReplyToCommentActivity.ACTION_SEND_FAILED);
         intent.putExtra("account", account);
         intent.putExtra("content", content);
         intent.putExtra("oriMsg", oriMsg);
         intent.putExtra("failedReason", failedReason);
         intent.putExtra("repostContent", repostContent);
         intent.putExtra("replyDraftBean", replyDraftBean);
+        return intent;
+    }
+
+
+    public static Intent newIntentFromNotification(Context context,
+            AccountBean account,
+            CommentBean oriMsg) {
+        Intent intent = new Intent(context, WriteReplyToCommentActivity.class);
+        intent.setAction(WriteReplyToCommentActivity.ACTION_NOTIFICATION_REPLY);
+        intent.putExtra("account", account);
+        intent.putExtra("oriMsg", oriMsg);
         return intent;
     }
 
@@ -104,12 +124,22 @@ public class WriteReplyToCommentActivity extends AbstractWriteActivity<CommentBe
         }
     }
 
+    private void handleNotificationReplyOperation(Intent intent) {
+        token = ((AccountBean) intent.getParcelableExtra("account")).getAccess_token();
+        bean = (CommentBean) getIntent().getParcelableExtra("oriMsg");
+        getEditTextView().setHint("@" + bean.getUser().getScreen_name() + "：" + bean.getText());
+        if (!TextUtils.isEmpty(intent.getStringExtra("repostContent"))) {
+            savedEnableRepost = true;
+        }
+    }
+
 
     private void handleNormalOperation(Intent intent) {
 
         token = intent.getStringExtra("token");
-        if (TextUtils.isEmpty(token))
+        if (TextUtils.isEmpty(token)) {
             token = GlobalContext.getInstance().getSpecialToken();
+        }
 
         bean = (CommentBean) intent.getParcelableExtra("msg");
         getEditTextView().setHint("@" + bean.getUser().getScreen_name() + "：" + bean.getText());
@@ -117,9 +147,9 @@ public class WriteReplyToCommentActivity extends AbstractWriteActivity<CommentBe
 
     private void handleDraftOperation(Intent intent) {
         token = intent.getStringExtra("token");
-        if (TextUtils.isEmpty(token))
+        if (TextUtils.isEmpty(token)) {
             token = GlobalContext.getInstance().getSpecialToken();
-
+        }
 
         replyDraftBean = (ReplyDraftBean) intent.getParcelableExtra("draft");
         getEditTextView().setText(replyDraftBean.getContent());
@@ -140,15 +170,17 @@ public class WriteReplyToCommentActivity extends AbstractWriteActivity<CommentBe
     @Override
     public void saveToDraft() {
         if (!TextUtils.isEmpty(getEditTextView().getText().toString())) {
-            DraftDBManager.getInstance().insertReply(getEditTextView().getText().toString(), bean, GlobalContext.getInstance().getCurrentAccountId());
+            DraftDBManager.getInstance().insertReply(getEditTextView().getText().toString(), bean,
+                    GlobalContext.getInstance().getCurrentAccountId());
         }
         finish();
     }
 
     @Override
     protected void removeDraft() {
-        if (replyDraftBean != null)
+        if (replyDraftBean != null) {
             DraftDBManager.getInstance().remove(replyDraftBean.getId());
+        }
     }
 
     @Override
@@ -178,9 +210,12 @@ public class WriteReplyToCommentActivity extends AbstractWriteActivity<CommentBe
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                if (imm.isActive())
-                    imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, InputMethodManager.HIDE_NOT_ALWAYS);
+                InputMethodManager imm = (InputMethodManager) getSystemService(
+                        Context.INPUT_METHOD_SERVICE);
+                if (imm.isActive()) {
+                    imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT,
+                            InputMethodManager.HIDE_NOT_ALWAYS);
+                }
                 finish();
                 break;
             case R.id.menu_enable_repost:
@@ -206,17 +241,12 @@ public class WriteReplyToCommentActivity extends AbstractWriteActivity<CommentBe
     @Override
     protected void send() {
         if (canSend()) {
-            String content = ((EditText) findViewById(R.id.status_new_content)).getText().toString();
+            String content = ((EditText) findViewById(R.id.status_new_content)).getText()
+                    .toString();
 
-            Intent intent = new Intent(WriteReplyToCommentActivity.this, SendReplyToCommentService.class);
-            intent.putExtra("oriMsg", bean);
-            intent.putExtra("content", content);
-            intent.putExtra("token", GlobalContext.getInstance().getSpecialToken());
-            intent.putExtra("account", GlobalContext.getInstance().getAccountBean());
-            if (enableRepost.isChecked()) {
-                intent.putExtra("repostContent", repost());
-
-            }
+            Intent intent = SendReplyToCommentService
+                    .newIntent(getCurrentAccountBean(), bean, content,
+                            enableRepost.isChecked() ? repost() : null);
             startService(intent);
             finish();
         }
@@ -250,11 +280,14 @@ public class WriteReplyToCommentActivity extends AbstractWriteActivity<CommentBe
             return true;
         } else {
             if (!haveContent && !haveToken) {
-                Toast.makeText(this, getString(R.string.content_cant_be_empty_and_dont_have_account), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,
+                        getString(R.string.content_cant_be_empty_and_dont_have_account),
+                        Toast.LENGTH_SHORT).show();
             } else if (!haveContent) {
                 getEditTextView().setError(getString(R.string.content_cant_be_empty));
             } else if (!haveToken) {
-                Toast.makeText(this, getString(R.string.dont_have_account), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.dont_have_account), Toast.LENGTH_SHORT)
+                        .show();
             }
 
             if (!contentNumBelow140) {
@@ -267,4 +300,14 @@ public class WriteReplyToCommentActivity extends AbstractWriteActivity<CommentBe
     }
 
 
+    @Override
+    protected AccountBean getCurrentAccountBean() {
+        if (WriteReplyToCommentActivity.ACTION_NOTIFICATION_REPLY.equals(getIntent().getAction())
+                || WriteReplyToCommentActivity.ACTION_SEND_FAILED.equals(getIntent().getAction())) {
+            AccountBean accountBean = ((AccountBean) getIntent().getParcelableExtra("account"));
+            return accountBean;
+        } else {
+            return super.getCurrentAccountBean();
+        }
+    }
 }
