@@ -46,6 +46,13 @@ public class AtUsersDBTask {
         reduce(accountId);
     }
 
+    public static void upToTop(AtUserBean atUserBean, String accountId){
+        Gson gson = new Gson();
+        String json = gson.toJson(atUserBean);
+        getRsd().delete(AtUsersTable.TABLE_NAME, AtUsersTable.JSONDATA + " = '" + json + "'", null);
+        add(atUserBean, accountId);
+    }
+
     public static List<AtUserBean> get(String accountId) {
 
 
