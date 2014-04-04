@@ -15,7 +15,6 @@ import org.qii.weiciyuan.support.lib.ListViewMiddleMsgLoadingView;
 import org.qii.weiciyuan.support.lib.TimeLineAvatarImageView;
 import org.qii.weiciyuan.support.lib.TimeTextView;
 import org.qii.weiciyuan.support.settinghelper.SettingUtility;
-import org.qii.weiciyuan.support.utils.AnimationUtility;
 import org.qii.weiciyuan.support.utils.GlobalContext;
 import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 import org.qii.weiciyuan.support.utils.ThemeUtility;
@@ -27,7 +26,9 @@ import org.qii.weiciyuan.ui.userinfo.UserInfoActivity;
 import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -670,12 +671,55 @@ public abstract class AbstractAppListAdapter<T extends ItemBean> extends BaseAda
 
                     ImageView imageView = view.getImageView();
 
+                    Drawable drawable = imageView.getDrawable();
+                    Bitmap bitmap = null;
+                    if (drawable instanceof BitmapDrawable) {
+                        bitmap = ((BitmapDrawable) drawable).getBitmap();
+                    }
+
+                    Rect rect = new Rect();
+                    boolean result = imageView.getGlobalVisibleRect(rect);
+
+                    boolean checkWidth = rect.width() < imageView.getWidth();
+                    boolean checkHeight = rect.height() < imageView.getHeight();
+
+                    boolean clipped = !result || checkWidth || checkHeight;
+
+                    if (bitmap != null && !clipped) {
+
+                        int bitmapWidth = bitmap.getWidth();
+                        int bitmapHeight = bitmap.getHeight();
+
+                        int imageViewWidth = imageView.getWidth();
+                        int imageviewHeight = imageView.getHeight();
+
+                        float startScale;
+                        if ((float) imageViewWidth / bitmapWidth
+                                > (float) imageviewHeight / bitmapHeight) {
+                            // Extend start bounds horizontally
+                            startScale = (float) imageviewHeight / bitmapHeight;
+
+                        } else {
+                            startScale = (float) imageViewWidth / bitmapWidth;
+
+                        }
+
+                        bitmapHeight = (int) (bitmapHeight * startScale);
+                        bitmapWidth = (int) (bitmapWidth * startScale);
+
+                        int deltaX = (imageViewWidth - bitmapWidth) / 2;
+                        int deltaY = (imageviewHeight - bitmapHeight) / 2;
+
+                        rect.set(rect.left + deltaX, rect.top + deltaY, rect.right - deltaX,
+                                rect.bottom - deltaY);
+
+
+                    }
+
                     Intent intent = new Intent(getActivity(), GalleryActivity.class);
                     intent.putExtra("msg", msg);
 
-                    Rect rect = AnimationUtility.getBitmapRectFromImageView(imageView);
-
-                    if (rect != null) {
+                    if (!clipped && bitmap != null) {
                         intent.putExtra("rect", rect);
                     }
 
