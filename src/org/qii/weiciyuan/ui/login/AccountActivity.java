@@ -137,10 +137,8 @@ public class AccountActivity extends AbstractAppActivityNoSwipe
                     itemValueList.add(getString(R.string.official_app_login));
                 }
 
-                if (SettingUtility.isBlackMagicEnabled()) {
-                    activityList.add(BlackMagicActivity.class);
-                    itemValueList.add(getString(R.string.hack_login));
-                }
+                activityList.add(BlackMagicActivity.class);
+                itemValueList.add(getString(R.string.hack_login));
 
                 new AlertDialog.Builder(this)
                         .setItems(itemValueList.toArray(new String[0]),

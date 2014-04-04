@@ -6,8 +6,11 @@ import org.qii.weiciyuan.ui.interfaces.AbstractAppActivity;
 import org.qii.weiciyuan.ui.main.MainTimeLineActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.Window;
+import android.view.WindowManager;
 
 /**
  * User: qii
@@ -39,6 +42,13 @@ public class UserTimeLineActivity extends AbstractAppActivity {
                             StatusesByIdTimeLineFragment.newInstance(bean, token),
                             StatusesByIdTimeLineFragment.class.getName())
                     .commit();
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            // Translucent navigation bar
+            Window window = getWindow();
+            window.setFlags(
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION,
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         }
 
     }

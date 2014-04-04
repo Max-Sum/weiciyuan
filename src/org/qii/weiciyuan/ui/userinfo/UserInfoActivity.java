@@ -30,6 +30,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.nfc.NdefMessage;
 import android.nfc.NfcAdapter;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -39,6 +40,8 @@ import android.support.v4.content.Loader;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import java.util.List;
@@ -139,7 +142,6 @@ public class UserInfoActivity extends AbstractAppActivity {
             SwipebackActivityUtils.startSwipebackActivity(this, intent);
             finish();
         }
-
 
     }
 

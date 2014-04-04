@@ -42,6 +42,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.Build;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -51,6 +52,8 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -158,6 +161,13 @@ public class MainTimeLineActivity extends MainTimeLineParentActivity {
         buildInterface(savedInstanceState);
         Executors.newSingleThreadScheduledExecutor()
                 .schedule(new ClearCacheTask(), 8, TimeUnit.SECONDS);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            // Translucent navigation bar
+            Window window = getWindow();
+            window.setFlags(
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION,
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        }
     }
 
 
@@ -271,6 +281,12 @@ public class MainTimeLineActivity extends MainTimeLineParentActivity {
                     (getSearchFragment()).clearActionMode();
                     (getDMFragment()).clearActionMode();
                 }
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                    // Translucent navigation bar
+                    Window window = getWindow();
+                    window.clearFlags(
+                            WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+                }
             }
         });
 
@@ -280,6 +296,13 @@ public class MainTimeLineActivity extends MainTimeLineParentActivity {
                 LongClickableLinkMovementMethod.getInstance().setLongClickable(true);
                 LocalBroadcastManager.getInstance(MainTimeLineActivity.this)
                         .sendBroadcast(new Intent(AppEventAction.SLIDING_MENU_CLOSED_BROADCAST));
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                    // Translucent navigation bar
+                    Window window = getWindow();
+                    window.setFlags(
+                            WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION,
+                            WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+                }
             }
         });
     }

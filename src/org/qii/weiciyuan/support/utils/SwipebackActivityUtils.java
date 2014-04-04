@@ -34,6 +34,8 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
+import android.content.res.Resources;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -88,7 +90,14 @@ public class SwipebackActivityUtils {
         if (activity == null) return null;
         final Window w = activity.getWindow();
         final View view = w.getDecorView();
-        final int width = view.getWidth(), height = view.getHeight();
+        int width = view.getWidth(), height = view.getHeight();
+        if((w.getAttributes().flags & WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)!=0){
+            Resources resources = activity.getResources();
+            int resourceId = resources.getIdentifier("navigation_bar_height", "dimen", "android");
+            if (resourceId > 0) {
+                height -= resources.getDimensionPixelSize(resourceId);
+            }
+        }
         if (width <= 0 || height <= 0) return null;
         final Bitmap b = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_4444);
         final Rect frame = new Rect();

@@ -185,7 +185,7 @@ public class CustomViewAbove extends ViewGroup {
 
         final float density = context.getResources().getDisplayMetrics().density;
         mFlingDistance = (int) (MIN_DISTANCE_FOR_FLING * density);
-    }
+}
 
     /**
      * Set the currently selected page. If the CustomViewPager has already been through its first

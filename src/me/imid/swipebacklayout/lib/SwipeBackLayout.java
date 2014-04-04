@@ -4,18 +4,22 @@ package me.imid.swipebacklayout.lib;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -278,6 +282,10 @@ public class SwipeBackLayout extends FrameLayout {
     public void setWindowBackgroundDrawable(final Drawable d) {
         if (mBackgroundView == null) return;
         mBackgroundView.setImageDrawable(d);
+        BitmapDrawable bd = (BitmapDrawable) d;
+        final int width = bd.getBitmap().getWidth(), height = bd.getBitmap().getHeight();
+        mBackgroundView.setMaxHeight(height);
+        mBackgroundView.setMaxWidth(width);
     }
 
     /**
@@ -349,7 +357,7 @@ public class SwipeBackLayout extends FrameLayout {
      * Set a drawable used for edge shadow.
      *
      * @param shadow Drawable to use
-     * @param edgeFlags Combination of edge flags describing the edge to set
+     * @param edgeFlag Combination of edge flags describing the edge to set
      * @see #EDGE_LEFT
      * @see #EDGE_RIGHT
      * @see #EDGE_BOTTOM
@@ -369,7 +377,7 @@ public class SwipeBackLayout extends FrameLayout {
      * Set a drawable used for edge shadow.
      *
      * @param resId Resource of drawable to use
-     * @param edgeFlags Combination of edge flags describing the edge to set
+     * @param edgeFlag Combination of edge flags describing the edge to set
      * @see #EDGE_LEFT
      * @see #EDGE_RIGHT
      * @see #EDGE_BOTTOM
@@ -506,7 +514,10 @@ public class SwipeBackLayout extends FrameLayout {
         ViewGroup decor = (ViewGroup) activity.getWindow().getDecorView();
         ViewGroup decorChild = (ViewGroup) decor.getChildAt(0);
         final ImageView backgroundChild = new ImageView(activity);
-        backgroundChild.setScaleType(ScaleType.CENTER_CROP);
+        backgroundChild.setScaleType(ScaleType.CENTER_INSIDE);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
+        lp.gravity = Gravity.TOP;
+        backgroundChild.setLayoutParams(lp);
         decorChild.setBackgroundResource(background);
         decor.removeView(decorChild);
         //addView(decorChild);
