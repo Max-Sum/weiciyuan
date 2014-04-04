@@ -18,6 +18,7 @@ import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.style.ClickableSpan;
 import android.view.View;
+import android.app.Activity;
 import org.qii.weiciyuan.support.utils.SwipebackActivityUtils;
 
 /**
