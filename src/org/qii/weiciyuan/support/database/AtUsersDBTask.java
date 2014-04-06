@@ -46,6 +46,14 @@ public class AtUsersDBTask {
         reduce(accountId);
     }
 
+    public static void pop(AtUserBean atUserBean, String accountId) {
+        Gson gson = new Gson();
+        String json = gson.toJson(atUserBean);
+        getWsd().delete(AtUsersTable.TABLE_NAME, AtUsersTable.JSONDATA + " = '" + json + "' and " +
+                AtUsersTable.ACCOUNTID + " = " + accountId, null);
+        add(atUserBean, accountId);
+    }
+
     public static List<AtUserBean> get(String accountId) {
 
 
