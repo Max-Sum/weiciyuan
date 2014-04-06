@@ -84,7 +84,7 @@ public class AtUserFragment extends ListFragment {
                 Intent intent = new Intent();
                 intent.putExtra("name", "@" + atList.get(position).getNickname() + " ");
                 getActivity().setResult(Activity.RESULT_OK, intent);
-                AtUsersDBTask.upToTop(atList.get(position), GlobalContext.getInstance().getCurrentAccountId());
+                AtUsersDBTask.add(atList.get(position), GlobalContext.getInstance().getCurrentAccountId());
                 getActivity().finish();
             }
         });
