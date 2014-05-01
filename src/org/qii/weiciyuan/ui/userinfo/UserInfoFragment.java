@@ -406,12 +406,12 @@ public class UserInfoFragment extends AbstractMessageTimeLineFragment<MessageLis
             public void onClick(View v) {
                 String path = FileManager.getFilePathFromUrl(userBean.getAvatar_large(),
                         FileLocationMethod.avatar_large);
-                if (!new ImageUtility.isThisBitmapCanRead(path)) {
+                if (!ImageUtility.isThisBitmapCanRead(path)) {
 
                     path = FileManager.getFilePathFromUrl(userBean.getProfile_image_url(),
                             FileLocationMethod.avatar_small);
 
-                    if (!new ImageUtility.isThisBitmapCanRead(path)) {
+                    if (!ImageUtility.isThisBitmapCanRead(path)) {
                         return;
                     }
                 }
