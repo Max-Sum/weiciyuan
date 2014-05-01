@@ -100,7 +100,7 @@ public class GalleryActivity extends Activity {
         position = (TextView) findViewById(R.id.position);
         TextView sum = (TextView) findViewById(R.id.sum);
 
-        rect = getIntent().getParcelableExtra("rect");
+//        rect = ((AnimationRect) getIntent().getParcelableArrayListExtra("rect")).scaledBitmapRect;
 
         MessageBean msg = getIntent().getParcelableExtra("msg");
         ArrayList<String> tmp = msg.getThumbnailPicUrls();
@@ -108,6 +108,20 @@ public class GalleryActivity extends Activity {
             urls.add(tmp.get(i).replace("thumbnail", "large"));
         }
         sum.setText(String.valueOf(urls.size()));
+
+        //jump to new gallery animation activity
+        if (urls.size() < 10 && ImageUtility.isThisBitmapCanRead(
+                FileManager.getFilePathFromUrl(urls.get(0), FileLocationMethod.picture_large))
+                ) {
+            Intent intent = new Intent(this, GalleryAnimationActivity.class);
+            intent.putExtra("msg", getIntent().getParcelableExtra("msg"));
+            intent.putExtra("rect", getIntent().getParcelableArrayListExtra("rect"));
+            intent.putExtra("position", getIntent().getIntExtra("position", 0));
+            startActivity(intent);
+            overridePendingTransition(0, 0);
+            finish();
+            return;
+        }
 
         pager = (ViewPager) findViewById(R.id.pager);
         pager.setAdapter(new ImagePagerAdapter());

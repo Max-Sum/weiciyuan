@@ -2,6 +2,11 @@ package org.qii.weiciyuan.support.utils;
 
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
+import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
@@ -69,4 +74,28 @@ public class AnimationUtility {
     }
 
 
+            }
+
+            bitmapHeight = (int) (bitmapHeight * startScale);
+            bitmapWidth = (int) (bitmapWidth * startScale);
+
+            int deltaX = (imageViewWidth - bitmapWidth) / 2;
+            int deltaY = (imageviewHeight - bitmapHeight) / 2;
+
+            rect.set(rect.left + deltaX, rect.top + deltaY, rect.right - deltaX,
+                    rect.bottom - deltaY);
+
+            return rect;
+        } else {
+            return null;
+        }
+
+
+    }
+
+    public static View getAppContentView(Activity activity) {
+        final View appView = activity.findViewById(android.R.id.content);
+        return appView;
+
+    }
 }
