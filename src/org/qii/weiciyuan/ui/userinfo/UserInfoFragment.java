@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package org.qii.weiciyuan.ui.userinfo;
 
 import org.qii.weiciyuan.R;
